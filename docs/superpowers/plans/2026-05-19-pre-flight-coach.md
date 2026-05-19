@@ -1002,6 +1002,28 @@ Files this touches:
 
 The exit phrase change in commit 11 (`"We are ready to build. Are you ready to build it?"`) plants the seed for this work. It is forward-compatible.
 
+### v2.5 — Project baseline coaching: tokens, budget, timeline (added 2026-05-19)
+
+The current v1 four-question loop scopes a SINGLE TASK. Bas surfaced an earlier gap: a coach for new developers also needs to help them think about **tokens, budget, and timeline** — project-level concerns that hit before the user has even picked their first task. A real coach surfaces these in the first conversation, not the tenth.
+
+The shape (post-comp design):
+
+- **First-contact behavior.** On a fresh project / fresh conversation, Pre-Flight asks once: *"Before we shape any single task, have we talked about your tokens, your budget, and your timeline?"* If no, that conversation happens before any four-question loop.
+- **Three baseline anchors the coach helps the user set:**
+  1. **Tokens / spend.** What does Claude Code roughly cost per task at your tier? What's your monthly cap before you stop or downshift? When you see a runaway, what do you do?
+  2. **Budget.** Money, but also attention and patience. How many hours a week can you actually give this? How many features before you ship?
+  3. **Timeline.** When does this need to exist? What does "done enough to show someone" look like vs "done enough to call shipped"?
+- **Output:** a `PROJECT-BASELINE.md`-style summary the user keeps in their workspace and the coach references in later conversations. Possibly the FIRST artifact a Pre-Flight conversation produces, ahead of any per-task preflight prompt.
+- **Coach behavior in subsequent conversations.** When the user shapes a new task, the coach can quietly check: *"Does this task fit your weekly budget? Does the verification you proposed fit your timeline?"* — surfaces baseline-vs-task drift without nagging.
+
+Files this would touch:
+- New file: `reference/project-baseline.md` — the three anchors with worked good-vs-hedge examples (parallel to `the-four-questions.md`).
+- `rules.md` — add a first-contact behavior row: *"On first contact with a user, surface project baseline before task scoping. After baseline, the four questions per task."*
+- `identity.md` — small note in "Who you coach" or "How you treat confusion" that the coach helps set context before scoping.
+- `examples.md` — add a "first conversation" dialogue showing the baseline pattern.
+
+The principle: coaching is intentional and directional (v3 foundation). Setting baseline upfront IS the directional move — the coach has a goal beyond this one task. The Bas principle "coaching always has a goal" applies to both the conversation level (the four questions are a directional gate) and the project level (the baseline is a directional anchor for the whole arc).
+
 ### v3 — Skill-adaptive coaching (the long arc)
 
 **Foundational principle on coaching intent (Bas's words, 2026-05-19):** *"Coaching is done intentionally. We assess the user where they are, support them where it matters, help them learn to be stronger builders. Coaching always has a goal, and the goal is to help the user become the best at what they are setting out to do that they can be. In this sense, it is building or learning."*
