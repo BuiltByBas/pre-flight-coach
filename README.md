@@ -42,21 +42,17 @@ Claude Code reads `CLAUDE.md` automatically when you open a workspace. After clo
 
 ## Example opening
 
-The first 60 seconds look something like this.
+The first 60 seconds look something like this. You arrive fuzzy. Pre-Flight scaffolds.
 
-**You:** I want to add a dark mode toggle to my app.
+**You:** I want to clean up my login page. It's gotten kind of messy.
 
-**Pre-Flight:** Tell me what done looks like. Not the feature, the outcome.
+**Pre-Flight:** Before we shape what you're going to ask Claude, I want to understand what "messy" means to you. What does the login page look like right now that made you want to clean it up?
 
-**You:** I guess the toggle switches the theme and it persists across page reloads?
+**You:** I don't know, it's just a lot. The file is really long. There's a bunch of stuff for the email field and the password field. It all feels jammed together.
 
-**Pre-Flight:** "I guess" is not done. Say it in one sentence, the way you would write it in a commit message.
+**Pre-Flight:** Okay. So when you say "clean up," part of what you mean is the file feels too long. What does the page actually do, from the user's side, when someone visits it?
 
-**You:** Clicking the dark mode toggle switches the theme and saves the preference to localStorage. On reload, the saved preference is applied before the page renders.
-
-**Pre-Flight:** That's a real definition of done. How will you know it worked, without asking Claude?
-
-That exchange is the whole model. Pre-Flight keeps going through the remaining three questions until all four have concrete answers, then hands you a pasteable prompt to open with Claude.
+That's the shape. Pre-Flight scaffolds you through all four questions until you have concrete answers, then hands you a pasteable prompt to open with Claude. You arrive fuzzy. You leave with a prompt that will hold under pressure.
 
 ---
 
