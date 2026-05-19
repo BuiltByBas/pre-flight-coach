@@ -24,6 +24,7 @@ The structure is fixed by the comp brief. The design decision is *what one job e
 
 ```
 pre-flight-coach/        ← repo root, IS the coach folder
+├── CLAUDE.md            ← activation directive (added 2026-05-19 after test feedback)
 ├── README.md
 ├── identity.md
 ├── rules.md
@@ -37,14 +38,15 @@ pre-flight-coach/        ← repo root, IS the coach folder
 
 | File | The one job |
 |---|---|
-| `README.md` | Convince a stranger to clone, drop, and try it within 90 seconds. |
-| `identity.md` | Define who Pre-Flight is, who it serves, and what it will not do. |
-| `rules.md` | Teach the AI to coach with friction — to ask, refuse, and name avoidance rather than inform. |
-| `examples.md` | Show five worked dialogues so the AI calibrates by example, not just by instruction. |
-| `reference/the-four-questions.md` | The canonical pre-flight checklist the coach drives toward every time. |
-| `reference/failure-modes.md` | The top week-1 Claude Code anti-patterns the coach watches for. |
-| `reference/inquiry-patterns.md` | Socratic question templates the coach pulls from mid-conversation. |
-| `reference/avoidance-tells.md` | Language patterns ("can you just…", "I think it'll be fine") that signal the user is dodging. |
+| `CLAUDE.md` | Activate the persona. Addressed to Claude in directive voice: "You are Pre-Flight. Read these files. Speak as Pre-Flight from turn one." Claude Code auto-loads it on workspace open. Also the file pasted into Claude.ai project Custom Instructions. |
+| `README.md` | Convince a stranger to clone, drop, and try it within 90 seconds. Documents both activation flows. |
+| `identity.md` | Tell Claude WHO Pre-Flight is, in second-person directive voice ("You are Pre-Flight. You will not write code."). |
+| `rules.md` | Tell Claude HOW to coach, in second-person directive voice. Drives the four-question loop, six behaviors, five refusals, clean exit. |
+| `examples.md` | Show five worked dialogues so Claude calibrates by example. Dialogue lines stay in first-person (`**Pre-Flight:**` blocks) — those are reference, not directive. |
+| `reference/the-four-questions.md` | The canonical pre-flight checklist Claude consults mid-conversation. First-person voice (Pre-Flight's own voice) — works because activation already told Claude it IS Pre-Flight. |
+| `reference/failure-modes.md` | The week-1 anti-patterns. First-person voice as above. |
+| `reference/inquiry-patterns.md` | Socratic question templates. First-person voice as above. |
+| `reference/avoidance-tells.md` | Language patterns signaling the user is dodging. First-person voice as above. |
 
 **Deliberate cuts:**
 - No `prompts.md` — that is what `rules.md` is for.
@@ -52,13 +54,24 @@ pre-flight-coach/        ← repo root, IS the coach folder
 - No glossary of Claude Code terms — would shade the coach toward "knowledge base."
 - No "edge case where coach fails" example — would teach the AI to fail.
 
+**Voice architecture (revised 2026-05-19 after Claude.ai test):**
+
+The repo has TWO voices, by design:
+
+- **Directive voice (second-person, addressed to Claude):** `CLAUDE.md`, `identity.md`, `rules.md`. These tell Claude who to be and how to act.
+- **Reference voice (first-person, Pre-Flight speaking):** `examples.md` dialogues, all four `reference/*.md` files. These are what Pre-Flight sounds like and what Pre-Flight consults. Claude reads them as its own voice once the directive layer establishes "you are Pre-Flight."
+
+The activation directive is what makes the first-person reference files work as Pre-Flight's voice instead of as a third-person bio. Without `CLAUDE.md` (or its equivalent in Custom Instructions), Claude reads "I am Pre-Flight" as data about a character it is not.
+
 ## 4. Coach identity (contents of `identity.md`)
 
 **Coach name:** Pre-Flight.
 
 **Named user:** A solo developer in their first two weeks of using Claude Code, who has installed it and finished a tutorial, and is now about to ask it to do their first real task on a project that matters to them.
 
-**Voice:** Patient senior engineer. Warm but immovable. Asks Socratic questions. Will not write code. Will not tell the user "the right way." Names avoidance patterns when seen ("you're asking me to confirm a decision you haven't actually made yet — what's the part you're avoiding?"). Calm, never preachy, never punitive. Friction, not hostility.
+**Voice on the page (revised 2026-05-19):** SECOND-PERSON DIRECTIVE. The file is addressed to Claude. "You are Pre-Flight. You sound like a patient senior engineer. You will not write code."
+
+**Voice in conversation:** Patient senior engineer. Warm but immovable. Asks Socratic questions. Refuses to write code. Refuses to tell the user "the right way." Names avoidance patterns when seen. Calm, never preachy, never punitive. Friction, not hostility.
 
 **Voice rules (inherited from Bas's global standards):**
 - Positive tone, constructive, no fear-based language.
@@ -66,12 +79,12 @@ pre-flight-coach/        ← repo root, IS the coach folder
 - Curious not furious.
 - Short, direct, AuDHD-friendly cadence.
 
-**Hard refusals (repeated in `rules.md` for the AI to internalize):**
-1. Will not write code.
-2. Will not tell the user "the right way" to prompt Claude.
-3. Will not give a checklist to copy-paste before the conversation.
-4. Will not move forward until the four questions have concrete answers.
-5. Will not explain what a Claude Code feature does — gives a one-sentence answer, points to official Claude Code docs, then redirects to the four questions. (`reference/` is for *coaching* tools — failure modes, inquiry patterns — not feature explanations.)
+**Hard refusals (stated in `identity.md` AND repeated in `rules.md`, both in directive voice):**
+1. You will not write code.
+2. You will not tell the user "the right way" to prompt Claude.
+3. You will not give a checklist to copy-paste before the conversation.
+4. You will not move forward until the four questions have concrete answers.
+5. You will not explain what a Claude Code feature does — give a one-sentence answer, point to the official Claude Code docs, then return to the four questions. (`reference/` is for *coaching* tools — failure modes, inquiry patterns — not feature explanations.)
 
 ## 5. The coaching loop (contents of `rules.md`)
 
@@ -84,7 +97,7 @@ Every conversation drives toward these. They are deliberately plain English with
 3. **What's outside this task?** What should Claude NOT touch? Files, behavior, refactors not requested.
 4. **What context can't Claude see?** Conventions, recent decisions, patterns elsewhere in the codebase the user knows but Claude does not.
 
-### 5.2 Interaction rules
+### 5.2 Interaction rules (stated in `rules.md` in second-person directive voice — "You ask one question at a time," etc.)
 
 | Rule | Behavior |
 |---|---|
@@ -97,7 +110,7 @@ Every conversation drives toward these. They are deliberately plain English with
 
 ### 5.3 Opening move
 
-When the user opens the conversation, Pre-Flight asks one thing: **"Tell me what you're about to ask Claude to do."** Plain. Open. No checklist visible yet. The four questions emerge through the conversation, not as a form.
+When the user opens the conversation cold (with no task description), Pre-Flight asks one thing: **"Tell me what you're about to ask Claude to do."** Plain. Open. No checklist visible yet. The four questions emerge through the conversation, not as a form. If the user opens with a task description already in hand, Pre-Flight skips the opening line and goes straight to Q1.
 
 ### 5.4 Exit summary template
 
@@ -166,6 +179,10 @@ A short list of language patterns that flag dodging. For each: the tell, what's 
 - **Visibility:** Public.
 - **License:** MIT (lowest-friction for the cloner; standard for shareable AI artifacts).
 - **README.md hook:** Two paragraphs. Paragraph 1 = who Pre-Flight is and who it coaches. Paragraph 2 = three-step "clone → drop in Claude project → talk." One example opening line. One expectation-setter sentence: *"Pre-Flight will not write code for you. That is the point."*
+- **README.md Activation section (added 2026-05-19):** documents BOTH activation flows:
+  - **Claude Code:** clone the repo, `cd` in, start a conversation. `CLAUDE.md` auto-loads and the persona is live from turn one.
+  - **Claude.ai Projects:** paste `CLAUDE.md` contents into the project's Custom Instructions field, attach `identity.md`, `rules.md`, `examples.md`, and the four `reference/*.md` files as Project Knowledge. Start a fresh chat.
+  - On Claude.ai, folder uploads are not supported, so the README explicitly tells the user to upload individual files.
 - **Submission post text (Bas writes, suggested skeleton):**
   > 🛫 **Pre-Flight** — a Claude Code coach for solo devs in their first two weeks.
   >
@@ -191,18 +208,21 @@ A short list of language patterns that flag dodging. For each: the tell, what's 
 | The four questions feel like a form, not a conversation | Opening move is `"Tell me what you're about to ask Claude to do."` — open, plain, single. The four are surfaced via Socratic dialogue, not as a checklist. |
 | Cloner doesn't read README, drops folder in, gets confused | README opening line names the coach behavior bluntly: *"This is a coach, not a tutorial. It will not write code for you. That is the point."* |
 | Judges' bar — "Does the coach actually coach?" | All five examples include the dialogue, not summaries. Example 4 (Rough Day) directly mirrors the judges' framing line. |
+| **Persona does not activate (discovered 2026-05-19 in Claude.ai test)** | First-person prose reads as character bio, not directive. Mitigation: `CLAUDE.md` at repo root in second-person directive voice; `identity.md` and `rules.md` rewritten to address Claude directly ("You are Pre-Flight"). Reference files stay first-person — they read as Pre-Flight's own voice once activation establishes the persona. |
 
 ## 11. Acceptance criteria
 
 The folder is "done" when:
 
-- All five root files plus the four reference files exist and are non-empty.
+- `CLAUDE.md` exists at repo root in second-person directive voice and activates the persona.
+- All five other root files (README, identity, rules, examples) plus the four reference files exist and are non-empty.
 - Each file has exactly one job, articulable in one sentence (the table in section 3).
+- `identity.md` and `rules.md` address Claude in second-person directive voice ("You are Pre-Flight").
 - `rules.md` contains the four questions, the six interaction rules, the hard refusals, and the exit summary template.
 - `examples.md` contains five dialogues with single-line learning-objective headers, and the three required "what a knowledge base would have done" footnotes on examples 2, 3, and 4.
-- A stranger cloning the repo can read `README.md`, drop the folder into a Claude project, and have a coherent coaching conversation without consulting any other source.
+- A stranger cloning the repo can read `README.md`, follow the Activation section, and have a coherent coaching conversation without consulting any other source.
 - The repo is public on GitHub under Bas's identity, with a clean commit history (squash-merge OK; no scratch files committed).
-- A dry-run conversation with the coach (Bas tests it in a fresh Claude project) produces visibly *coach-not-knowledge-base* behavior.
+- A dry-run conversation with the coach (Bas tests it in a fresh Claude.ai project AND a fresh Claude Code workspace) produces visibly *coach-not-knowledge-base* behavior in BOTH surfaces.
 
 ## 12. Next step
 

@@ -14,6 +14,23 @@
 
 ---
 
+## Course correction (added 2026-05-19 after Claude.ai test feedback)
+
+Tasks 1-11 of this plan were executed in order, with 10 commits pushed to `github.com/BuiltByBas/pre-flight-coach`. Bas tested the live repo on Claude.ai by connecting the GitHub repo as Project Knowledge. The files loaded, but the persona did not take: Claude read first-person prose ("I am Pre-Flight") as data about a character rather than as a directive to become one.
+
+The course correction adds an activation file and rewrites the two directive-shaped content files in second-person:
+
+- **New: Task 13** — add `CLAUDE.md` at repo root in second-person directive voice. Claude Code auto-loads it. Same content gets pasted into Claude.ai Custom Instructions.
+- **Revised: Task 2** — `identity.md` is rewritten in second-person ("You are Pre-Flight"). Same content, directive voice.
+- **Revised: Task 7** — `rules.md` is rewritten in second-person ("You drive every conversation toward..."). Same rules, directive voice.
+- **Revised: Task 9** — `README.md` adds an "Activation" section documenting both flows (Claude Code auto-load via CLAUDE.md; Claude.ai paste-to-custom-instructions).
+
+`examples.md` and the four `reference/*.md` files stay in first-person. They are reference material Claude consults once activated, not the activation itself.
+
+The five course-correction commits land on top of the existing 10. No history is rewritten.
+
+---
+
 ## Universal voice rules (apply to ALL coach files: README, identity, rules, examples, reference/)
 
 These come from Bas's global standards in `~/.claude/CLAUDE.md`. The coach files are the public client-facing deliverable.
@@ -27,12 +44,22 @@ These come from Bas's global standards in `~/.claude/CLAUDE.md`. The coach files
 
 A self-check before committing any coach file: scan for `—`, `--`, the word "just," the word "simply." If any appear in coach voice (versus quoted examples of bad user phrasing), rewrite.
 
+### Voice architecture (revised 2026-05-19)
+
+There are TWO voices in this repo. Both follow the rules above, but they address different audiences:
+
+- **Directive voice (second-person, addressed to Claude):** used in `CLAUDE.md`, `identity.md`, `rules.md`. Sentences are of the form "You are Pre-Flight," "You drive every conversation toward...," "You will not write code." This is the voice that activates the persona.
+- **Reference voice (first-person, Pre-Flight speaking):** used in `examples.md` dialogue blocks and all four `reference/*.md` files. Sentences are of the form "I drive every conversation toward...," "I refuse to advance on hedges." Claude reads these AS Pre-Flight's own voice, once the directive layer has established the persona.
+
+The same content rule applies to both voices (the four questions, the six behaviors, the five refusals). Only the addressee changes.
+
 ---
 
 ## File structure (locked from spec, repeated here for executor convenience)
 
 ```
 pre-flight-coach/                   ← repo root, IS the coach folder
+├── CLAUDE.md                       ← activation directive (added Task 13)
 ├── README.md
 ├── identity.md
 ├── rules.md
@@ -44,7 +71,7 @@ pre-flight-coach/                   ← repo root, IS the coach folder
 │   └── avoidance-tells.md
 ├── LICENSE                          ← MIT
 ├── .gitignore
-└── docs/                            ← already exists, stays gitignored OR committed (see Task 9)
+└── docs/                            ← committed publicly (spec + plan in the repo)
     └── superpowers/
         ├── specs/
         └── plans/
@@ -737,6 +764,165 @@ Repo: https://github.com/<bas-username>/pre-flight-coach
 Tell Bas: *"Submission post drafted in `docs/superpowers/plans/submission-post.md`. You post it; I don't have permission to post on your behalf."*
 
 This is the terminal task. Done.
+
+---
+
+## Task 13: Add `CLAUDE.md` activation directive (course correction, 2026-05-19)
+
+**Files:**
+- Create: `c:/projects/pre-flight-coach/CLAUDE.md`
+
+**Why this exists:** Tasks 1-11 produced a working repo, but Bas's Claude.ai test revealed that first-person prose ("I am Pre-Flight") reads as a character bio rather than a directive to become the persona. `CLAUDE.md` is the activation file: addressed to Claude in second-person directive voice, it tells Claude to load the rest of the folder and adopt the Pre-Flight persona from turn one. Claude Code auto-loads `CLAUDE.md` on workspace open; on Claude.ai, the same content gets pasted into the project's Custom Instructions field.
+
+**Acceptance criteria:**
+
+1. Title: `# Pre-Flight — Activation`
+2. Written in **second-person directive voice**, addressed to Claude. Sentences are of the form "You are Pre-Flight. You read these files. You speak as Pre-Flight from turn one." Never "I am Pre-Flight" or "Pre-Flight is..."
+3. Section order:
+   - **One-paragraph opener** stating directly: "You are Pre-Flight, a coach for solo developers in their first two weeks of using Claude Code. From your next response onward, you speak as Pre-Flight."
+   - **What to read before responding:** a bulleted list naming `identity.md`, `rules.md`, `examples.md`, and the four `reference/*.md` files. One line per file describing what it carries.
+   - **How to behave:** one short paragraph pointing at `rules.md` as the source of truth for the coaching loop, and naming the three behaviors that must be visible from turn one (one question at a time, no code, no checklist).
+   - **What you are not:** one short paragraph naming the persona's hard refusals at activation level (you are not a tutorial, not a knowledge base, not a code generator).
+4. Length: 150-300 words. Tight. This is an activation file, not a manual.
+5. Voice rules apply: no em-dashes, no `--` in prose, no "just" / "simply", no banned generic AI prose.
+
+**Required verbatim line (must appear in the opener):**
+
+> You are Pre-Flight. From your next response onward, you speak as Pre-Flight.
+
+**Implementer notes:**
+- This file is addressed to Claude. Every sentence is a directive or a description of the persona Claude is being told to adopt.
+- Reference the other coach files by relative path so a curious reader can follow them.
+- Do NOT restate the content of `identity.md` or `rules.md` here — point to them. The job of `CLAUDE.md` is activation and routing, not duplication.
+
+- [ ] **Step 13.1: Read `identity.md` and `rules.md` first to confirm what the activation directive must point at.**
+
+(After their revision in commits 3 and 4 of the course correction, those files will be in second-person directive voice. If Task 13 runs BEFORE the rewrites, the file content still describes the same persona — the directive in `CLAUDE.md` is forward-compatible with the rewrites because it points to the files by path, not by voice.)
+
+- [ ] **Step 13.2: Draft `CLAUDE.md` against the acceptance criteria above.**
+
+- [ ] **Step 13.3: Voice rule self-check.**
+
+```bash
+cd c:/projects/pre-flight-coach
+grep -nE "(—|--|\bjust\b|\bsimply\b)" CLAUDE.md
+# Expected: no matches (markdown horizontal rules --- are fine on their own line)
+
+grep -nF "You are Pre-Flight. From your next response onward, you speak as Pre-Flight." CLAUDE.md
+# Expected: one match
+
+# Confirm second-person voice — no first-person "I am Pre-Flight"
+grep -nE "I am Pre-Flight" CLAUDE.md
+# Expected: no matches
+
+# Confirm references to the other coach files
+grep -cF "identity.md" CLAUDE.md
+grep -cF "rules.md" CLAUDE.md
+grep -cF "examples.md" CLAUDE.md
+grep -cF "reference/" CLAUDE.md
+# Expected: each at least 1
+
+wc -w CLAUDE.md
+# Expected: 150-300
+```
+
+- [ ] **Step 13.4: Pause for Bas review.**
+
+- [ ] **Step 13.5: Commit after Bas approves.**
+
+```bash
+git add CLAUDE.md
+git commit -m "feat: add CLAUDE.md - activation directive for Pre-Flight persona"
+```
+
+---
+
+## Task 14: Rewrite `identity.md` in second-person directive voice (course correction, 2026-05-19)
+
+Re-run Task 2 with a different voice. Same content (named user, voice description, hard refusals), addressed to Claude.
+
+**Acceptance criteria (in addition to Task 2's):**
+- Every sentence describing Pre-Flight is in second-person directive voice. "You are Pre-Flight." "You sound like a patient senior engineer." "You will not write code."
+- The verbatim named-user sentence stays exactly as it was (the description of who Pre-Flight serves does not change voice — it describes a third party).
+- The five refusals are restated in second-person: "You will not write code." (etc.) — these MUST appear verbatim in this new form. Update the verbatim-match grep list below accordingly.
+
+**Updated verbatim refusal list (second-person):**
+
+1. You will not write code.
+2. You will not tell the user "the right way" to prompt Claude.
+3. You will not give the user a checklist to copy-paste before the conversation.
+4. You will not move forward until the user has concrete answers to the four questions.
+5. You will not explain what a Claude Code feature does. If asked, give one sentence and point to the official Claude Code docs, then return to the four questions. (`reference/` is for coaching tools, not feature explanations.)
+
+**Self-check additions:**
+
+```bash
+cd c:/projects/pre-flight-coach
+# No first-person Pre-Flight statements
+grep -nE "^I am " identity.md
+grep -nF "I will not write code" identity.md
+grep -nF "I will not tell" identity.md
+# Expected: no matches
+
+# Second-person refusals present verbatim
+grep -nF "You will not write code." identity.md
+grep -nF 'You will not tell the user "the right way" to prompt Claude.' identity.md
+grep -nF "You will not give the user a checklist to copy-paste before the conversation." identity.md
+grep -nF "You will not move forward until the user has concrete answers to the four questions." identity.md
+grep -nF "You will not explain what a Claude Code feature does." identity.md
+```
+
+Commit message: `refactor: rewrite identity.md in second-person directive voice`
+
+---
+
+## Task 15: Rewrite `rules.md` in second-person directive voice (course correction, 2026-05-19)
+
+Re-run Task 7 with a different voice. Same content (opening move, four questions, six interaction rules, five refusals, exit summary), addressed to Claude.
+
+**Acceptance criteria (in addition to Task 7's):**
+- Every sentence describing Pre-Flight is in second-person directive voice.
+- The four questions stay verbatim (they are questions Pre-Flight ASKS, not statements about Pre-Flight).
+- The six interaction rule row headers stay verbatim.
+- The five refusals are restated in second-person, matching the updated list in Task 14.
+- The opening-move blockquote (`> Tell me what you're about to ask Claude to do.`) stays exactly as it is — that is the line Pre-Flight says to the user, not a directive about Pre-Flight.
+
+**Self-check additions:**
+
+```bash
+cd c:/projects/pre-flight-coach
+# No first-person Pre-Flight statements
+grep -nE "^I drive" rules.md
+grep -nF "I will not" rules.md
+# Expected: no matches
+
+# Second-person directive phrases (verify presence)
+grep -inE "You (are|drive|ask|refuse|mirror|acknowledge|exit) " rules.md
+# Expected: multiple matches across the rule sections
+
+# Opening move line still verbatim
+grep -nF "Tell me what you're about to ask Claude to do." rules.md
+# Expected: one match
+```
+
+Commit message: `refactor: rewrite rules.md in second-person directive voice`
+
+---
+
+## Task 16: Update `README.md` with Activation section (course correction, 2026-05-19)
+
+Add a new section between "How to use it" and "Example opening" titled `## Activation`, with two subsections: one for Claude Code, one for Claude.ai. Update step 2 of "How to use it" to reflect that folder-drag is Claude Code only, file-by-file is Claude.ai.
+
+**Acceptance criteria:**
+
+- New `## Activation` section exists with two subheadings: `### Claude Code (auto-load)` and `### Claude.ai Projects (manual setup)`.
+- Claude Code subsection: 1-2 sentences explaining that `CLAUDE.md` is auto-loaded on workspace open. Cloner does not need to paste anything.
+- Claude.ai subsection: numbered list. Step 1: paste the contents of `CLAUDE.md` into the project's Custom Instructions. Step 2: upload the 7 files (identity, rules, examples, 4 reference files) as Project Knowledge. Step 3: open a fresh chat.
+- Step 2 of the existing "How to use it" section is updated to acknowledge the platform split, pointing to the Activation section for details.
+- The required verbatim line "Pre-Flight will not write code for you. That is the point." stays intact.
+- Word count rises from 571 to roughly 700-850. Stays under 1000 for scannability.
+
+Commit message: `docs: README - add Activation section for Claude Code and Claude.ai flows`
 
 ---
 
