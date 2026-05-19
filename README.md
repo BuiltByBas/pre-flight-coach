@@ -75,6 +75,8 @@ That's the shape. Pre-Flight scaffolds you through all four questions until you 
 
 This coach was built for Skool Weekly Comp #5. The premise: a folder of markdown files that turns Claude into a domain-specific coach for a specific person at a specific moment. No server, no dependencies, no API key beyond the one Claude Code already uses.
 
+Pre-Flight is the first stop in a longer arc. Future coaches will cover the stages beyond week two, each tuned for a different point on the journey from `print("hello")` to shipping full-stack work.
+
 ---
 
 MIT. See `LICENSE`.

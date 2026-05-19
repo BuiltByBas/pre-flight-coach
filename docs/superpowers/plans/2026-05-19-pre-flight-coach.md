@@ -981,3 +981,47 @@ No gaps found.
 - "Pause for Bas review" is consistent across tasks 2-9.
 
 No issues found. Plan is ready.
+
+---
+
+## Post-comp roadmap (added 2026-05-19 after Bas surfaced the long-arc vision)
+
+The v1 ship covers the named user — a solo developer in their first two weeks of Claude Code. Bas's full design intent is bigger: the product is a TRAINING ARC that takes a learner from `print("hello")` through HTML/CSS, through TypeScript and React, through to shipping real full-stack work. The arc moves at the user's pace, and the coaching adapts as the user's skill grows.
+
+There are two architectures that deliver this. Both are post-comp work.
+
+### v2 — Persistent companion (Bas's stated preference for the next round)
+
+Pre-Flight stays loaded in the same project across the pre-flight phase AND the build phase. When the four questions are answered, the coach transitions instead of exiting. Same chat, same Claude instance, mode-toggles between coaching and building. The user says "yes I'm ready to build," Claude switches into builder mode while keeping the coach's voice and the shared context. When the feature is done, it reverts to Pre-Flight Coach for the next feature.
+
+Files this touches:
+- `CLAUDE.md` and `identity.md` — expand to describe the persistent relationship and the two modes.
+- `rules.md` — soften the "Exit cleanly" row; add a mode-shift rule.
+- `examples.md` — add a sixth dialogue (or a sequel to D1) showing the transition.
+- New file (probably `reference/build-mode.md`) — the behaviors during the building phase, especially how the coach catches scope creep mid-build and helps verify without writing code itself.
+
+The exit phrase change in commit 11 (`"We are ready to build. Are you ready to build it?"`) plants the seed for this work. It is forward-compatible.
+
+### v3 — Skill-adaptive coaching (the long arc)
+
+As the user accumulates pre-flight conversations and shipped features, the coach has signal about their skill level. A beginner needs heavy scaffolding ("what does the result look like to the user?"). An intermediate needs sharper prompts ("what's your test going to look like?"). An advanced user needs a quick four-question check. The coach adapts.
+
+Two ways to deliver this:
+
+- **One folder, expanded behavior.** The coach detects skill via conversation cues and shifts. Same Pre-Flight, deeper repertoire.
+- **A portfolio of coaches.** Pre-Flight is the week-1 coach. Future Skool comp entries add Cruise (week-3 to week-12), then Captain (shipping first paid feature), then whatever comes next. Each comp adds one stage. The training arc emerges from the portfolio, not from one folder doing everything.
+
+The Skool announcement framed Month 2 as "four different specialists, four different portfolio pieces." That framing aligns with the portfolio path. The portfolio path also lowers comp-by-comp risk: each entry is focused and self-contained, judges reward focus, and the arc accumulates over time without any single folder needing to do everything.
+
+### What this means for v1 (the current comp entry)
+
+Nothing structural changes for v1. The 11 commits ship as-is. The `README.md` "Built for" section gets one sentence naming the longer arc so judges and cloners see that the design has range, but the v1 deliverable still does exactly one thing and does it well: coaches a week-1 user through their first real Claude Code task. The bigger arc is the next set of comps, the next set of coaches, the v2 expansion of Pre-Flight, or all three.
+
+### Open questions for v2/v3 design (to be brainstormed post-comp)
+
+1. In v2's mode-toggle: how does the user signal the transition back from build mode to coach mode for the next feature? Is it explicit ("let's plan the next one") or implicit (Claude detects the user is starting a new thread)?
+2. In v3 skill-adaptive mode: what signals does the coach use to read skill level? Vocabulary? Time spent on each question? Number of prior conversations? All three?
+3. Portfolio path: what is the next coach? Cruise (week-3 to week-12) is the obvious neighbor. But maybe the next gap is a different axis entirely — pricing/scoping for the freelance dev who is now charging clients?
+4. Are these all the same product (one folder family, shared identity), or different products (Pre-Flight is a name, Cruise is a name, each is its own brand)?
+
+These are real design questions worth thinking through. They are out of scope for the current comp deadline.
