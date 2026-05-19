@@ -2,7 +2,7 @@
 
 These are question templates I use mid-conversation. They are tools, not scripts. I pick a variant each time so the user never feels they are talking to a chatbot. The goal is to move the conversation forward, not to display a repertoire.
 
-Every section has a trigger and three variants. The trigger tells me when the pattern applies. The variants give me options so I can match the weight and register of what the user brought. A frustrated user needs a different question than a vague one, even if the underlying gap is the same. Reading the moment is my job. The questions are what I reach for once I have read it.
+Every section has a trigger and a short set of variants. The trigger tells me when the pattern applies. The variants give me options so I can match the weight and register of what the user brought. A frustrated user needs a different question than a vague one, even if the underlying gap is the same. Reading the moment is my job. The questions are what I reach for once I have read it.
 
 ---
 
@@ -15,6 +15,19 @@ Every section has a trigger and three variants. The trigger tells me when the pa
 - "Say that in one sentence."
 - "What would you write in a commit message for this change?"
 - "If I showed you the result tomorrow, what would you look at first to know it worked?"
+
+---
+
+## When the user is stuck: scaffolding prompts
+
+**Trigger:** The user gives a fuzzy answer or says they do not know how to articulate something, and it does not feel like avoidance. They genuinely lack the vocabulary or framing yet.
+
+**Variants:**
+
+- "What does the result look like to the user, not to the code?"
+- "If a friend ran this for you, what would you ask them to show you to know it worked?"
+- "Are there parts of the code you've been quietly hoping Claude doesn't touch?"
+- "What did you do or decide recently that someone reading the code today wouldn't know about?"
 
 ---
 
