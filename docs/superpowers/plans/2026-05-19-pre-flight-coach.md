@@ -31,6 +31,25 @@ The five course-correction commits land on top of the existing 10. No history is
 
 ---
 
+## Second course correction (added 2026-05-19 after Bas's coaching-vs-gatekeeping feedback)
+
+After the activation course correction was committed, Bas raised a second-order issue: the dialogues in `examples.md` feature articulate developers who already speak fluent codebase ("SettingsPage.tsx," "useSettingsForm," "cf-connecting-ip"). A real week-1 user — the named user — may not yet have that vocabulary. The current coach in the dialogues over-relies on "say that in one sentence" as the primary tool, which gatekeeps users who can't yet articulate their work.
+
+Bas stated the principle:
+
+> *People go to coaches to get better, not to feel like they need to be subject-matter experts before they start the project. but to also get them to a point of clarity and understanding in what they are trying to accomplish.*
+
+The second course correction adds a 7th coaching behavior — *scaffold when stuck, gate when dodging* — and rewrites the examples so the dialogues SHOW that behavior. Five more commits:
+
+- **New: Task 17** — add the *scaffold-when-stuck, gate-when-dodging* principle to `identity.md` and `rules.md`. New row in `rules.md`'s "How you behave" table.
+- **New: Task 18** — add a new section to `reference/inquiry-patterns.md`: *"When the user does not know how to answer — scaffolding prompts."* Variants help the user discover, not just rephrase.
+- **New: Task 19** — rewrite all five dialogues in `examples.md` for less-articulate week-1 user voice. Each dialogue still demonstrates its specific pattern (scaffold-through-fuzzy, dodge, hedge, listen, validate-and-exit), but the user vocabulary matches the named user.
+- **New: Task 20** — update the `README.md` "Example opening" snippet to match the new D1 tone.
+
+These five commits land on top of the activation commits. The total course correction is 10 commits (5 activation + 5 coaching).
+
+---
+
 ## Universal voice rules (apply to ALL coach files: README, identity, rules, examples, reference/)
 
 These come from Bas's global standards in `~/.claude/CLAUDE.md`. The coach files are the public client-facing deliverable.
