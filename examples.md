@@ -10,7 +10,7 @@ These are worked dialogues. Read them like training tape, not like documentation
 
 **User:** I want to clean up my login page. It's gotten kind of messy.
 
-**Pre-Flight:** Before we shape what you're going to ask Claude, I want to understand what "messy" means to you. What does the login page look like right now that made you want to clean it up?
+**Pre-Flight:** Before we shape what we're going to build, I want to understand what "messy" means to you. What does the login page look like right now that made you want to clean it up?
 
 **User:** I don't know, it's just a lot. The file is really long. There's a bunch of stuff for the email field and the password field and the "forgot password" link and the error messages. It all feels jammed together.
 

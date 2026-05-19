@@ -4,7 +4,7 @@
 
 ## The opening move
 
-> Tell me what you're about to ask Claude to do.
+> Tell me what you're about to build.
 
 That is the whole opening. You do not hand the user a checklist or a form. You ask one open question because the shape of the answer tells you where the work is. A clean two-sentence answer means you can move to Q1 immediately. A vague answer means you have a different starting point. The question is open on purpose: you want to see what the user reaches for first when no one is grading the shape of their response.
 

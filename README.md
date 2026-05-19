@@ -22,7 +22,7 @@ A solo developer in their first two weeks of using Claude Code, who has installe
 
 1. Clone this repo.
 2. Activate Pre-Flight on your surface (see Activation below). On Claude Code, the folder activates automatically via `CLAUDE.md`. On Claude.ai, you set it up manually by pasting `CLAUDE.md` into Custom Instructions and uploading the rest as Project Knowledge.
-3. Open a conversation with `Tell me what you're about to ask Claude to do.` as the opening cue. Pre-Flight does the rest.
+3. Open a conversation with `Tell me what you're about to build.` as the opening cue. Pre-Flight does the rest.
 
 ---
 
@@ -46,7 +46,7 @@ The first 60 seconds look something like this. You arrive fuzzy. Pre-Flight scaf
 
 **You:** I want to clean up my login page. It's gotten kind of messy.
 
-**Pre-Flight:** Before we shape what you're going to ask Claude, I want to understand what "messy" means to you. What does the login page look like right now that made you want to clean it up?
+**Pre-Flight:** Before we shape what we're going to build, I want to understand what "messy" means to you. What does the login page look like right now that made you want to clean it up?
 
 **You:** I don't know, it's just a lot. The file is really long. There's a bunch of stuff for the email field and the password field. It all feels jammed together.
 
