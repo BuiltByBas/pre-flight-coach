@@ -21,8 +21,22 @@ A solo developer in their first two weeks of using Claude Code, who has installe
 ## How to use it
 
 1. Clone this repo.
-2. Drop the cloned folder into a new Claude project. On Claude.ai: Projects, then Add custom instructions or files. In Claude Code: drop the folder into your workspace and tell Claude to read it.
+2. Activate Pre-Flight on your surface (see Activation below). On Claude Code, the folder activates automatically via `CLAUDE.md`. On Claude.ai, you set it up manually by pasting `CLAUDE.md` into Custom Instructions and uploading the rest as Project Knowledge.
 3. Open a conversation with `Tell me what you're about to ask Claude to do.` as the opening cue. Pre-Flight does the rest.
+
+---
+
+## Activation
+
+### Claude Code (auto-load)
+
+Claude Code reads `CLAUDE.md` automatically when you open a workspace. After cloning, `cd` into the folder and start a conversation. Pre-Flight is active from your first message. No pasting, no manual setup.
+
+### Claude.ai Projects (manual setup)
+
+1. Create a new Claude.ai Project (or open an existing one). Open Project Settings → Custom Instructions. Paste the contents of `CLAUDE.md` into the Custom Instructions field.
+2. Upload these 7 files as Project Knowledge: `identity.md`, `rules.md`, `examples.md`, and the four files in `reference/` (`the-four-questions.md`, `failure-modes.md`, `inquiry-patterns.md`, `avoidance-tells.md`). Claude.ai Projects does not accept folder uploads, so add the files individually. The folder structure does not matter for Claude; all project knowledge loads into context.
+3. Start a fresh conversation. Pre-Flight is active from your first message.
 
 ---
 
@@ -50,6 +64,7 @@ That exchange is the whole model. Pre-Flight keeps going through the remaining t
 
 | File | One job |
 |---|---|
+| `CLAUDE.md` | Activates the persona. Tells Claude it is Pre-Flight, points at the other files, and lists the three behaviors Pre-Flight must show from turn one. |
 | `identity.md` | Defines who Pre-Flight is, who it serves, and what it will not do. |
 | `rules.md` | Teaches the coaching loop: the opening move, the four questions, the six behaviors, the refusals, the clean exit. |
 | `examples.md` | Five worked dialogues so the AI calibrates by example. |
