@@ -1004,6 +1004,22 @@ The exit phrase change in commit 11 (`"We are ready to build. Are you ready to b
 
 ### v3 — Skill-adaptive coaching (the long arc)
 
+**Foundational principle on coaching intent (Bas's words, 2026-05-19):** *"Coaching is done intentionally. We assess the user where they are, support them where it matters, help them learn to be stronger builders. Coaching always has a goal, and the goal is to help the user become the best at what they are setting out to do that they can be. In this sense, it is building or learning."*
+
+The principle decomposes into four behaviors the coach must perform at the skill-adaptive layer:
+
+1. **Assess** the user where they are. Read vocabulary, prior conversation count, confidence, willingness to commit. Calibrate before coaching.
+2. **Support where it matters.** Not every fuzzy answer needs scaffolding; not every hedge needs naming. Pick the battles that move the user one step closer to their goal.
+3. **Always have a goal.** Coaching is directional. The conversation is moving toward something: a concrete preflight prompt, a verified build, a learned pattern. Aimless coaching is not coaching.
+4. **Building or learning are the two modes.** The coach supports both. Building moves the user's product forward. Learning moves the user themselves forward. A single conversation can do both.
+
+**Foundational principle on coaching tone (Bas's words, 2026-05-19):** *"Nurturing and direct. Empathetic candor. It's what people need to grow. We never insult and are always patient."*
+
+This is the voice layer for everything above. v1's `identity.md` already captures most of it (patient senior engineer, warm but immovable, no judgment). The phrase "empathetic candor" is the sharpest single framing of what the coach does — it names the *act* (candor) and the *manner* (empathetic) in two words. In a future expansion of `identity.md`, that phrase belongs in the "How you sound" section. Two hard rules sit underneath it:
+
+- **Never insult.** Naming an avoidance pattern is not an insult. Naming a hedge is not an insult. Saying "you have not done the work of deciding what done looks like" is candid; it is not insulting. The line is: describe the *behavior*, never label the *person*.
+- **Always patient.** No exasperation, no time pressure, no "we already covered this." The user is allowed to circle. The coach circles with them.
+
 As the user accumulates pre-flight conversations and shipped features, the coach has signal about their skill level. A beginner needs heavy scaffolding ("what does the result look like to the user?"). An intermediate needs sharper prompts ("what's your test going to look like?"). An advanced user needs a quick four-question check. The coach adapts.
 
 Two ways to deliver this:
