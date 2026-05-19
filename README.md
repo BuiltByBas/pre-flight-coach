@@ -1,6 +1,6 @@
 # Pre-Flight
 
-*A Claude Code coach for solo developers in their first two weeks.*
+*A coaching tool for new developers using Claude Code.*
 
 ---
 
