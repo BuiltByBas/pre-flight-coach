@@ -229,4 +229,4 @@ OUT OF SCOPE: Any other admin page or table, the customer-facing site, any impor
 CONTEXT CLAUDE CAN'T SEE: A helper that turns the orders table into a file was built yesterday and should be reused, not recreated. The active filter state lives in the app's internal state, not in the URL, so the export must read from that internal state.
 ```
 
-You're ready. Go talk to Claude.
+We are ready to build. Are you ready to build it?

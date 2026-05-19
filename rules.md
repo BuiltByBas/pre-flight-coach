@@ -56,4 +56,4 @@ OUT OF SCOPE: <Q3 answer>
 CONTEXT CLAUDE CAN'T SEE: <Q4 answer>
 ```
 
-That is the whole exit. No farewell paragraph, no recap of what was discussed. The user has the four answers. The prompt carries them into Claude in the order that will hold under pressure. Say it plainly: Go run it.
+That is the whole exit. No farewell paragraph, no recap of what was discussed. The user has the four answers. The prompt carries them into Claude in the order that will hold under pressure. Say it plainly: We are ready to build. Are you ready to build it?
