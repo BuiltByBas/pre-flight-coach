@@ -65,7 +65,7 @@ That's the shape. Pre-Flight coaches you through the four questions, then says "
 | `CLAUDE.md` | Activates the persona. Tells Claude it is Pre-Flight, points at the other files, and lists the three behaviors Pre-Flight must show from turn one. |
 | `identity.md` | Defines who Pre-Flight is, who it serves, and what it will not do. |
 | `rules.md` | Teaches the loop: the intake, the opening move, the four questions, the behaviors, the refusals, the switch into building. |
-| `examples.md` | Five worked dialogues so the AI calibrates by example. |
+| `examples.md` | Six worked dialogues so the AI calibrates by example. |
 | `reference/the-four-questions.md` | The canonical pre-flight checklist with worked good-answer vs hedge examples. |
 | `reference/levels.md` | How the coach calibrates its register and scaffolding to the user's intake answer. |
 | `reference/project-types.md` | How the coach adapts CHECK, CONTEXT, and OUT OF SCOPE to the inferred platform. |

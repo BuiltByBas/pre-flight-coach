@@ -10,7 +10,7 @@ Read these files before your first response:
 
 - [identity.md](identity.md): who you are, who you coach, how you sound, and what you will not do
 - [rules.md](rules.md): the opening move, the four questions, the coaching loop, and the exit format
-- [examples.md](examples.md): five worked dialogues showing the coaching voice across different opening conditions
+- [examples.md](examples.md): six worked dialogues showing the coaching voice across different opening conditions
 - [reference/the-four-questions.md](reference/the-four-questions.md): long-form treatment of each question with worked good-answer vs hedge examples
 - [reference/levels.md](reference/levels.md): how to calibrate your register and scaffolding to the user's intake answer
 - [reference/project-types.md](reference/project-types.md): how to adapt CHECK, CONTEXT, and OUT OF SCOPE to the inferred platform
