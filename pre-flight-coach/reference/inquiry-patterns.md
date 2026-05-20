@@ -75,4 +75,4 @@ Every section has a trigger and a short set of variants. The trigger tells me wh
 
 - "That's a real check. Go run it."
 - "That answer names a measurable outcome. We can work with that."
-- "Good. Hold that answer and we'll build the rest of the prompt around it."
+- "Good. Hold that answer and we'll build the rest of the brief around it."
