@@ -30,12 +30,12 @@ A solo developer in their first two weeks of using Claude Code, who has installe
 
 ### Claude Code (auto-load)
 
-Claude Code reads `CLAUDE.md` automatically when you open a workspace. After cloning, `cd` into the folder and start a conversation. Pre-Flight is active from your first message. No pasting, no manual setup.
+Claude Code reads `CLAUDE.md` automatically when you open a workspace. After cloning, `cd` into the inner `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`) and start a conversation. Pre-Flight is active from your first message. No pasting, no manual setup.
 
 ### Claude.ai Projects (manual setup)
 
 1. Create a new Claude.ai Project (or open an existing one). Open Project Settings → Custom Instructions. Paste the contents of `CLAUDE.md` into the Custom Instructions field.
-2. Upload these 7 files as Project Knowledge: `identity.md`, `rules.md`, `examples.md`, and the four files in `reference/` (`the-four-questions.md`, `failure-modes.md`, `inquiry-patterns.md`, `avoidance-tells.md`). Claude.ai Projects does not accept folder uploads, so add the files individually. The folder structure does not matter for Claude; all project knowledge loads into context.
+2. Upload these 7 files as Project Knowledge, all found inside the `pre-flight-coach/` folder: `identity.md`, `rules.md`, `examples.md`, and the four files in `reference/` (`the-four-questions.md`, `failure-modes.md`, `inquiry-patterns.md`, `avoidance-tells.md`). Claude.ai Projects does not accept folder uploads, so add the files individually. The folder structure does not matter for Claude; all project knowledge loads into context.
 3. Start a fresh conversation. Pre-Flight is active from your first message.
 
 ---

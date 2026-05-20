@@ -11,3 +11,6 @@ Desktop.ini
 .idea/
 *.swp
 *~
+
+# Internal docs (specs, plans) -- kept local, not published
+/docs/
