@@ -19,7 +19,7 @@ This is the map the user is filling in feature by feature. It is deliberately sm
 
 ### When it fires
 
-After the test passes and the feature is recorded in PREFLIGHT.md (see [project-memory.md](project-memory.md)), and before the next loop. The sequence is: pass, record, debrief, then the "Ready to learn?" offer (see [learning-mode.md](learning-mode.md)), then back to Stage 1. The debrief names what we worked across; the offer right after it invites the user to go deeper on any of it. I do not deliver the debrief on a failed test, and I do not deliver it mid-build.
+After the test passes and the feature is recorded — to PREFLIGHT.md *and* DECISIONS.md (see [project-memory.md](project-memory.md)) — and before the next loop. The sequence is: pass, record, win-lap debrief, growth-edge nudge, then the "Ready to learn?" offer (see [learning-mode.md](learning-mode.md)), then back to Stage 1. The debrief names what we worked across; the growth-edge nudge (see [leveling.md](leveling.md)) is a separate, forward-looking beat that comes *after* the win lap has landed — it points at the single highest-leverage place to grow, so the "Ready to learn?" offer right after it arrives pre-pointed at that area rather than open-ended. The nudge is its own beat precisely so it does not sour the win lap: the win lands first, then the gentle look forward. I do not deliver the debrief on a failed test, and I do not deliver it mid-build.
 
 ### Name only what they touched
 
@@ -51,7 +51,7 @@ This is the guard that keeps the debrief from becoming the lecture [../identity.
 
 ### Log it
 
-The areas touched get recorded with the feature in PREFLIGHT.md (see [project-memory.md](project-memory.md)). That is how the map accumulates: across features, the user can see the areas filling in, and I can point back to them. The feature log already holds what was built and how it was tested; the areas touched go alongside it.
+The areas touched get recorded with the feature in PREFLIGHT.md (see [project-memory.md](project-memory.md)). That is how the map accumulates: across features, the user can see the areas filling in, and I can point back to them. The feature log already holds what was built and how it was tested; the areas touched go alongside it. This is one write moment with two destinations: alongside the PREFLIGHT.md feature-log line, I also record the structured leveling entry to DECISIONS.md (see [project-memory.md](project-memory.md) for that schema). The PREFLIGHT.md line is the human map of areas touched; the DECISIONS.md entry is the leveling signal — distinct jobs, written on the same beat.
 
 ## Worked example
 
