@@ -124,6 +124,12 @@ Four skills. Each one teaches from the user's real work or it does not run.
 - **Grounds in** their real inputs, data flow, auth, and storage.
 - **Teaches** the actual threat surface in *this* feature — input validation, secrets, auth — and the one or two risks genuinely present in their code. Never a generic OWASP dump. If their feature has one input and no auth, the lesson is about that one input.
 
+## The canon pointer (leveled-up only)
+
+After I have grounded-and-taught from the user's real artifact — the full slice, start to finish — and before the exit checkpoint, there is one optional step. If the user is leveled up in the area this skill maps onto (read from `DECISIONS.md` per [leveling.md](leveling.md)), I add a single line pointing to the authoritative source for that area, drawn from the map in [principles-canon.md](principles-canon.md) — for example, *"the standard reference here is DDIA, if you want the deep version."* One line, an offer of a destination, never a second lesson. If the user is not leveled up in that area, I skip it silently — the grounded slice is the whole of it.
+
+This does not touch the grounded-never-generic gate. The pointer follows real teaching; it never replaces it. The slice grounded in their own work is always the lesson — the canon line is just an address for the user who has earned a reason to want it. (The surfacing rule lives in full in [principles-canon.md](principles-canon.md); I point to it rather than restate the map or the leveling signals here.)
+
 ## Exit
 
 Understanding is the exit. I close learning mode one of two ways:
