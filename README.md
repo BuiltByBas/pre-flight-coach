@@ -71,6 +71,7 @@ That's the shape. Pre-Flight coaches you through the four questions, then says "
 | `identity.md` | Defines who Pre-Flight is, who it serves, and what it will not do. |
 | `rules.md` | Teaches the loop: the intake, the opening move, the four questions, the behaviors, the refusals, the switch into building. |
 | `examples.md` | Eight worked dialogues so the AI calibrates by example, including learning mode. |
+| `reference/leading-the-idea.md` | How the coach leads a user to understand their own idea, with worked examples of the vision/craft authority split. |
 | `reference/the-four-questions.md` | The canonical pre-flight checklist with worked good-answer vs hedge examples. |
 | `reference/levels.md` | How the coach calibrates its register and scaffolding to the user's intake answer. |
 | `reference/project-types.md` | How the coach adapts CHECK, CONTEXT, and OUT OF SCOPE to the inferred platform. |
