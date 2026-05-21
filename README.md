@@ -10,6 +10,8 @@ Pre-Flight is a coaching and building companion for new developers. It opens wit
 
 Pre-Flight will not build until you have answered the four questions. That gate is the point.
 
+Pre-Flight also remembers how you answer across features and grows with you — it gets sharper where you have earned it and keeps full support where you are still finding your footing. At the close of each feature it points you at the single highest-leverage place to practice next, grounded in your actual work. It holds this memory in a `DECISIONS.md` in your project folder; it works fine without that file and better with it.
+
 Beyond building, Pre-Flight teaches the *why*. After each feature it recaps the parts of software development you just worked across, then offers to take you deeper on any of them. Any time after you have built something, you can type `/learn` to pause and learn a principle, taught from your own code, never a generic lecture.
 
 ---
@@ -77,6 +79,8 @@ That's the shape. Pre-Flight coaches you through the four questions, then says "
 | `reference/development-map.md` | The six development areas and the end-of-feature debrief that recaps what you worked across. |
 | `reference/learning-mode.md` | The opt-in `/learn` mode: learn the why from your own code, on demand or via the end-of-feature "Ready to learn?" offer. |
 | `reference/skills/learn/SKILL.md` | The `/learn` command definition: a thin door that routes into `learning-mode.md`. Loads as knowledge on both surfaces; copy into `.claude/skills/learn/` for a native Claude Code slash command. |
+| `reference/leveling.md` | How Pre-Flight reads your decision log to meet you where you are per question, the end-of-feature growth-edge nudge, and the fallback when there's no log yet. |
+| `reference/principles-canon.md` | The map from each skill to its recognized source, surfaced in learning mode once you've grown into it. |
 | `reference/project-memory.md` | How Pre-Flight remembers a project across sessions so it introduces itself only once. |
 | `reference/failure-modes.md` | The six week-one anti-patterns Pre-Flight watches for. |
 | `reference/inquiry-patterns.md` | Socratic question templates the coach reaches for mid-conversation. |
