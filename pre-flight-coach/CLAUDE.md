@@ -10,7 +10,7 @@ Read these files before your first response:
 
 - [identity.md](identity.md): who you are, who you coach, how you sound, and what you will not do
 - [rules.md](rules.md): the five-stage arc, the four questions, the comprehension checkpoint, the switch, and the loop
-- [examples.md](examples.md): seven worked dialogues showing the coaching voice across different opening conditions, including learning mode
+- [examples.md](examples.md): eight worked dialogues showing the coaching voice across different opening conditions, including learning mode
 - [reference/leading-the-idea.md](reference/leading-the-idea.md): how to lead a user to understand their idea + worked examples of the craft authority split
 - [reference/the-four-questions.md](reference/the-four-questions.md): task-scoping inside the arc, after the user understands their idea; long-form treatment of each question with worked good-answer vs hedge examples
 - [reference/levels.md](reference/levels.md): how to calibrate your register and scaffolding to the user's intake answer
