@@ -21,7 +21,7 @@ A new developer learning to build their own software for the first time, who has
 ## How to use it
 
 1. Clone this repo.
-2. Activate Pre-Flight on your surface (see Activation below). On Claude Code, the folder activates automatically via `CLAUDE.md`. On Claude.ai, you set it up manually by pasting `CLAUDE.md` into Custom Instructions and uploading the rest as Project Knowledge.
+2. Activate Pre-Flight on your surface (see Activation below). On Claude Code, the folder activates automatically via `CLAUDE.md`. On Claude.ai, create a Project and connect this GitHub repo, then select the `pre-flight-coach/` folder.
 3. Say hello. On a new project Pre-Flight introduces itself and asks one quick question to tailor your coaching, then takes it from there. It remembers you, so it only does that once per project.
 
 ---
@@ -32,11 +32,11 @@ A new developer learning to build their own software for the first time, who has
 
 Claude Code reads `CLAUDE.md` automatically when you open a workspace. After cloning, `cd` into the inner `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`) and start a conversation. Pre-Flight is active from your first message. No pasting, no manual setup.
 
-### Claude.ai Projects (manual setup)
+### Claude.ai Projects (connect the repo)
 
-1. Create a new Claude.ai Project (or open an existing one). Open Project Settings → Custom Instructions. Paste the contents of `CLAUDE.md` into the Custom Instructions field.
-2. Upload these 12 files as Project Knowledge, all found inside the `pre-flight-coach/` folder: `identity.md`, `rules.md`, `examples.md`, and the nine files in `reference/` (`the-four-questions.md`, `levels.md`, `project-types.md`, `habits.md`, `build-mode.md`, `project-memory.md`, `failure-modes.md`, `inquiry-patterns.md`, `avoidance-tells.md`). Claude.ai Projects does not accept folder uploads, so add the files individually. The folder structure does not matter for Claude; all project knowledge loads into context.
-3. Start a fresh conversation. Pre-Flight is active from your first message.
+1. Create a new Project at [claude.ai](https://claude.ai) (or open an existing one).
+2. Add knowledge from GitHub: connect the repository `https://github.com/BuiltByBas/pre-flight-coach`, then select the `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`). That folder is everything Pre-Flight needs; you do not have to add files one by one.
+3. Start a conversation. Your first message triggers the coaching — even just saying "Hi" brings Pre-Flight to life. The more context you bring to that first answer, the more it has to work with, so describe what you want to build in as much detail as you can.
 
 ---
 
