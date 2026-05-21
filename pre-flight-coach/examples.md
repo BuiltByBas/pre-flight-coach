@@ -380,10 +380,11 @@ Before we move on, here's what you actually worked across this feature, in the t
 
 - **Planning & scope** — you decided what "done" was (type a title, tap add, it appears and stays) and named what was out for now (no voting, deleting, comments, or accounts). Drawing that line is what kept this first build small enough to finish instead of sprawling.
 - **Data & storage** — your book list had to survive closing the app, so we saved it to a little storage area on the phone instead of just holding it in memory. That choice is the reason the book was still there when you reopened it.
+- **Interface (UI)** — the screen you saw and tapped: the text box, the Add button, and the list underneath. That's the part your club members actually touch to use the app.
 - **Testing & verification** — you wrote the close-and-reopen check and ran it yourself. That's how you know it really worked, instead of taking my word for it.
 - **Version control & safety** — before I wired up the risky save step, I saved a commit of the working screen. That's your way back to a known-good state if a change ever goes sideways.
 
-Four areas, because four is what this one touched. You'll see the map fill in as we build more.
+Five areas, because five is what this one touched. You'll see the map fill in as we build more.
 
 One feature down. Now we go back to the start of the arc for the next one — not straight to scoping, but to understanding the idea first. So tell me, in plain terms: what's the next thing you want this app to do, and who's it for?
 
