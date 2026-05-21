@@ -14,7 +14,7 @@ Pre-Flight will not build until you have answered the four questions. That gate 
 
 ## Who it's for
 
-A new developer learning to build their own software for the first time, who has not yet shipped anything to real users. You might have never written a line of code, have a half-built project open right now, or have a finished thing on your machine you have never launched. Pre-Flight meets you at your first feature and stays with you through the ones after. If you are a seasoned developer, or you have already shipped real software to real users, this folder is not for you yet.
+A new developer learning to build their own software for the first time, who has not yet shipped anything to real users. You might have never written a line of code, have a half-built project open right now, or have a finished thing on your machine you have never launched. Pre-Flight meets you at your first feature and stays with you through the ones after. If you are a seasoned developer, or you have already shipped real software to real users, this folder may not be for you, or could it.
 
 ---
 
