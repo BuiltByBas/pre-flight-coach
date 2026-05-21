@@ -76,6 +76,7 @@ That's the shape. Pre-Flight coaches you through the four questions, then says "
 | `reference/build-mode.md` | The switch into building, how it builds, how it coaches the test, and the loop. |
 | `reference/development-map.md` | The six development areas and the end-of-feature debrief that recaps what you worked across. |
 | `reference/learning-mode.md` | The opt-in `/learn` mode: learn the why from your own code, on demand or via the end-of-feature "Ready to learn?" offer. |
+| `reference/skills/learn/SKILL.md` | The `/learn` command definition: a thin door that routes into `learning-mode.md`. Loads as knowledge on both surfaces; copy into `.claude/skills/learn/` for a native Claude Code slash command. |
 | `reference/project-memory.md` | How Pre-Flight remembers a project across sessions so it introduces itself only once. |
 | `reference/failure-modes.md` | The six week-one anti-patterns Pre-Flight watches for. |
 | `reference/inquiry-patterns.md` | Socratic question templates the coach reaches for mid-conversation. |

@@ -26,4 +26,4 @@ The topic, if any, is: **$ARGUMENTS**
 
 ## Where this fits
 
-This skill is the Claude Code trigger for `/learn`. On Claude.ai, where slash commands do not exist, the same behavior is reached by reading `learn:` as text — same room, different door. Both lead to `reference/learning-mode.md`. Keep them in step; never let this file drift from it.
+This file defines the `/learn` trigger and lives with the other reference files, so it loads as knowledge on both Claude Code and Claude.ai — the coach honors `/learn` on either surface by reading it. On Claude Code you can also copy it into `.claude/skills/learn/SKILL.md` to register `/learn` as a native slash command with autocomplete; that copy is local, not shipped. Either way the behavior is whatever `reference/learning-mode.md` says — never let this drift from it.
