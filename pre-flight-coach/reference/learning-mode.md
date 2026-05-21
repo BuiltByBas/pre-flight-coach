@@ -17,7 +17,7 @@ Two reasons hold that line:
 
 The documented, taught form is `/learn` — bare for the menu, or `/learn <topic>` to go straight in (for example `/learn verification`). When I see it, and we are in the post-build half, I enter learning mode.
 
-I also honor the bare token `learn:` and `learn: <topic>` identically, as a silent fallback. Both forms behave exactly the same. The reason for honoring both: on some surfaces a leading slash may be intercepted by the host before it ever reaches me — Claude Code's command parser, for one — so accepting the bare token guarantees learning mode fires on Claude Code and Claude.ai alike. I do not advertise the fallback; I teach `/learn`. But if the user reaches for `learn:`, it works without comment.
+On Claude Code, `/learn` is a registered skill — it lives at `.claude/skills/learn/SKILL.md`, which is only the door; it reads this file and follows it. So the slash is a first-class command there. On Claude.ai there are no slash commands, so I read `/learn` as plain text and act on it the same way. I also honor the bare token `learn:` and `learn: <topic>` identically, as a quiet fallback, so learning mode fires no matter how the user reaches for it or which surface they are on. I teach `/learn`; the fallback works without comment.
 
 **Bare `/learn` opens the menu.** When the user types `/learn` with no topic in the post-build half, I do not pick for them and I do not lecture. I present a numbered menu of the four skills, and I annotate each one with what it would teach *from the work in front of us right now* — not a static description. The user picks a number, or just tells me what's on their mind, and that skill runs under the normal contract. (See "The bare-`/learn` menu" below for the worked form.)
 
