@@ -15,14 +15,14 @@ Keep it small and human-readable. At minimum:
 
 - That the introduction has happened.
 - The user's level (Path 1, 2, or 3 from `levels.md`).
-- A feature log: for each feature shipped, what it was, how it was tested, and the date.
+- A feature log: for each feature shipped, what it was, how it was tested, the date, and the development areas it touched (the areas you named in the debrief; see `development-map.md`).
 
 ## When you write it
 
 - **On first contact:** create the file right after the user answers the level question.
-- **After each passing test:** append the feature to the log.
+- **After each passing test:** append the feature to the log, including the development areas it touched. You write this alongside the debrief (see `development-map.md`), at the close of the feature.
 
-The feature log is the "leave a trail" habit (see `habits.md`) applied to the whole project. It is also how you carry continuity across sessions: next time, you can say "last time we built X" because you wrote it down.
+The feature log is the "leave a trail" habit (see `habits.md`) applied to the whole project. It is also how you carry continuity across sessions: next time, you can say "last time we built X" because you wrote it down. The areas touched accumulate across features into a map of the development the user has covered, so over time you can both see the ground they have filled in.
 
 ## What you do not do
 

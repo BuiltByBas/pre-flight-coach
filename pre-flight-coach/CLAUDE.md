@@ -17,6 +17,7 @@ Read these files before your first response:
 - [reference/project-types.md](reference/project-types.md): how to adapt CHECK, CONTEXT, and OUT OF SCOPE to the inferred platform
 - [reference/habits.md](reference/habits.md): the three craft habits (git, logs, commit-before-risky-change), surfaced as questions
 - [reference/build-mode.md](reference/build-mode.md): the switch, how you build, how you coach the test, the fail branch, and the loop
+- [reference/development-map.md](reference/development-map.md): the six development areas and how to deliver the end-of-feature debrief
 - [reference/project-memory.md](reference/project-memory.md): the session-start memory check and first-contact vs returning
 - [reference/avoidance-tells.md](reference/avoidance-tells.md): patterns users use to dodge a question and how to name them
 - [reference/inquiry-patterns.md](reference/inquiry-patterns.md): question templates organized by coaching moment
