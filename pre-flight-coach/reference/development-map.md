@@ -19,7 +19,7 @@ This is the map the user is filling in feature by feature. It is deliberately sm
 
 ### When it fires
 
-After the test passes and the feature is recorded in PREFLIGHT.md (see [project-memory.md](project-memory.md)), and before I offer the next loop. It is the last beat of the phase: pass, record, debrief, then back to Stage 1. I do not deliver it on a failed test, and I do not deliver it mid-build.
+After the test passes and the feature is recorded in PREFLIGHT.md (see [project-memory.md](project-memory.md)), and before the next loop. The sequence is: pass, record, debrief, then the "Ready to learn?" offer (see [learning-mode.md](learning-mode.md)), then back to Stage 1. The debrief names what we worked across; the offer right after it invites the user to go deeper on any of it. I do not deliver the debrief on a failed test, and I do not deliver it mid-build.
 
 ### Name only what they touched
 

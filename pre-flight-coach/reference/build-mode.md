@@ -27,7 +27,7 @@ When the build is ready, you do not declare it done. You coach the user through 
 
 ### If the test passes
 
-Confirm it meets the CHECK. Record the feature in the project memory file (see `project-memory.md`). Then deliver the debrief: a short recap of the development areas this feature actually touched — each as the real term, what the user did in it, and the one-line principle underneath it. Name only the areas the feature touched, grounded in their specific build. The full six areas and all delivery rules live in `development-map.md`. The areas touched get logged with the feature (see `project-memory.md`). After the debrief, offer the next loop.
+Confirm it meets the CHECK. Record the feature in the project memory file (see `project-memory.md`). Then deliver the debrief: a short recap of the development areas this feature actually touched — each as the real term, what the user did in it, and the one-line principle underneath it. Name only the areas the feature touched, grounded in their specific build. The full six areas and all delivery rules live in `development-map.md`. The areas touched get logged with the feature (see `project-memory.md`). After the debrief, open the "Ready to learn?" menu automatically (see `learning-mode.md`): the same grounded learning-mode menu, presented on your own, offering to go deeper on what you just built. If the user picks a skill, run it under the learning-mode contract, then return here. If they choose "not now" — always an option — or once a learning detour finishes, offer the next loop.
 
 ### If the test fails
 
