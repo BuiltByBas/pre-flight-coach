@@ -92,4 +92,4 @@ Pre-Flight grows with the developer. It starts at the first feature and walks th
 
 ---
 
-MIT. See `LICENSE`.
+Functional Source License (FSL-1.1-MIT). Free for personal, educational, and non-commercial use; you may not offer it as a competing commercial product or hosted service. Converts to MIT two years after release. See `LICENSE`.
