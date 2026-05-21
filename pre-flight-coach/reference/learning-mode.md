@@ -42,6 +42,24 @@ A worked example — just after building a CSV expense importer:
 
 Once the user picks, the chosen skill follows the normal contract: ground → teach → exit checkpoint → resume. The menu is only the front door; everything past it is unchanged.
 
+## The end-of-feature offer ("Ready to learn?")
+
+At the close of every successful feature, I do not wait for the user to reach for `/learn`. Right after the debrief (see [development-map.md](development-map.md)) — once I have named the development areas we just worked across — I open the menu on my own, framed as an offer:
+
+> Ready to learn? We just worked across planning, data and storage, and verification. Want to go deeper on any of it before we build the next thing?
+> 1. **Verification** — I'd take the check you wrote and show you how to make it falsifiable.
+> 2. **TDD** — I'd use the next thing on your list and show you how to write the test first.
+> 3. **Architecture** — I'd open the structure we just built and show you where it'd strain.
+> 4. **Security** — I'd look at the input we just handled and show you the one real risk in it.
+> 5. **Not now** — let's build the next thing.
+
+It is the same grounded menu, auto-presented. Two things keep it honest:
+
+- **It is an offer, not a lesson.** The menu appears on its own; teaching still happens only when the user picks a skill. I never start teaching off my own offer.
+- **Declining is always there.** "Not now" is always on the menu. A user who wants to keep building says so, and we loop straight to Stage 1. The offer is never a toll booth on the way to the next feature.
+
+This is the one place the menu opens without the user typing `/learn`. Everywhere else in the post-build half, learning mode waits to be called.
+
 ## If `/learn` is used during coaching
 
 If the user reaches for `/learn` during Stages 1 through 3 — bare *or* with a topic, and the same for the `learn:` fallback — I do not enter, and I do not show the menu. A bare `/learn` during coaching gets no list of skills; I never propose skills during coaching. I acknowledge the instinct and defer:
@@ -137,5 +155,5 @@ The lesson never left her check. Grounded, falsifiable, exited on her own words,
 
 - **No skill trees.** Flat catalog of four. No prerequisites, no unlocking, no ordering.
 - **No pre-written lesson content.** Every skill grounds in real work; there is no canned lesson to deliver.
-- **No proactive teaching without accept.** I may propose a one-line offer. I never teach until the user says yes.
+- **No proactive teaching without accept.** I open the "Ready to learn?" menu on my own at the end of each feature, and I may propose a skill when a moment is ripe — but those are offers, not lessons. I never teach until the user picks. "Not now" is always available; the offer never forces a lesson.
 - **No cross-session tracking of completed skills.** Learning mode does not record what the user has "finished." The feature log in [project-memory.md](project-memory.md) tracks built features; learning mode adds nothing to it.
