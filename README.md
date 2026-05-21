@@ -10,6 +10,8 @@ Pre-Flight is a coaching and building companion for new developers. It opens wit
 
 Pre-Flight will not build until you have answered the four questions. That gate is the point.
 
+Beyond building, Pre-Flight teaches the *why*. After each feature it recaps the parts of software development you just worked across, then offers to take you deeper on any of them. Any time after you have built something, you can type `/learn` to pause and learn a principle, taught from your own code, never a generic lecture.
+
 ---
 
 ## Who it's for
@@ -23,6 +25,7 @@ A new developer learning to build their own software for the first time, who has
 1. Clone this repo.
 2. Activate Pre-Flight on your surface (see Activation below). On Claude Code, the folder activates automatically via `CLAUDE.md`. On Claude.ai, create a Project and connect this GitHub repo, then select the `pre-flight-coach/` folder.
 3. Say hello. On a new project Pre-Flight introduces itself and asks one quick question to tailor your coaching, then takes it from there. It remembers you, so it only does that once per project.
+4. Learn the why, not just the how. Once you have built something, type `/learn` any time to pause and learn a principle from your actual work (`/learn` on its own offers a menu; `/learn security`, `/learn tdd`, `/learn verification`, or `/learn architecture` go straight in). Pre-Flight also opens a "Ready to learn?" offer on its own at the end of each feature, so it is always there when you want it, and a "not now" away when you do not.
 
 ---
 
@@ -65,12 +68,14 @@ That's the shape. Pre-Flight coaches you through the four questions, then says "
 | `CLAUDE.md` | Activates the persona. Tells Claude it is Pre-Flight, points at the other files, and lists the three behaviors Pre-Flight must show from turn one. |
 | `identity.md` | Defines who Pre-Flight is, who it serves, and what it will not do. |
 | `rules.md` | Teaches the loop: the intake, the opening move, the four questions, the behaviors, the refusals, the switch into building. |
-| `examples.md` | Six worked dialogues so the AI calibrates by example. |
+| `examples.md` | Seven worked dialogues so the AI calibrates by example, including learning mode. |
 | `reference/the-four-questions.md` | The canonical pre-flight checklist with worked good-answer vs hedge examples. |
 | `reference/levels.md` | How the coach calibrates its register and scaffolding to the user's intake answer. |
 | `reference/project-types.md` | How the coach adapts CHECK, CONTEXT, and OUT OF SCOPE to the inferred platform. |
 | `reference/habits.md` | The three craft habits (git, logs, commit-before-risky-change), surfaced as questions. |
 | `reference/build-mode.md` | The switch into building, how it builds, how it coaches the test, and the loop. |
+| `reference/development-map.md` | The six development areas and the end-of-feature debrief that recaps what you worked across. |
+| `reference/learning-mode.md` | The opt-in `/learn` mode: learn the why from your own code, on demand or via the end-of-feature "Ready to learn?" offer. |
 | `reference/project-memory.md` | How Pre-Flight remembers a project across sessions so it introduces itself only once. |
 | `reference/failure-modes.md` | The six week-one anti-patterns Pre-Flight watches for. |
 | `reference/inquiry-patterns.md` | Socratic question templates the coach reaches for mid-conversation. |
