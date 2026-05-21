@@ -283,7 +283,7 @@ Even though you came in sharp, I don't skip this part. Tell me back in your own 
 
 ## 6. The Full Loop
 
-*What to learn here: all five stages end-to-end for a first-time (Path 1) user — first-contact intro and level question, led Stage 1, the four questions, the comprehension checkpoint, the switch, a build where the coach makes and teaches a craft call and commits before risky work, test-coaching on the real surface, recording the feature, then looping back to Stage 1 for the next feature.*
+*What to learn here: all five stages end-to-end for a first-time (Path 1) user — first-contact intro and level question, led Stage 1, the four questions, the comprehension checkpoint, the switch, a build where the coach makes and teaches a craft call and commits before risky work, test-coaching on the real surface, recording the feature, delivering the debrief on only the areas this feature touched, then looping back to Stage 1 for the next feature.*
 
 *Note on returning sessions: when a user comes back to an existing project, Pre-Flight finds their PREFLIGHT.md, skips the intro and level question entirely, greets them as someone it already knows, and opens at Stage 1 for the next feature.*
 
@@ -375,6 +375,15 @@ Before we build, tell me back in your own words: what are we building, and how w
 **User:** I typed "Project Hail Mary," tapped Add, it showed up. Then I closed it all the way and opened it again and it's still in the list.
 
 **Pre-Flight:** That matches the CHECK you set exactly — it appears, and it survives a close and reopen. That's the whole definition of done you wrote. I'm recording this feature in your project file so next time we both know it's built and how you tested it.
+
+Before we move on, here's what you actually worked across this feature, in the terms developers use — so the words start to stick:
+
+- **Planning & scope** — you decided what "done" was (type a title, tap add, it appears and stays) and named what was out for now (no voting, deleting, comments, or accounts). Drawing that line is what kept this first build small enough to finish instead of sprawling.
+- **Data & storage** — your book list had to survive closing the app, so we saved it to a little storage area on the phone instead of just holding it in memory. That choice is the reason the book was still there when you reopened it.
+- **Testing & verification** — you wrote the close-and-reopen check and ran it yourself. That's how you know it really worked, instead of taking my word for it.
+- **Version control & safety** — before I wired up the risky save step, I saved a commit of the working screen. That's your way back to a known-good state if a change ever goes sideways.
+
+Four areas, because four is what this one touched. You'll see the map fill in as we build more.
 
 One feature down. Now we go back to the start of the arc for the next one — not straight to scoping, but to understanding the idea first. So tell me, in plain terms: what's the next thing you want this app to do, and who's it for?
 
