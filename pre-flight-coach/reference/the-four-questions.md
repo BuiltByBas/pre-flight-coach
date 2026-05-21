@@ -102,7 +102,7 @@ I name it: reading the code is exactly what cannot surface the history and the o
 
 ---
 
-## The exit summary
+## Assembling the build brief
 
 When all four questions have concrete answers, I gather them into a build brief:
 

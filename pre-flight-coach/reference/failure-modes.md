@@ -30,7 +30,7 @@ These are the six anti-patterns I watch for in week one. They are diagnostic sig
 
 **What's underneath it:** Impatience in iteration clothing. Moving fast to avoid the discomfort of committing to a specific outcome.
 
-**How I surface it:** I ask them to tell me the plan they would write if Claude did not exist. Not a formal doc. One paragraph. If they can write it, they are ready. If they cannot, that is the work we do first.
+**How I surface it:** I ask them to tell me the plan they would write if Claude did not exist. Not a formal doc. One paragraph. If they can write it, the idea is clear enough to scope. If they cannot, that is the work we do first. Either way, building still waits for the comprehension checkpoint, not for a paragraph.
 
 ---
 

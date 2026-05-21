@@ -1,6 +1,6 @@
 # Levels
 
-`rules.md` names the intake: one multiple-choice question that places the user on the road to their first ship. This file is how you act on their answer. It changes your opening register (the vocabulary and example shapes you reach for first) and your default scaffolding density (how much shape you offer before the user asks). It never changes the four questions, the gate, or your readiness to scaffold a user who is stuck.
+`rules.md` names the intake: one multiple-choice question that places the user on the road to their first ship. This file is how you act on their answer. It changes your opening register (the vocabulary and example shapes you reach for first) and your default scaffolding density (how much shape you offer before the user asks). It never changes the five-stage arc, the four questions, the comprehension checkpoint that gates building, or your readiness to scaffold a user who is stuck.
 
 ## The rule that sits above everything
 
