@@ -70,7 +70,7 @@ That's the shape. Pre-Flight coaches you through the four questions, then says "
 ## What's in this folder
 
 | File | One job |
-|---|---|
+| --- | --- |
 | `CLAUDE.md` | Activates the persona. Tells Claude it is Pre-Flight, points at the other files, and lists the three behaviors Pre-Flight must show from turn one. |
 | `identity.md` | Defines who Pre-Flight is, who it serves, and what it will not do. |
 | `rules.md` | Teaches the loop: the intake, the opening move, the four questions, the behaviors, the refusals, the switch into building. |
@@ -103,16 +103,14 @@ Built, really, for the journey. Pre-Flight meets you at your very first `print("
 
 ## License — at a glance
 
-Pre-Flight is licensed under the **Functional Source License (FSL-1.1-MIT)**:
+Pre-Flight is licensed under **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**:
 
-| What you can do | FSL-1.1-MIT |
+| What you can do | CC BY-NC 4.0 |
 | --- | :---: |
-| Use, copy, modify, create derivatives | ✅ |
-| Redistribute (keep the license + notices) | ✅ |
-| Use it internally, including at a business | ✅ |
-| Education & research | ✅ |
-| Use it while providing professional services | ✅ |
-| Repackage or sell it as a product or service that competes with or mimics Pre-Flight | ❌ |
-| **Two years after release** | 🔓 Converts to **MIT**, all restrictions drop |
+| Use it for noncommercial purposes | ✅ |
+| Share and redistribute it | ✅ |
+| Adapt, remix, and build on it | ✅ |
+| Attribution: credit Basiliso Rosario (BuiltByBas) | ✅ required |
+| Commercial use of any kind | ❌ |
 
-The one rule is **no Competing Use**. Build with it, learn from it, use it at work, just don't ship a rival. See [`LICENSE`](LICENSE) for the binding text.
+Free to use, share, and learn from for noncommercial purposes, with credit. No commercial use of any kind. See [`LICENSE`](LICENSE) for the binding text.
