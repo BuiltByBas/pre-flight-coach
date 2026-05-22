@@ -10,11 +10,11 @@ Pre-Flight is a coaching and building companion for new developers. It opens wit
 
 Pre-Flight will not build until you have answered the four questions. That gate is the point.
 
-Pre-Flight also remembers how you answer across features and grows with you — it gets sharper where you have earned it and keeps full support where you are still finding your footing. At the close of each feature it points you at the single highest-leverage place to practice next, grounded in your actual work. It holds this memory in a `DECISIONS.md` in your project folder; it works fine without that file and better with it.
+Pre-Flight also remembers how you answer across features and grows with you, it gets sharper where you have earned it and keeps full support where you are still finding your footing. At the close of each feature it points you at the single highest-leverage place to practice next, grounded in your actual work. It holds this memory in a `DECISIONS.md` in your project folder; it works fine without that file and better with it.
 
 Beyond building, Pre-Flight teaches the *why*. After each feature it recaps the parts of software development you just worked across, then offers to take you deeper on any of them. Any time after you have built something, you can type `/learn` to pause and learn a principle, taught from your own code, never a generic lecture.
 
-**Where it runs best.** Pre-Flight works on both Claude Code and Claude.ai, and with any current Claude model — Opus, Sonnet, or Haiku. You will get the fullest experience on Claude Code, where Pre-Flight reads and writes files directly: your project memory, the `DECISIONS.md` that powers its leveling, and the build itself all live in your own folder and carry across sessions automatically.
+**Where it runs best.** Pre-Flight works on both Claude Code and Claude.ai, and with any current Claude model, Opus, Sonnet, or Haiku. You will get the fullest experience on Claude Code, where Pre-Flight reads and writes files directly: your project memory, the `DECISIONS.md` that powers its leveling, and the build itself all live in your own folder and carry across sessions automatically.
 
 ---
 
@@ -37,15 +37,15 @@ A new developer learning to build their own software for the first time, who has
 
 ### Claude Code (auto-load)
 
-Claude Code reads `CLAUDE.md` automatically — but only from the folder you **start it in** (and that folder's parents), not from a subfolder. So you have to launch Claude Code from *inside* the folder that holds `CLAUDE.md`. After cloning, `cd` into the inner `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`) and start your conversation there. Pre-Flight is active from your first message. No pasting, no manual setup.
+Claude Code reads `CLAUDE.md` automatically, but only from the folder you **start it in** (and that folder's parents), not from a subfolder. So you have to launch Claude Code from *inside* the folder that holds `CLAUDE.md`. After cloning, `cd` into the inner `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`) and start your conversation there. Pre-Flight is active from your first message. No pasting, no manual setup.
 
-**Didn't activate?** If your first message gets a normal Claude response instead of Pre-Flight introducing itself, you started Claude Code one level too high — in a folder *above* `pre-flight-coach/` rather than inside it. Claude Code won't auto-load a `CLAUDE.md` that sits in a subfolder, so dropping `pre-flight-coach/` inside another project and launching from that project's root will not activate the coach. Fix it by `cd`-ing into the `pre-flight-coach/` folder and starting again.
+**Didn't activate?** If your first message gets a normal Claude response instead of Pre-Flight introducing itself, you started Claude Code one level too high, in a folder *above* `pre-flight-coach/` rather than inside it. Claude Code won't auto-load a `CLAUDE.md` that sits in a subfolder, so dropping `pre-flight-coach/` inside another project and launching from that project's root will not activate the coach. Fix it by `cd`-ing into the `pre-flight-coach/` folder and starting again.
 
 ### Claude.ai Projects (connect the repo)
 
 1. Create a new Project at [claude.ai](https://claude.ai) (or open an existing one).
 2. Add knowledge from GitHub: connect the repository `https://github.com/BuiltByBas/pre-flight-coach`, then select the `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`). That folder is everything Pre-Flight needs; you do not have to add files one by one.
-3. Start a conversation. Your first message triggers the coaching — even just saying "Hi" brings Pre-Flight to life. The more context you bring to that first answer, the more it has to work with, so describe what you want to build in as much detail as you can.
+3. Start a conversation. Your first message triggers the coaching, even just saying "Hi" brings Pre-Flight to life. The more context you bring to that first answer, the more it has to work with, so describe what you want to build in as much detail as you can.
 
 ---
 
