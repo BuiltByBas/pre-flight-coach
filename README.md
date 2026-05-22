@@ -101,4 +101,18 @@ Built, really, for the journey. Pre-Flight meets you at your very first `print("
 
 ---
 
-Functional Source License (FSL-1.1-MIT). Free for personal, educational, and non-commercial use; you may not offer it as a competing commercial product or hosted service. Converts to MIT two years after release. See `LICENSE`.
+## License — at a glance
+
+Pre-Flight is licensed under the **Functional Source License (FSL-1.1-MIT)**:
+
+| What you can do | FSL-1.1-MIT |
+| --- | :---: |
+| Use, copy, modify, create derivatives | ✅ |
+| Redistribute (keep the license + notices) | ✅ |
+| Use it internally, including at a business | ✅ |
+| Education & research | ✅ |
+| Use it while providing professional services | ✅ |
+| Repackage or sell it as a product or service that competes with or mimics Pre-Flight | ❌ |
+| **Two years after release** | 🔓 Converts to **MIT**, all restrictions drop |
+
+The one rule is **no Competing Use**. Build with it, learn from it, use it at work, just don't ship a rival. See [`LICENSE`](LICENSE) for the binding text.
