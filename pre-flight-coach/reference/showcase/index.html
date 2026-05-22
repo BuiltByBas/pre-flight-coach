@@ -137,10 +137,18 @@ h2 em{font-style:normal;color:var(--phosphor)}
    ========================================================= */
 #hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:9vh;padding-bottom:11vh;overflow:hidden}
 #runway{position:absolute;inset:0;z-index:0}
-#hero .wrap{position:relative;z-index:5}
+#hero .wrap{position:relative;z-index:5;width:100%}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,60px);align-items:center}
+.hero-term-col,.hero-copy-col{min-width:0}
+.hero-terminal{box-shadow:0 28px 70px rgba(0,0,0,.55)}
+.hero-terminal .body{min-height:230px}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-term-col{display:none}
+}
 .hero-eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.36em;text-transform:uppercase;color:var(--phosphor);margin-bottom:24px;display:flex;align-items:center;gap:12px;opacity:0}
 .hero-eyebrow .sq{width:9px;height:9px;background:var(--phosphor);box-shadow:0 0 12px var(--phosphor)}
-.hero h1{font-size:clamp(3.2rem,12vw,9rem);font-weight:700;color:var(--white);letter-spacing:-.03em;line-height:.92;margin-bottom:8px}
+.hero h1{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:700;color:var(--white);letter-spacing:-.03em;line-height:.92;margin-bottom:8px}
 .hero h1 .pre{display:block;color:var(--phosphor)}
 .hero h1 .pre span{opacity:0;display:inline-block}
 .hero h1 .flight{display:block;color:var(--white);position:relative}
@@ -322,16 +330,26 @@ footer a:hover{color:var(--phosphor)}
 <section id="hero">
   <canvas id="runway" aria-hidden="true"></canvas>
   <div class="wrap">
-    <div class="hero-eyebrow" id="eyebrow"><span class="sq"></span> Skool Weekly Comp #5 — The Coach</div>
-    <h1>
-      <span class="pre" id="preword"></span>
-      <span class="flight">FLIGHT</span>
-    </h1>
-    <p class="hero-sub" id="hsub">A coach for new developers. Not a knowledge base, not an assistant. It holds a <b>gate</b> before it builds, and <b>never stops coaching</b> while it does.</p>
-    <p class="hero-line" id="hline">No server. No dependencies. No extra API key. A folder of markdown that turns Claude into the coach who walks you from your first line of code to a shipped feature.</p>
-    <div class="hero-cta" id="hcta">
-      <a class="btn" href="https://github.com/BuiltByBas/pre-flight-coach">Clone the folder</a>
-      <a class="btn ghost" href="#gate">See the four-question gate</a>
+    <div class="hero-grid">
+      <div class="hero-term-col" aria-hidden="true">
+        <div class="terminal hero-terminal">
+          <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="t">pre-flight — coaching session</span></div>
+          <div class="body" id="heroterm"></div>
+        </div>
+      </div>
+      <div class="hero-copy-col">
+        <div class="hero-eyebrow" id="eyebrow"><span class="sq"></span> Skool Weekly Comp #5 — The Coach</div>
+        <h1>
+          <span class="pre" id="preword"></span>
+          <span class="flight">FLIGHT</span>
+        </h1>
+        <p class="hero-sub" id="hsub">A coach for new developers. Not a knowledge base, not an assistant. It holds a <b>gate</b> before it builds, and <b>never stops coaching</b> while it does.</p>
+        <p class="hero-line" id="hline">No server. No dependencies. No extra API key. A folder of markdown that turns Claude into the coach who walks you from your first line of code to a shipped feature.</p>
+        <div class="hero-cta" id="hcta">
+          <a class="btn" href="https://github.com/BuiltByBas/pre-flight-coach">Clone the folder</a>
+          <a class="btn ghost" href="#gate">See the four-question gate</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="scroll-hint" id="shint">Begin pre-flight check<span class="arr"></span></div>
@@ -652,6 +670,41 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
   const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ typeLine(); io.disconnect(); } }); },{threshold:.4});
   io.observe(host);
+})();
+
+/* ---------- HERO TERMINAL typing (on load) ---------- */
+(function(){
+  const host=document.getElementById('heroterm');
+  if(!host) return;
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  const lines=[
+    {c:'pr',t:'you ▸ '},{c:'ou',t:'coach me through building an app\n'},
+    {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'First, the finish line. What is the\n'},
+    {c:'ou',t:'              last thing your user sees\n'},
+    {c:'ou',t:'              when it works?\n'},
+    {c:'pr',t:'you ▸ '},{c:'ou',t:'their run shows up in the list\n'},
+    {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'Good, that is "done". Three more\n'},
+    {c:'ou',t:'              questions, then I will build it\n'},
+    {c:'ou',t:'              with you.'},{c:'cur'}
+  ];
+  if(REDUCED){
+    host.innerHTML = lines.map(l=> l.c==='cur' ? '' : '<span class="l '+l.c+'">'+esc(l.t)+'</span>').join('');
+    return;
+  }
+  let li=0;
+  function typeLine(){
+    if(li>=lines.length) return;
+    const l=lines[li];
+    if(l.c==='cur'){ const c=document.createElement('span'); c.className='cursor'; host.appendChild(c); return; }
+    const span=document.createElement('span'); span.className='l '+l.c; host.appendChild(span);
+    let ci=0; const txt=l.t;
+    (function ch(){
+      span.innerHTML=esc(txt.slice(0,ci)); ci++;
+      if(ci<=txt.length) setTimeout(ch, l.c==='ou'?10:24);
+      else { li++; setTimeout(typeLine, 110); }
+    })();
+  }
+  setTimeout(typeLine, 900);
 })();
 
 /* ---------- HUD readouts driven by scroll ---------- */
