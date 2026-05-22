@@ -95,9 +95,9 @@ That's the shape. Pre-Flight coaches you through the four questions, then says "
 
 ## Built for
 
-This coach was built for Skool Weekly Comp #5. The premise: a folder of markdown files that turns Claude into a domain-specific coach for a specific person at a specific moment. No server, no dependencies, no extra API key.
+Built for Skool Weekly Comp #5: a folder of markdown files that turns Claude into a domain-specific coach for a specific person at a specific moment. No server, no dependencies, no extra API key.
 
-Pre-Flight grows with the developer. It starts at the first feature and walks the loop, coach, build, test, repeat, across a whole project, adapting as the developer's skill grows on the journey from `print("hello")` toward shipping full-stack work.
+Built, really, for the journey. Pre-Flight meets you at your very first `print("hello")` and walks the loop with you, coach, build, test, repeat, feature after feature, getting sharper as you do. It starts where you start and stays with you the whole way, from that first line of code to Full Stack Pro.
 
 ---
 
