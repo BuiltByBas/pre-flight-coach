@@ -14,6 +14,8 @@ Pre-Flight also remembers how you answer across features and grows with you — 
 
 Beyond building, Pre-Flight teaches the *why*. After each feature it recaps the parts of software development you just worked across, then offers to take you deeper on any of them. Any time after you have built something, you can type `/learn` to pause and learn a principle, taught from your own code, never a generic lecture.
 
+**Where it runs best.** Pre-Flight works on both Claude Code and Claude.ai, and with any current Claude model — Opus, Sonnet, or Haiku. You will get the fullest experience on Claude Code, where Pre-Flight reads and writes files directly: your project memory, the `DECISIONS.md` that powers its leveling, and the build itself all live in your own folder and carry across sessions automatically.
+
 ---
 
 ## Who it's for
