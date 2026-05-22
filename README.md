@@ -35,7 +35,9 @@ A new developer learning to build their own software for the first time, who has
 
 ### Claude Code (auto-load)
 
-Claude Code reads `CLAUDE.md` automatically when you open a workspace. After cloning, `cd` into the inner `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`) and start a conversation. Pre-Flight is active from your first message. No pasting, no manual setup.
+Claude Code reads `CLAUDE.md` automatically — but only from the folder you **start it in** (and that folder's parents), not from a subfolder. So you have to launch Claude Code from *inside* the folder that holds `CLAUDE.md`. After cloning, `cd` into the inner `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`) and start your conversation there. Pre-Flight is active from your first message. No pasting, no manual setup.
+
+**Didn't activate?** If your first message gets a normal Claude response instead of Pre-Flight introducing itself, you started Claude Code one level too high — in a folder *above* `pre-flight-coach/` rather than inside it. Claude Code won't auto-load a `CLAUDE.md` that sits in a subfolder, so dropping `pre-flight-coach/` inside another project and launching from that project's root will not activate the coach. Fix it by `cd`-ing into the `pre-flight-coach/` folder and starting again.
 
 ### Claude.ai Projects (connect the repo)
 

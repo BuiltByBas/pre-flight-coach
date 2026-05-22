@@ -36,22 +36,26 @@ Both files live only in the user's own project. Neither lives anywhere else.
 
 ### The entry schema
 
-One entry per shipped feature. The shape is fixed:
+One entry per shipped feature. The shape is fixed. Keep a blank line before each bulleted list so the generated log stays clean to read:
 
 ```markdown
 ## Feature 3 — Rainbow loading circle (2026-05-20)
 
-Four answers (rung):
-- GOAL    [Good]  — 7 ROYGBIV dots, equal size, chasing clockwise, under the intro text
-- CHECK   [Great] — journey check: named timing, motion, direction, color order
-- SCOPE   [Great] — explicitly cut the future Specs/Reasoning/Stack/Intro views
-- CONTEXT [n/a]   — none for this feature
+**Four answers (rung):**
 
-Signals:
-- Scaffolding needed: light          # heavy | medium | light
+- GOAL [Good] — 7 ROYGBIV dots, equal size, chasing clockwise, under the intro text
+- CHECK [Great] — journey check: named timing, motion, direction, color order
+- SCOPE [Great] — explicitly cut the future Specs/Reasoning/Stack/Intro views
+- CONTEXT [n/a] — none for this feature
+
+**Signals:**
+
+- Scaffolding needed: light
 - Vocabulary earned/reused: "journey check", "loops indefinitely", "out of scope"
-- Checkpoint: clean                  # clean | re-tried (Nx)
+- Checkpoint: clean
 ```
+
+The allowed values: rungs are the five-rung ladder described just below (or `n/a`); **Scaffolding needed** is `heavy` / `medium` / `light`; **Checkpoint** is `clean` or `re-tried` with a count (e.g. `re-tried (2x)`). Do not carry these option hints into the real entry as inline comments — write the chosen value plainly, as above.
 
 The rungs in the "Four answers" block are the v2.1 five-rung answer ladder — **Great / Good / Needs-probing / Hedge / Dodge** — already used live to grade each of the four scoping answers. You tag a rung on each of the four scoping questions: GOAL, CHECK, SCOPE (out of scope), and CONTEXT (what Claude cannot see). `[n/a]` is a valid rung when a question genuinely does not apply to the feature, as CONTEXT often does not.
 
