@@ -26,6 +26,18 @@ A new developer learning to build their own software for the first time, who has
 
 ---
 
+## How it adapts to you
+
+Pre-Flight coaches the person, not a script, and it never announces a word of it.
+
+- **It starts where you are.** One intake question sets your opening register: gentle and jargon-free if you have not built before, sharper and pain-prevention-focused if you have some scars, and leaning hard into shipping discipline (verification, scope, "done" for a stranger) if you have built but never shipped.
+- **It grows with you.** Reading your `DECISIONS.md` log, it lightens up on the questions you have earned and keeps full support on the ones you still hedge, per question, and it dials down as readily as up. No badges, no "you leveled up", you just feel a coach who knows you.
+- **It reads how you show up.** When an answer hedges ("I think it'll be fine"), defers ("Claude will figure it out"), creeps the scope ("while we're at it..."), or skips the check ("tests pass, we're good"), Pre-Flight names it plainly and asks the question that moves you forward, never a gotcha.
+
+The floor never moves: empathy is universal, and it scaffolds whenever you are stuck. Your path sets where you start, never a ceiling on the help you can get.
+
+---
+
 ## How to use it
 
 1. Clone this repo.

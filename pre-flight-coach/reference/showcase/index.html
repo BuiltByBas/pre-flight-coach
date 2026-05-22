@@ -247,6 +247,26 @@ h2 em{font-style:normal;color:var(--phosphor)}
 .loop-core{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
 .loop-core .lc{font-family:var(--display);font-size:1.2rem;color:var(--white);font-weight:600}
 
+/* calibration / adapts */
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+@media (max-width:780px){.paths{grid-template-columns:1fr}}
+.pcard{border:1px solid var(--line);background:var(--panel);padding:26px;position:relative}
+.pcard .pnum{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--amber)}
+.pcard h3{font-size:1.12rem;color:var(--white);margin:10px 0 8px;font-weight:500}
+.pcard p{color:var(--ink-dim);font-size:.92rem}
+.pcard .reg{margin-top:16px;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--phosphor);border-top:1px solid var(--line);padding-top:13px}
+.adapt-note{margin-top:34px;color:var(--ink-dim);max-width:70ch}
+.adapt-note b{color:var(--ink)}
+.tells{margin-top:34px;border:1px solid var(--line);background:var(--panel)}
+.tells .trow{display:grid;grid-template-columns:1fr 26px 1.1fr;gap:18px;align-items:center;padding:15px 24px;border-bottom:1px solid var(--line)}
+.tells .trow:last-child{border-bottom:0}
+.tells .said{font-family:var(--mono);font-size:.86rem;color:var(--ink)}
+.tells .arrow{color:var(--amber);font-family:var(--mono);text-align:center}
+.tells .move{color:var(--ink-dim);font-size:.94rem}
+.tells .thead{background:var(--panel-2);color:var(--ink-faint)}
+.tells .thead .said,.tells .thead .move{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+@media (max-width:640px){.tells .trow{grid-template-columns:1fr;gap:6px}.tells .arrow{display:none}}
+
 /* terminal */
 .terminal{border:1px solid var(--line-strong);background:#04070b;font-family:var(--mono);font-size:.9rem;line-height:1.8;overflow:hidden}
 .terminal .bar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:#0a1018;border-bottom:1px solid var(--line)}
@@ -440,10 +460,37 @@ footer a:hover{color:var(--phosphor)}
   </div>
 </section>
 
+<!-- ===== CALIBRATION / ADAPTS ===== -->
+<section id="adapt">
+  <div class="wrap">
+    <div class="section-tag reveal"><span class="num">04 / CALIBRATION</span><span class="line"></span><span class="tick">Meets you where you are</span></div>
+    <h2 class="reveal">It coaches the <em>person</em>, not a script.</h2>
+    <p class="lead reveal">One quick question at the start sets your opening register. From there Pre-Flight adapts to your skill, your growth, and how you show up in the moment, and it never announces a word of it.</p>
+
+    <div class="paths">
+      <div class="pcard reveal"><span class="pnum">PATH 01</span><h3>New to building</h3><p>Plain language, no jargon, an everyday example before a technical one. The most support, offered before you ask.</p><div class="reg">Register: gentle, scaffold-first</div></div>
+      <div class="pcard reveal"><span class="pnum">PATH 02</span><h3>Some scars</h3><p>Uses the words you've earned, sharper questions, trusts you to reach first. Help arrives when you get stuck.</p><div class="reg">Register: pain-prevention</div></div>
+      <div class="pcard reveal"><span class="pnum">PATH 03</span><h3>Built, never shipped</h3><p>Light on building talk, you have it. Leans hard into the shipping gaps: verification, scope, "done" for a stranger.</p><div class="reg">Register: shipping discipline</div></div>
+    </div>
+
+    <p class="adapt-note reveal">Then it <b>grows with you</b>. Reading your decision log, it lightens up on the questions you've earned and keeps full support on the ones you still hedge, <b>per question</b>, dialing down as readily as up. No badges, no "you leveled up", you just feel a coach who knows you.</p>
+
+    <div class="tells reveal">
+      <div class="trow thead"><span class="said">When you say</span><span class="arrow"></span><span class="move">What Pre-Flight does</span></div>
+      <div class="trow"><span class="said">"I think it'll be fine"</span><span class="arrow">▸</span><span class="move">Reflects the hedge, asks for the check you'd actually run.</span></div>
+      <div class="trow"><span class="said">"Claude will figure it out"</span><span class="arrow">▸</span><span class="move">Names what the build can't see, asks what only you know.</span></div>
+      <div class="trow"><span class="said">"while we're at it…"</span><span class="arrow">▸</span><span class="move">Marks it a new task, protects the scope of this one.</span></div>
+      <div class="trow"><span class="said">"tests pass, we're good"</span><span class="arrow">▸</span><span class="move">Asks what a failing result would have looked like.</span></div>
+    </div>
+
+    <div class="gate-foot reveal"><span class="lock">✦</span> <span>The floor never moves: <b>empathy is universal, scaffold when stuck</b>. Your path sets where you start, never a ceiling on the help you can get.</span></div>
+  </div>
+</section>
+
 <!-- ===== /LEARN ===== -->
 <section id="learn">
   <div class="wrap">
-    <div class="section-tag reveal"><span class="num">04 / LEARN</span><span class="line"></span><span class="tick">The why, from your code</span></div>
+    <div class="section-tag reveal"><span class="num">05 / LEARN</span><span class="line"></span><span class="tick">The why, from your code</span></div>
     <h2 class="reveal">Type <em>/learn</em> and learn the principle from <em>your own code</em>.</h2>
     <p class="lead reveal">Not a Wikipedia article on the domain. Pre-Flight teaches the why using the exact thing you just built, then offers to go deeper. It also opens a “Ready to learn?” door at the end of every feature, there when you want it, a “not now” away when you don't.</p>
     <div class="terminal reveal" style="margin-top:42px" aria-hidden="true">
@@ -456,7 +503,7 @@ footer a:hover{color:var(--phosphor)}
 <!-- ===== ARCHITECTURE ===== -->
 <section id="arch">
   <div class="wrap">
-    <div class="section-tag reveal"><span class="num">05 / AIRFRAME</span><span class="line"></span><span class="tick">Each file, one job</span></div>
+    <div class="section-tag reveal"><span class="num">06 / AIRFRAME</span><span class="line"></span><span class="tick">Each file, one job</span></div>
     <h2 class="reveal">A folder of markdown. <em>Each file does one job well.</em></h2>
     <p class="lead reveal">No build, no runtime, nothing to install. Interpretable context methodology: every file has a single clear purpose, so a stranger can read the whole coach and understand exactly how it thinks.</p>
     <div class="files reveal">
@@ -473,7 +520,7 @@ footer a:hover{color:var(--phosphor)}
 <!-- ===== WHERE IT RUNS ===== -->
 <section id="run">
   <div class="wrap">
-    <div class="section-tag reveal"><span class="num">06 / SURFACES</span><span class="line"></span><span class="tick">Runs where you are</span></div>
+    <div class="section-tag reveal"><span class="num">07 / SURFACES</span><span class="line"></span><span class="tick">Runs where you are</span></div>
     <h2 class="reveal">Cleared on every surface.</h2>
     <div class="surfaces">
       <div class="surface reveal"><span class="tag">FULLEST</span><h3>Claude Code</h3><p>Pre-Flight reads and writes files directly. Your project memory, the DECISIONS.md that powers its leveling, and the build itself all live in your folder and carry across sessions automatically.</p></div>
