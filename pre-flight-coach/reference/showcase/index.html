@@ -122,7 +122,11 @@ a{color:inherit}
    LAYOUT
    ========================================================= */
 section{position:relative;z-index:5;padding:clamp(90px,13vh,160px) var(--gut)}
-.wrap{max-width:var(--maxw);margin:0 auto}
+/* feathered handoff between sections */
+section:not(#hero)::before,section:not(#hero)::after{content:"";position:absolute;left:0;right:0;height:clamp(16px,2.5vh,32px);pointer-events:none;z-index:0}
+section:not(#hero)::before{top:0;background:linear-gradient(to bottom,var(--night),transparent)}
+section:not(#hero)::after{bottom:0;background:linear-gradient(to top,var(--night),transparent)}
+.wrap{max-width:var(--maxw);margin:0 auto;position:relative;z-index:1}
 .section-tag{display:flex;align-items:center;gap:14px;margin-bottom:26px}
 .section-tag .num{font-family:var(--mono);font-size:.8rem;color:var(--amber);letter-spacing:.2em}
 .section-tag .line{height:1px;flex:1;background:linear-gradient(to right,var(--line-strong),transparent)}
@@ -292,6 +296,24 @@ h2 em{font-style:normal;color:var(--phosphor)}
 .files .head{background:var(--panel-2);color:var(--ink-faint);font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}
 .files .head .fname,.files .head .fjob{color:var(--ink-faint)}
 @media (max-width:640px){.files .row{grid-template-columns:1fr;gap:4px}}
+
+/* folder tree (architecture) */
+.tree{margin-top:42px;border:1px solid var(--line);background:var(--panel)}
+.tree details>summary,.tree .leaf{display:flex;gap:12px;align-items:baseline;padding:10px 24px;border-top:1px solid rgba(120,200,170,.06)}
+.tree>details:first-child>summary{border-top:0}
+.tree details>summary{cursor:var(--cur);list-style:none}
+.tree details>summary::-webkit-details-marker{display:none}
+.tree details>summary::marker{content:""}
+.tree details>summary:hover{background:var(--panel-2)}
+.tree .ico{display:inline-block;width:11px;flex:none;color:var(--amber);transition:transform .2s;font-size:.8em}
+.tree details[open]>summary>.ico{transform:rotate(90deg)}
+.tree .leaf .ico{color:transparent}
+.tree .name{font-family:var(--mono);font-size:.85rem;white-space:nowrap}
+.tree details>summary .name{color:var(--amber)}
+.tree .leaf .name{color:var(--phosphor-dim)}
+.tree .job{color:var(--ink-faint);font-size:.86rem}
+.tree .children{padding-left:22px}
+@media (max-width:640px){.tree .job{display:none}.tree .children{padding-left:15px}.tree .name{white-space:normal}}
 
 /* surfaces / where it runs */
 .surfaces{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:42px}
@@ -506,13 +528,52 @@ footer a:hover{color:var(--phosphor)}
     <div class="section-tag reveal"><span class="num">06 / AIRFRAME</span><span class="line"></span><span class="tick">Each file, one job</span></div>
     <h2 class="reveal">A folder of markdown. <em>Each file does one job well.</em></h2>
     <p class="lead reveal">No build, no runtime, nothing to install. Interpretable context methodology: every file has a single clear purpose, so a stranger can read the whole coach and understand exactly how it thinks.</p>
-    <div class="files reveal">
-      <div class="row head"><span class="fname">File</span><span class="fjob">One job</span></div>
-      <div class="row"><span class="fname">CLAUDE.md</span><span class="fjob">Activates the persona and points at the rest. Three behaviors from turn one.</span></div>
-      <div class="row"><span class="fname">identity.md</span><span class="fjob">Who Pre-Flight is, who it serves, and what it refuses to do.</span></div>
-      <div class="row"><span class="fname">rules.md</span><span class="fjob">The loop: intake, opening move, the four questions, the switch into building.</span></div>
-      <div class="row"><span class="fname">examples.md</span><span class="fjob">Eight worked dialogues so the AI calibrates by example.</span></div>
-      <div class="row"><span class="fname">reference/</span><span class="fjob">The frameworks: the four questions, leveling, learning mode, project types, habits, failure modes.</span></div>
+    <div class="tree reveal" aria-label="pre-flight-coach folder structure">
+      <details open class="folder">
+        <summary><span class="ico">▸</span><span class="name">pre-flight-coach/</span><span class="job">The coach. Drop it in, Claude becomes Pre-Flight.</span></summary>
+        <div class="children">
+          <div class="leaf"><span class="ico">▸</span><span class="name">CLAUDE.md</span><span class="job">Activates the persona and points at the rest.</span></div>
+          <div class="leaf"><span class="ico">▸</span><span class="name">identity.md</span><span class="job">Who Pre-Flight is, who it serves, what it refuses.</span></div>
+          <div class="leaf"><span class="ico">▸</span><span class="name">rules.md</span><span class="job">The loop: intake, the four questions, the switch.</span></div>
+          <div class="leaf"><span class="ico">▸</span><span class="name">examples.md</span><span class="job">Eight worked dialogues.</span></div>
+          <details class="folder">
+            <summary><span class="ico">▸</span><span class="name">reference/</span><span class="job">The frameworks: two folders and 14 files.</span></summary>
+            <div class="children">
+              <details class="folder">
+                <summary><span class="ico">▸</span><span class="name">skills/</span><span class="job">The /learn slash command.</span></summary>
+                <div class="children">
+                  <details class="folder">
+                    <summary><span class="ico">▸</span><span class="name">learn/</span><span class="job">The command folder.</span></summary>
+                    <div class="children">
+                      <div class="leaf"><span class="ico">▸</span><span class="name">SKILL.md</span><span class="job">A thin door routing into learning-mode.md.</span></div>
+                    </div>
+                  </details>
+                </div>
+              </details>
+              <details class="folder">
+                <summary><span class="ico">▸</span><span class="name">showcase/</span><span class="job">This page.</span></summary>
+                <div class="children">
+                  <div class="leaf"><span class="ico">▸</span><span class="name">index.html</span><span class="job">The interactive walkthrough you're reading now.</span></div>
+                </div>
+              </details>
+              <div class="leaf"><span class="ico">▸</span><span class="name">leading-the-idea.md</span><span class="job">Leading a user to understand their own idea.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">the-four-questions.md</span><span class="job">The canonical pre-flight checklist.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">levels.md</span><span class="job">Calibrating register to the intake answer.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">leveling.md</span><span class="job">Reading the decision log to meet you per question.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">project-types.md</span><span class="job">Adapting CHECK, CONTEXT, OUT OF SCOPE to the platform.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">habits.md</span><span class="job">The three craft habits: git, logs, commit-before-risky.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">build-mode.md</span><span class="job">The switch into building, coaching the test, the loop.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">development-map.md</span><span class="job">The six development areas and the debrief.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">learning-mode.md</span><span class="job">The opt-in /learn mode and the offer.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">principles-canon.md</span><span class="job">Each skill mapped to its recognized source.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">project-memory.md</span><span class="job">Remembering a project across sessions.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">failure-modes.md</span><span class="job">The six week-one anti-patterns.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">inquiry-patterns.md</span><span class="job">Socratic question templates by moment.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">avoidance-tells.md</span><span class="job">Five language patterns that signal dodging.</span></div>
+            </div>
+          </details>
+        </div>
+      </details>
     </div>
   </div>
 </section>
