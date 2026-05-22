@@ -34,6 +34,7 @@
   --mono:'IBM Plex Mono',monospace;
   --maxw:1180px;
   --gut:clamp(20px,5vw,64px);
+  --cur:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%2304070b' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5,5 12,12 5,19'/%3E%3Cline x1='14' y1='19' x2='21' y2='19'/%3E%3C/g%3E%3Cg fill='none' stroke='%2343f5b0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5,5 12,12 5,19'/%3E%3Cline x1='14' y1='19' x2='21' y2='19'/%3E%3C/g%3E%3C/svg%3E") 12 12, auto;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -47,6 +48,7 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
   position:relative;
+  cursor:var(--cur);
 }
 
 /* ---- atmosphere: grain + scanlines + vignette ---- */
@@ -151,7 +153,7 @@ h2 em{font-style:normal;color:var(--phosphor)}
   font-family:var(--mono);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
   padding:15px 26px;border:1.5px solid var(--phosphor);color:var(--phosphor);
   background:rgba(67,245,176,.04);text-decoration:none;position:relative;overflow:hidden;
-  transition:color .3s,box-shadow .3s;cursor:pointer
+  transition:color .3s,box-shadow .3s;cursor:var(--cur)
 }
 .btn:hover{color:var(--night);box-shadow:0 0 24px rgba(67,245,176,.4)}
 .btn::before{content:"";position:absolute;inset:0;background:var(--phosphor);transform:translateY(101%);transition:transform .3s ease;z-index:-1}
