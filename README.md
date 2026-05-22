@@ -2,6 +2,8 @@
 
 *A coach for new developers.*
 
+**▶ [See Pre-Flight in action](https://builtbybas.github.io/pre-flight-coach/pre-flight-coach/reference/showcase/#hero)**, an interactive walkthrough of every feature.
+
 ---
 
 ## What this is
