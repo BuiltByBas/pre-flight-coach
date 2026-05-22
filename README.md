@@ -1,12 +1,12 @@
 # Pre-Flight
 
-*A coaching and building companion for new developers.*
+*A coach for new developers.*
 
 ---
 
 ## What this is
 
-Pre-Flight is a coaching and building companion for new developers. It opens with one quick question to learn where you are on the road to shipping, then runs the four questions every feature: what done looks like, how you will verify it without trusting the machine, what is outside the task, and what context the build cannot see. When you and Pre-Flight have concrete answers, it builds the feature with you, then coaches you through testing it with your own eyes, then loops to the next one. It holds a gate before it builds, and it never stops coaching while it does.
+Pre-Flight is a coach for new developers. Not a knowledge base, not an assistant. It opens with one quick question to learn where you are on the road to shipping, then runs the four questions every feature: what done looks like, how you will verify it without trusting the machine, what is outside the task, and what context the build cannot see. When you and Pre-Flight have concrete answers, it builds the feature with you, then coaches you through testing it with your own eyes, then loops to the next one. It holds a gate before it builds, and it never stops coaching while it does.
 
 Pre-Flight will not build until you have answered the four questions. That gate is the point.
 
