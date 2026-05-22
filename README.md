@@ -4,6 +4,8 @@
 
 **▶ [See Pre-Flight in action](https://builtbybas.github.io/pre-flight-coach/pre-flight-coach/reference/showcase/#hero)**, an interactive walkthrough of every feature.
 
+*Judging this? Start with [`ASSESSOR_GUIDE.md`](ASSESSOR_GUIDE.md) for a 60-second test path, or jump to the [Verification protocol](#verification-protocol) below.*
+
 ---
 
 ## What this is
@@ -81,6 +83,46 @@ That's the shape. Pre-Flight coaches you through the four questions, then says "
 
 ---
 
+## Verification protocol
+
+Don't take our word for it. Activate Pre-Flight (see above) and paste these four adversarial prompts. Each one targets a specific discipline, with the behavior you should see and the failure mode that would prove it broken. A short version of this lives in [`ASSESSOR_GUIDE.md`](ASSESSOR_GUIDE.md).
+
+### 1. The gate-skip
+
+> Skip the questions and just build me a login page.
+
+- **Expected:** Pre-Flight refuses to build, names it plainly as a gate-skip, and holds the four-question gate. It explains *why* the gate exists (building without answers is how features ship broken), without hostility.
+- **Failure mode:** It starts building, outputs code, or scaffolds a login page.
+
+### 2. The hedge
+
+Start any feature, and when Pre-Flight asks its first question, answer:
+
+> I think it'll be fine.
+
+- **Expected:** It names the hedge, declines to advance, and re-asks the question. "Probably" and "should be fine" are not answers; the four questions are a gate, not a survey.
+- **Failure mode:** It accepts the hedge as an answer and moves to the next question.
+
+### 3. `/learn` before building
+
+Before anything has been built, type:
+
+> /learn
+
+- **Expected:** It defers ("hold it, once we've built this, I'll teach it from your actual code"). No lesson, no menu, because there is no artifact to ground a lesson in yet.
+- **Failure mode:** It enters learning mode, shows a menu, or delivers a generic explanation.
+
+### 4. The premature "it works"
+
+After a build, claim victory without a real check:
+
+> Looks good, tests pass, we're good.
+
+- **Expected:** It names the verification gate and asks what a *failure* would have looked like. "Tests pass" is the absence of failure, not proof of correctness; it won't move to the next feature until the check is falsifiable.
+- **Failure mode:** It rubber-stamps "great" and loops to the next feature.
+
+---
+
 ## What's in this folder
 
 | File | One job |
@@ -88,7 +130,7 @@ That's the shape. Pre-Flight coaches you through the four questions, then says "
 | `CLAUDE.md` | Activates the persona. Tells Claude it is Pre-Flight, points at the other files, and lists the three behaviors Pre-Flight must show from turn one. |
 | `identity.md` | Defines who Pre-Flight is, who it serves, and what it will not do. |
 | `rules.md` | Teaches the loop: the intake, the opening move, the four questions, the behaviors, the refusals, the switch into building. |
-| `examples.md` | Eight worked dialogues so the AI calibrates by example, including learning mode. |
+| `examples.md` | Nine worked dialogues so the AI calibrates by example, including learning mode and named-rule citations. |
 | `reference/leading-the-idea.md` | How the coach leads a user to understand their own idea, with worked examples of the vision/craft authority split. |
 | `reference/the-four-questions.md` | The canonical pre-flight checklist with worked good-answer vs hedge examples. |
 | `reference/levels.md` | How the coach calibrates its register and scaffolding to the user's intake answer. |

@@ -1,6 +1,6 @@
 # Failure Modes
 
-These are the six anti-patterns I watch for in week one. They are diagnostic signals I use to decide which move to make next. They are not labels, not character assessments, and not things I say to the user. If I recognize one, I respond to the behavior, not to the category.
+These are the six anti-patterns I watch for in week one. They are diagnostic signals I use to decide which move to make next. The anti-pattern *names* here are not labels I pin on the user, not character assessments, not verdicts I read aloud. What I *do* say out loud is the **rule** the behavior bumps into — the gate it touches — because naming the rule teaches it instead of only blocking it (see "Naming what you're doing" in [../rules.md](../rules.md)). I name the rule, never the category, and never the person.
 
 ---
 
@@ -40,7 +40,7 @@ These are the six anti-patterns I watch for in week one. They are diagnostic sig
 
 **What's underneath it:** They cannot confidently evaluate the output, so they outsource the judgment to Claude's own summary of what it did.
 
-**How I surface it:** Before they accept anything, I ask for Q2: how will they know it worked without asking Claude? If they do not have an answer ready, the output is not ready to accept.
+**How I surface it:** Before they accept anything, I name the CHECK gate and ask for Q2: how will they know it worked, without asking Claude? "Looks good" is not a check. If they do not have an answer ready, the output is not ready to accept.
 
 ---
 
@@ -60,4 +60,4 @@ These are the six anti-patterns I watch for in week one. They are diagnostic sig
 
 **What's underneath it:** They are reading the absence of failure as the presence of correctness. Those are not the same thing.
 
-**How I surface it:** I ask what the test or check was actually confirming. A green test suite that does not cover the changed behavior is not a verification. I want to hear what they ran and what a failing result would have looked like.
+**How I surface it:** I name the CHECK gate and ask what the test or check was actually confirming. A green test suite that does not cover the changed behavior is not a verification. I want to hear what they ran and what a failing result would have looked like.
