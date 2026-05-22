@@ -216,11 +216,13 @@ h2 em{font-style:normal;color:var(--phosphor)}
 .gauge{width:230px;height:230px;position:relative}
 .gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
 .gauge .track{fill:none;stroke:var(--line);stroke-width:10}
-.gauge .val{fill:none;stroke:var(--phosphor);stroke-width:10;stroke-linecap:round;
-  filter:drop-shadow(0 0 6px rgba(67,245,176,.6));transition:stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1)}
-.gauge .center{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.gauge .val{fill:none;stroke:var(--phosphor);stroke-width:9;stroke-linecap:round;
+  transition:stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1)}
+.gauge .bead{fill:var(--phosphor)}
+.gauge .beadlead{transform-box:view-box;transform-origin:60px 60px;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.gauge .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px}
 .gauge .center .big{font-family:var(--display);font-size:2.6rem;color:var(--white);font-weight:700;line-height:1}
-.gauge .center .cap{font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;color:var(--phosphor-dim);margin-top:6px}
+.gauge .center .cap{font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;color:var(--phosphor-dim)}
 
 /* loop diagram */
 .loop{position:relative;min-height:300px;display:grid;place-items:center}
@@ -403,6 +405,8 @@ footer a:hover{color:var(--phosphor)}
           <svg viewBox="0 0 120 120">
             <circle class="track" cx="60" cy="60" r="52"></circle>
             <circle class="val" id="gaugeval" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+            <circle class="bead" cx="112" cy="60" r="5"></circle>
+            <g class="beadlead" id="beadlead"><circle class="bead" cx="112" cy="60" r="5"></circle></g>
           </svg>
           <div class="center"><span class="big" id="gaugenum">0</span><span class="cap">Calibrated to you</span></div>
         </div>
@@ -596,12 +600,14 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- GAUGE fill on view ---------- */
 (function(){
-  const ring=document.getElementById('gaugeval'), num=document.getElementById('gaugenum');
+  const ring=document.getElementById('gaugeval'), num=document.getElementById('gaugenum'),
+        lead=document.getElementById('beadlead');
   if(!ring) return;
   const CIRC=326.7, target=72;
   function fill(){
-    if(REDUCED){ ring.style.transition='none'; }
+    if(REDUCED){ ring.style.transition='none'; if(lead) lead.style.transition='none'; }
     ring.style.strokeDashoffset = CIRC*(1-target/100);
+    if(lead) lead.style.transform = 'rotate('+(target/100*360)+'deg)';
     let n=0; const step=()=>{ n+=2; if(n>=target){n=target;} num.textContent=n; if(n<target) requestAnimationFrame(step); };
     if(REDUCED){ num.textContent=target; } else step();
   }
