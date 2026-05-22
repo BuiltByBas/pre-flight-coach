@@ -205,6 +205,14 @@ h2 em{font-style:normal;color:var(--phosphor)}
   font-family:var(--mono);font-size:.92rem;color:var(--amber);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .gate-foot .lock{font-size:1.2rem}
 .gate-foot b{color:var(--white);font-weight:600}
+.demos{margin-top:64px}
+.demos-h{font-family:var(--display);font-size:1.5rem;color:var(--white);font-weight:600;margin-bottom:8px}
+.demos-sub{color:var(--ink-dim);margin-bottom:20px;max-width:62ch}
+.demo-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.chip{font-family:var(--mono);font-size:.8rem;color:var(--ink-dim);background:var(--panel);border:1px solid var(--line-strong);padding:9px 16px;cursor:var(--cur);transition:color .2s,background .2s,border-color .2s}
+.chip:hover{color:var(--white);border-color:var(--phosphor)}
+.chip.active{color:var(--night);background:var(--phosphor);border-color:var(--phosphor);font-weight:600}
+.demos .terminal .body{min-height:180px}
 @media (max-width:640px){
   .check{grid-template-columns:48px 1fr;gap:16px;padding:20px}
   .check .stat{grid-column:2;text-align:left}
@@ -428,6 +436,21 @@ footer a:hover{color:var(--phosphor)}
     </div>
 
     <div class="gate-foot reveal"><span class="lock">⊘</span> <span>Until all four read <b>ARMED</b>, Pre-Flight holds short. Answer them and it says: <b>“We are ready to build. Are you ready to build it?”</b></span></div>
+
+    <div class="demos reveal">
+      <h3 class="demos-h">See it hold the line</h3>
+      <p class="demos-sub">Four ways people try to skip the work. Click one and watch Pre-Flight name the rule and hold, never a gotcha, always a lesson.</p>
+      <div class="demo-chips" role="tablist" aria-label="Demonstrations">
+        <button class="chip active" data-demo="0">“just build it”</button>
+        <button class="chip" data-demo="1">“it'll be fine”</button>
+        <button class="chip" data-demo="2">“while we're at it…”</button>
+        <button class="chip" data-demo="3">“looks good, we're done”</button>
+      </div>
+      <div class="terminal" aria-live="polite">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="t">pre-flight — holding the gate</span></div>
+        <div class="body" id="demoterm"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -535,7 +558,7 @@ footer a:hover{color:var(--phosphor)}
           <div class="leaf"><span class="ico">▸</span><span class="name">CLAUDE.md</span><span class="job">Activates the persona and points at the rest.</span></div>
           <div class="leaf"><span class="ico">▸</span><span class="name">identity.md</span><span class="job">Who Pre-Flight is, who it serves, what it refuses.</span></div>
           <div class="leaf"><span class="ico">▸</span><span class="name">rules.md</span><span class="job">The loop: intake, the four questions, the switch.</span></div>
-          <div class="leaf"><span class="ico">▸</span><span class="name">examples.md</span><span class="job">Eight worked dialogues.</span></div>
+          <div class="leaf"><span class="ico">▸</span><span class="name">examples.md</span><span class="job">Nine worked dialogues.</span></div>
           <details class="folder">
             <summary><span class="ico">▸</span><span class="name">reference/</span><span class="job">The frameworks: two folders and 14 files.</span></summary>
             <div class="children">
@@ -813,6 +836,65 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     })();
   }
   setTimeout(typeLine, 900);
+})();
+
+/* ---------- GATE DEMOS (click to play) ---------- */
+(function(){
+  const term=document.getElementById('demoterm');
+  const chips=[...document.querySelectorAll('.demo-chips .chip')];
+  if(!term||!chips.length) return;
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  const demos=[
+    [ {c:'pr',t:'you ▸ '},{c:'ou',t:'skip the questions and just build me a login page\n'},
+      {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'That is a gate-skip — I am naming it, not\n'},
+      {c:'ou',t:'              waving it through. The four-question\n'},
+      {c:'ou',t:'              gate exists because building without\n'},
+      {c:'ou',t:'              answers is how features ship broken.\n'},
+      {c:'ou',t:'              First: what does "done" look like?'},{c:'cur'} ],
+    [ {c:'pr',t:'you ▸ '},{c:'ou',t:"I think it'll be fine\n"},
+      {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'"It will be fine" is a hedge — that is the\n'},
+      {c:'ou',t:'              CHECK gate, and it does not open on\n'},
+      {c:'ou',t:'              "fine." How will you know it worked,\n'},
+      {c:'ou',t:'              without asking me?'},{c:'cur'} ],
+    [ {c:'pr',t:'you ▸ '},{c:'ou',t:"while we're at it, can you redo the navbar too?\n"},
+      {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'That is the Out of Scope gate. Good idea,\n'},
+      {c:'ou',t:'              wrong moment — we name it as not this\n'},
+      {c:'ou',t:'              feature so it stops tugging at the build,\n'},
+      {c:'ou',t:'              and it becomes its own next one. Out for now?'},{c:'cur'} ],
+    [ {c:'pr',t:'you ▸ '},{c:'ou',t:"looks good, tests pass, we're good\n"},
+      {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'"Looks good" is not the check yet — that is\n'},
+      {c:'ou',t:'              the CHECK gate. You have not named what\n'},
+      {c:'ou',t:'              broken would look like. What would a\n'},
+      {c:'ou',t:'              failure have shown here?'},{c:'cur'} ]
+  ];
+  let gen=0;
+  function render(idx){
+    gen++; const myGen=gen;
+    chips.forEach((c,i)=>c.classList.toggle('active',i===idx));
+    term.innerHTML='';
+    const lines=demos[idx];
+    if(REDUCED){
+      term.innerHTML=lines.map(l=> l.c==='cur'?'':'<span class="l '+l.c+'">'+esc(l.t)+'</span>').join('');
+      return;
+    }
+    let li=0;
+    (function typeLine(){
+      if(myGen!==gen||li>=lines.length) return;
+      const l=lines[li];
+      if(l.c==='cur'){ const cu=document.createElement('span'); cu.className='cursor'; term.appendChild(cu); return; }
+      const span=document.createElement('span'); span.className='l '+l.c; term.appendChild(span);
+      let ci=0;
+      (function ch(){
+        if(myGen!==gen) return;
+        span.innerHTML=esc(l.t.slice(0,ci)); ci++;
+        if(ci<=l.t.length) setTimeout(ch, l.c==='ou'?9:22);
+        else { li++; setTimeout(typeLine, 90); }
+      })();
+    })();
+  }
+  chips.forEach((c,i)=>c.addEventListener('click',()=>render(i)));
+  let played=false;
+  new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting&&!played){played=true;render(0);}});},{threshold:.4}).observe(term);
 })();
 
 /* ---------- HUD readouts driven by scroll ---------- */
