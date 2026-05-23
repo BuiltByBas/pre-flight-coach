@@ -1039,7 +1039,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const alt=document.getElementById('alt'), hdg=document.getElementById('hdg'),
         phase=document.getElementById('phase'), fill=document.getElementById('climbfill');
   if(!alt) return;
-  const phasesDown=[[0,'CRUISE'],[.22,'CLIMB'],[.45,'APPROACH'],[.7,'LAND'],[.9,'TAXI']];
+  const phasesDown=[[0,'CRUISE'],[.22,'DESCEND'],[.45,'APPROACH'],[.7,'LAND'],[.9,'TAXI']];
   const phasesUp=[[0,'CRUISE'],[.33,'CLIMB'],[.66,'TAKEOFF'],[.9,'TAXI']];
   let lastY=window.scrollY||0, dir='down';
   function pad(n,l){ return String(Math.round(n)).padStart(l,'0'); }
