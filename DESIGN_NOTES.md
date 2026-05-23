@@ -38,7 +38,7 @@ The behavior is encoded across the folder:
 
 - `identity.md` defines who Pre-Flight is, who it serves, and what it refuses to do.
 - `rules.md` defines the five-stage arc, the four questions, the comprehension checkpoint, and the loop.
-- `examples.md` shows the calibration target: eleven worked dialogues of the coaching voice, across opening conditions, the session modes, the Safety Check, learning mode, and named-rule citations.
+- `examples.md` shows the calibration target: eleven worked dialogues of the coaching voice, across opening conditions, the session modes, the Secops check, learning mode, and named-rule citations.
 - `reference/` holds the frameworks, loaded only when the moment calls for them.
 - The user's project files (`PREFLIGHT.md`, `DECISIONS.md`) carry memory and the leveling signal across sessions.
 
@@ -89,13 +89,13 @@ Most sessions are one feature at a time. But a user who arrives with several fea
 
 The routing into them is deliberately *intelligent, not a tally*, the same instinct as loading reference material on demand. The coach reads the shape of what the user brought, how many genuinely distinct, independently-buildable features are on the table, and routes to fit: a couple into Flight Plan, a batch into Chart a Course, with tightly-coupled steps of one feature staying one feature. When the scale is unclear it asks one framed question rather than guessing. A hard line holds throughout: at most one of each mode runs at a time, and every feature still passes its own checkpoint and its own check. With neither toggle on, none of this is even visible.
 
-### 7. The Safety Check is opt-in and dual-purpose
+### 7. Pre-Flight Secops is opt-in and dual-purpose
 
-The mandatory four-question gate is the floor; the **Safety Check** (`/safety`) is the optional deeper layer. Before a build, it turns the one-line verification answer into a small test plan, the cases worth checking and what each one proves. On real code, it sweeps for the quiet, dangerous things, leaked secrets, unsecured API keys, dead code, and attack-surface weak spots, and teaches each finding rather than dumping a scanner's list. It never replaces the mandatory check, and it never blocks a build: skip it and the floor runs exactly as before.
+The mandatory four-question gate is the floor; the **Pre-Flight Secops** check (`/secops`) is the optional deeper layer. Before a build, it turns the one-line verification answer into a small test plan, the cases worth checking and what each one proves. On real code, it sweeps for the quiet, dangerous things, leaked secrets, unsecured API keys, dead code, and attack-surface weak spots, and teaches each finding rather than dumping a scanner's list. It never replaces the mandatory check, and it never blocks a build: skip it and the floor runs exactly as before.
 
 ### 8. The commands are active, stateful tools, shipped to register
 
-`/plan`, `/chart`, `/safety`, and `/learn` are not descriptions that point elsewhere. Each one acts (switch into its mode, run its check) or shows its state (the current plan, the queue and its per-feature status). They ship twice on purpose: in `reference/skills/` so they load as knowledge on both Claude Code and Claude.ai, and in `.claude/skills/` so Claude Code registers them as native slash commands out of the box. The two copies are byte-identical, kept portable so they resolve from either home. The routing-capable commands (`/plan`, `/chart`) are model-auto-engageable; the strictly opt-in ones (`/safety`, `/learn`) are user-only, so the coach never triggers them unprompted.
+`/plan`, `/chart`, `/secops`, and `/learn` are not descriptions that point elsewhere. Each one acts (switch into its mode, run its check) or shows its state (the current plan, the queue and its per-feature status). They ship twice on purpose: in `reference/skills/` so they load as knowledge on both Claude Code and Claude.ai, and in `.claude/skills/` so Claude Code registers them as native slash commands out of the box. The two copies are byte-identical, kept portable so they resolve from either home. The routing-capable commands (`/plan`, `/chart`) are model-auto-engageable; the strictly opt-in ones (`/secops`, `/learn`) are user-only, so the coach never triggers them unprompted.
 
 ---
 

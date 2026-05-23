@@ -29,7 +29,7 @@ Paste each one and check the behavior against the expected column. Full expected
 
 - Name **four features at once.** It auto-engages **Chart a Course**, says so, and offers an off-ramp; name two or three and it picks **Flight Plan**. Routing is judged on what you bring, not a raw count.
 - **Mid-batch, ask to start another batch.** It refuses, at most one Flight Plan and one Chart a Course run at a time, no exceptions.
-- During scoping, type **`/safety`.** It builds a small **test plan** with you (the cases worth checking and what each proves) and folds it into the build, without replacing the one-line check that still gates.
+- During scoping, type **`/secops`.** It builds a small **test plan** with you (the cases worth checking and what each proves) and folds it into the build, without replacing the one-line check that still gates.
 
 ---
 
@@ -42,7 +42,7 @@ Paste each one and check the behavior against the expected column. Full expected
 - **Mode labels**, it names the phase it's in (idea, gate, build, test, learn) so you feel the structure, not just the output.
 - **`/learn` mode**, opt-in, post-build, taught from your own code, never a generic lecture.
 - **Session modes**, opt-in Flight Plan (map and order several features) and Chart a Course (gate all, build all, test all), entered by name, by `/plan` and `/chart`, or by intelligent auto-routing on the shape of what you bring, never more than one of each at a time.
-- **Safety Check**, opt-in and pre-build (`/safety`), it turns the verification question into a small test plan, the cases worth checking and what each proves, never a generic checklist.
+- **Pre-Flight Secops**, opt-in and pre-build (`/secops`), it turns the verification question into a small test plan, the cases worth checking and what each proves, never a generic checklist.
 
 ---
 
@@ -56,9 +56,9 @@ Paste each one and check the behavior against the expected column. Full expected
 | `pre-flight-coach/examples.md` | Worked dialogues, the calibration target. |
 | `pre-flight-coach/reference/` | The frameworks: the four questions, levels, leveling, learning mode, project types, habits, failure modes, avoidance tells, and more. |
 | `pre-flight-coach/reference/session-modes.md` | The two opt-in session modes, the intelligent routing, and the one-of-each hard gate. |
-| `pre-flight-coach/reference/safety-check.md` | The opt-in pre-build Safety Check (`/safety`). |
+| `pre-flight-coach/reference/secops.md` | The opt-in pre-build Secops check (`/secops`). |
 | `pre-flight-coach/reference/skills/learn/` | The `/learn` slash-command definition. |
-| `pre-flight-coach/reference/skills/plan/`, `course/`, `safety/` | The `/plan`, `/chart`, and `/safety` command definitions. |
+| `pre-flight-coach/reference/skills/plan/`, `chart/`, `secops/` | The `/plan`, `/chart`, and `/secops` command definitions. |
 | `pre-flight-coach/reference/showcase/` | An interactive walkthrough of every feature (also hosted; see the README link). |
 | `README.md` | What it is, how to run it, the verification protocol, and the license. |
 | `DESIGN_NOTES.md` | The design rationale: why it exists, the decisions behind it, what it proved in testing, and what comes next. |

@@ -81,7 +81,7 @@ You do not advance until the current question has a concrete answer. You do not 
 
 Long form, with worked examples and hedge patterns, lives in [reference/the-four-questions.md](reference/the-four-questions.md).
 
-At the second question, the CHECK, the user may opt into a **Pre-Flight Safety Check** (`/safety`), which deepens that single check into a small test plan, the cases worth checking and what each one proves, coached out and folded into the build brief. It deepens the check; it never replaces it, and the one-line CHECK is still the gate. See [reference/safety-check.md](reference/safety-check.md).
+At the second question, the CHECK, the user may opt into the **Pre-Flight Secops** check (`/secops`), which deepens that single check into a small test plan, the cases worth checking and what each one proves, coached out and folded into the build brief. It deepens the check; it never replaces it, and the one-line CHECK is still the gate. See [reference/secops.md](reference/secops.md).
 
 ## Stage 3: The comprehension checkpoint
 

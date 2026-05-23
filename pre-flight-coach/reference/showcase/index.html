@@ -456,7 +456,7 @@ footer a:hover{color:var(--phosphor)}
 
     <div class="gate-foot reveal"><span class="lock">⊘</span> <span>Until all four read <b>ARMED</b>, Pre-Flight holds short. Answer them and it says: <b>“We are ready to build. Are you ready to build it?”</b></span></div>
 
-    <p class="adapt-note reveal">Want more than a one-line check? The optional <b>Pre-Flight Safety Check</b> (<span class="mono">/safety</span>) turns that second question into a real test plan before you build, the cases worth checking and what each one proves, coached out, never handed over as a list. The single check still gates; this only deepens it.</p>
+    <p class="adapt-note reveal">Want more than a one-line check? The optional <b>Pre-Flight Secops</b> check (<span class="mono">/secops</span>) turns that second question into a real test plan before you build, the cases worth checking and what each one proves, coached out, never handed over as a list. The single check still gates; this only deepens it.</p>
 
     <div class="demos reveal">
       <h3 class="demos-h">See it hold the line</h3>
@@ -508,7 +508,7 @@ footer a:hover{color:var(--phosphor)}
 
     <div class="surfaces">
       <div class="surface reveal"><span class="tag">/PLAN</span><h3>Flight Plan</h3><p>Name the features, put them in order, and surface what depends on what. A leaderboard needs scores saved first, so score-saving leads and the leaderboard sits behind it. You own which features matter; Pre-Flight sequences them and flags the dependencies.</p></div>
-      <div class="surface reveal"><span class="tag">/COURSE</span><h3>Chart a Course</h3><p>Every feature clears its own comprehension checkpoint first, no exceptions. Only then does Pre-Flight build the queue back to back, then walks you through testing each one against its own CHECK, in order.</p></div>
+      <div class="surface reveal"><span class="tag">/CHART</span><h3>Chart a Course</h3><p>Every feature clears its own comprehension checkpoint first, no exceptions. Only then does Pre-Flight build the queue back to back, then walks you through testing each one against its own CHECK, in order.</p></div>
     </div>
 
     <div class="terminal reveal" style="margin-top:42px" aria-hidden="true">
@@ -522,11 +522,11 @@ footer a:hover{color:var(--phosphor)}
 
     <div class="reveal" style="margin-top:48px">
       <h3 class="demos-h">Drive it with commands</h3>
-      <p class="demos-sub">Native slash commands on Claude Code, or typed as text on Claude.ai. Each one acts, or shows you its state.</p>
+      <p class="demos-sub">Native slash commands on Claude Code, typed as text on every other surface. Each one acts, or shows you its state.</p>
       <div class="files">
         <div class="row"><span class="fname">/plan</span><span class="fjob">Map and order your features and their dependencies, or show the current plan.</span></div>
         <div class="row"><span class="fname">/chart</span><span class="fjob">Gate, build, and test a feature queue back to back, or show the queue and per-feature status.</span></div>
-        <div class="row"><span class="fname">/safety</span><span class="fjob">Run a Safety Check: a verification test plan before building, plus a security sweep against a catalog of the blind spots AI code review misses, one category at a time.</span></div>
+        <div class="row"><span class="fname">/secops</span><span class="fjob">Run a Secops check: a verification test plan before building, plus a security sweep against a catalog of the blind spots AI code review misses, one category at a time.</span></div>
       </div>
     </div>
   </div>
@@ -617,7 +617,7 @@ footer a:hover{color:var(--phosphor)}
             <summary><span class="ico">▸</span><span class="name">reference/</span><span class="job">The frameworks: two folders and 17 files.</span></summary>
             <div class="children">
               <details class="folder">
-                <summary><span class="ico">▸</span><span class="name">skills/</span><span class="job">The /learn, /plan, /chart and /safety commands.</span></summary>
+                <summary><span class="ico">▸</span><span class="name">skills/</span><span class="job">The /learn, /plan, /chart and /secops commands.</span></summary>
                 <div class="children">
                   <details class="folder">
                     <summary><span class="ico">▸</span><span class="name">learn/</span><span class="job">The command folder.</span></summary>
@@ -638,9 +638,9 @@ footer a:hover{color:var(--phosphor)}
                     </div>
                   </details>
                   <details class="folder">
-                    <summary><span class="ico">▸</span><span class="name">safety/</span><span class="job">The /safety command folder.</span></summary>
+                    <summary><span class="ico">▸</span><span class="name">secops/</span><span class="job">The /secops command folder.</span></summary>
                     <div class="children">
-                      <div class="leaf"><span class="ico">▸</span><span class="name">SKILL.md</span><span class="job">Defines the Pre-Flight Safety Check.</span></div>
+                      <div class="leaf"><span class="ico">▸</span><span class="name">SKILL.md</span><span class="job">Defines Pre-Flight Secops.</span></div>
                     </div>
                   </details>
                 </div>
@@ -661,8 +661,8 @@ footer a:hover{color:var(--phosphor)}
               <div class="leaf"><span class="ico">▸</span><span class="name">development-map.md</span><span class="job">The six development areas and the debrief.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">learning-mode.md</span><span class="job">The opt-in /learn mode and the offer.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">session-modes.md</span><span class="job">Flight Plan and Chart a Course, the two opt-in modes.</span></div>
-              <div class="leaf"><span class="ico">▸</span><span class="name">safety-check.md</span><span class="job">The opt-in pre-build Safety Check (/safety).</span></div>
-              <div class="leaf"><span class="ico">▸</span><span class="name">security-blindspots.md</span><span class="job">The Safety Check catalog of AI-missed security blind spots.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">secops.md</span><span class="job">The opt-in pre-build Secops check (/secops).</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">security-blindspots.md</span><span class="job">The Secops catalog of AI-missed security blind spots.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">principles-canon.md</span><span class="job">Each skill mapped to its recognized source.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">project-memory.md</span><span class="job">Remembering a project across sessions.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">failure-modes.md</span><span class="job">The six week-one anti-patterns.</span></div>
@@ -684,8 +684,11 @@ footer a:hover{color:var(--phosphor)}
     <div class="surfaces">
       <div class="surface reveal"><span class="tag">FULLEST</span><h3>Claude Code</h3><p>Pre-Flight reads and writes files directly. Your project memory, the DECISIONS.md that powers its leveling, and the build itself all live in your folder and carry across sessions automatically.</p></div>
       <div class="surface reveal"><span class="tag">SUPPORTED</span><h3>Claude.ai Projects</h3><p>Connect the repo, pick the folder, say hello. Your first message brings Pre-Flight to life, even just “Hi.”</p></div>
+      <div class="surface reveal"><span class="tag">SUPPORTED</span><h3>ChatGPT</h3><p>Add the folder to a Project, or attach the files, and say hello. Pre-Flight runs on the interpretable context, its commands typed as text.</p></div>
+      <div class="surface reveal"><span class="tag">SUPPORTED</span><h3>Codex</h3><p>Open your repo and point Codex at the folder. The same markdown drives the coaching, its commands typed as text.</p></div>
     </div>
     <div class="models reveal"><span>OPUS</span><span>SONNET</span><span>HAIKU</span><span style="border-style:dashed;color:var(--ink-dim)">any current Claude model</span></div>
+    <div class="models reveal"><span>GPT-5</span><span>o-SERIES</span><span>CODEX</span><span style="border-style:dashed;color:var(--ink-dim)">any current frontier model</span></div>
   </div>
 </section>
 

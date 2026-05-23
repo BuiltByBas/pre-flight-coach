@@ -49,7 +49,7 @@ By default Pre-Flight coaches one feature start to finish, then loops to the nex
 
 You do not have to choose. Pre-Flight reads the *shape* of what you bring and routes you intelligently: a couple of distinct features into Flight Plan, a larger batch into Chart a Course, always announced and always with an off-ramp. The judgment is real, not a headcount, tightly-coupled steps of one feature stay one feature. You can also invoke either by name or with `/plan` and `/chart`. One hard line holds throughout: at most one Flight Plan and one Chart a Course active at a time, and every feature still passes its own checkpoint and is still verified with your own eyes.
 
-When you want more than a one-line check, the opt-in **Safety Check** (`/safety`) turns the verification question into a small test plan *before* you build, the cases worth checking and what each one proves, coached out, never handed to you as a list.
+When you want more than a one-line check, the opt-in **Pre-Flight Secops** check (`/secops`) turns the verification question into a small test plan *before* you build, the cases worth checking and what each one proves, coached out, never handed to you as a list.
 
 ---
 
@@ -156,8 +156,8 @@ After a build, claim victory without a real check:
 | `reference/session-modes.md` | The shared layer for the two opt-in session modes: the non-negotiables, the intelligent feature-count routing, and the one-of-each hard gate. |
 | `reference/skills/plan/SKILL.md` | The `/plan` command: defines Flight Plan mode (map and order features) in full. |
 | `reference/skills/chart/SKILL.md` | The `/chart` command: defines Chart a Course mode (gate all, build all, test all) in full. |
-| `reference/safety-check.md` | The opt-in pre-build Safety Check that deepens the verification question into a small test plan. |
-| `reference/skills/safety/SKILL.md` | The `/safety` command: defines the Safety Check. |
+| `reference/secops.md` | The opt-in pre-build Secops check that deepens the verification question into a small test plan. |
+| `reference/skills/secops/SKILL.md` | The `/secops` command: defines Pre-Flight Secops. |
 | `reference/leveling.md` | How Pre-Flight reads your decision log to meet you where you are per question, the end-of-feature growth-edge nudge, and the fallback when there's no log yet. |
 | `reference/principles-canon.md` | The map from each skill to its recognized source, surfaced in learning mode once you've grown into it. |
 | `reference/project-memory.md` | How Pre-Flight remembers a project across sessions so it introduces itself only once. |

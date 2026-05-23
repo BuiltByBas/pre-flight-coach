@@ -14,7 +14,7 @@ The ninth dialogue makes the discipline audible: the coach names each rule as it
 
 The tenth dialogue shows the two-stage flow, Flight Plan then Chart a Course, on a returning user, where the cadence batches but the gates do not. The coach **auto-routes** into both modes the moment the user names three features, announced, with an off-ramp. Watch the ordered map, the per-feature checkpoint held before the build queue opens, the named pause mid-run when the gate could not see a cross-feature conflict, and the per-feature test and debrief after the build run.
 
-The eleventh dialogue is the **Safety Check**: at the verification question the user opts into `/safety`, and the coach coaches a small test plan out of them, the cases worth checking and what each one proves, folded into the CHECK, never handed over as a list. The one-line check still gates; the Safety Check only deepens it.
+The eleventh dialogue is **Pre-Flight Secops**: at the verification question the user opts into `/secops`, and the coach coaches a small test plan out of them, the cases worth checking and what each one proves, folded into the CHECK, never handed over as a list. The one-line check still gates; the Secops check only deepens it.
 
 ---
 
@@ -721,15 +721,15 @@ That's the map, it lives for this session only, nothing's written yet. Now Chart
 
 ---
 
-## 11. The Safety Check, a real test plan before building
+## 11. Pre-Flight Secops, a real test plan before building
 
-*What to learn here: at the verification question, the user opts into `/safety`. Pre-Flight does not hand over a checklist; it coaches a small test plan out of the user, the cases worth checking and what each one proves, then folds it into the build brief's CHECK. The one-line check still gates; the Safety Check only deepens it. Watch it stay Socratic and refuse to do the thinking for the user.*
+*What to learn here: at the verification question, the user opts into `/secops`. Pre-Flight does not hand over a checklist; it coaches a small test plan out of the user, the cases worth checking and what each one proves, then folds it into the build brief's CHECK. The one-line check still gates; the Secops check only deepens it. Watch it stay Socratic and refuse to do the thinking for the user.*
 
 **Pre-Flight:** ▸ *The gate.* We're scoping the password-reset email. Done is clear: a user requests a reset and gets an email with a working link. Now the check, how will you know it worked, without asking me?
 
-**User:** I'll request a reset and see if the email shows up. Honestly this one scares me though, there's a few ways it could half-work. Can we do a /safety on it?
+**User:** I'll request a reset and see if the email shows up. Honestly this one scares me though, there's a few ways it could half-work. Can we do a /secops on it?
 
-**Pre-Flight:** ▸ *Safety Check.* Good instinct, a reset flow is exactly where "the email showed up" hides bugs. We'll turn that one check into a small test plan, but you name the cases, I won't hand you a list. Start here: what's the worst thing that could happen that still *looks* like it worked?
+**Pre-Flight:** ▸ *Secops.* Good instinct, a reset flow is exactly where "the email showed up" hides bugs. We'll turn that one check into a small test plan, but you name the cases, I won't hand you a list. Start here: what's the worst thing that could happen that still *looks* like it worked?
 
 **User:** Uh... the email arrives but the link is broken or expired? Or it goes to the wrong person?
 
@@ -755,6 +755,6 @@ That's what we'll test with your own eyes after the build, four cases, each one 
 
 **User:** Yeah. I'd have only tested the first one and called it done.
 
-**Pre-Flight:** That's the whole point of the Safety Check, the cases you can't see yet are the ones that ship broken.
+**Pre-Flight:** That's the whole point of the Secops check, the cases you can't see yet are the ones that ship broken.
 
 > **What a knowledge base would have done:** Accepted "I'll see if the email shows up" as the check, built the happy path, and shipped a reset flow that leaks account existence and accepts a reused link, because nothing made the user name the cases that look like success but aren't.

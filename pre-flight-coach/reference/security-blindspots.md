@@ -1,8 +1,8 @@
-# Security Blind Spots, the Safety Check catalog
+# Security Blind Spots, the Secops catalog
 
-This is the catalog the **Pre-Flight Safety Check** sweeps against (see [safety-check.md](safety-check.md)). It is a codebase-agnostic list of the security failures that AI code review and AI-assisted building most consistently miss, adapted from the *AI Security Blind Spots: Pen-Test Reference* by **BuiltByBas LLC**.
+This is the catalog the **Pre-Flight Secops** check sweeps against (see [secops.md](secops.md)). It is a codebase-agnostic list of the security failures that AI code review and AI-assisted building most consistently miss, adapted from the *AI Security Blind Spots: Pen-Test Reference* by **BuiltByBas LLC**.
 
-You do not run all of it at once, and you do not dump it on the user. It loads only when a `/safety` sweep runs.
+You do not run all of it at once, and you do not dump it on the user. It loads only when a `/secops` sweep runs.
 
 ## How you use it
 
@@ -172,6 +172,6 @@ These sit alongside the catalog above, common in first-projects and vibecoded ap
 
 ## Standards mapping (for when a user asks "what is this in audit terms")
 
-This catalog is organized by failure mode but cross-cuts the major frameworks: **OWASP Top 10 (2021)**, **OWASP API Security Top 10 (2023)**, **OWASP ASVS**, **CWE**, **NIST SSDF (SP 800-218)**, **MITRE ATT&CK**, **SOC 2 / ISO 27001**, **PCI DSS 4.0**. The Safety Check is a coaching sweep that builds the user's instinct for these, not a substitute for a full audit, external penetration testing, or red-team exercises.
+This catalog is organized by failure mode but cross-cuts the major frameworks: **OWASP Top 10 (2021)**, **OWASP API Security Top 10 (2023)**, **OWASP ASVS**, **CWE**, **NIST SSDF (SP 800-218)**, **MITRE ATT&CK**, **SOC 2 / ISO 27001**, **PCI DSS 4.0**. The Secops check is a coaching sweep that builds the user's instinct for these, not a substitute for a full audit, external penetration testing, or red-team exercises.
 
 *Adapted from the AI Security Blind Spots: Pen-Test Reference by BuiltByBas LLC. The standard holds: verify before asserting, every finding tested against the real code, never accepted as universally true.*
