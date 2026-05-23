@@ -1,6 +1,6 @@
 # Session modes
 
-This file holds what the two opt-in session modes **share**. The modes themselves are each defined in full in their own skill file: Flight Plan in [skills/plan/SKILL.md](skills/plan/SKILL.md), Chart a Course in [skills/course/SKILL.md](skills/course/SKILL.md). This file is the shared layer beneath both: the non-negotiables they never break, how they are surfaced and auto-routed, and how they compose.
+This file holds what the two opt-in session modes **share**. The modes themselves are each defined in full in their own skill file: Flight Plan in [skills/plan/SKILL.md](skills/plan/SKILL.md), Chart a Course in [skills/chart/SKILL.md](skills/chart/SKILL.md). This file is the shared layer beneath both: the non-negotiables they never break, how they are surfaced and auto-routed, and how they compose.
 
 Both modes change the *cadence* of a session without touching its spine. Flight Plan batches the *ordering*; Chart a Course batches the *building*. Neither batches the *understanding*. The default arc runs one feature end to end before the next begins; these modes let a user who arrives with several features in mind line them up and build them back to back. They are conveniences laid on top of the arc, not a replacement for it. The bar they both clear, every time, is one line: the comprehension checkpoint and the CHECK gate run on every feature, always, no matter which mode is on.
 
@@ -21,7 +21,7 @@ There are two toggles, **Flight Plan** and **Chart a Course**. They are independ
 
 They are surfaced at session start with one light touch, never a menu and never a sales pitch. On first contact, the modes are named once inside the greeting (see [../rules.md](../rules.md)) and then reinforced with one light reminder woven into the opening move, no second pitch. For a returning user, that one light line in the opening move is the only surface. Either way it is an offer the user can pass over without a word, and the plain arc runs if they do.
 
-The user can also invoke either mode by name at any time, and the `/plan` and `/course` commands are the shortcut into each. Each mode is **defined in full** in its own skill file, [skills/plan/SKILL.md](skills/plan/SKILL.md) and [skills/course/SKILL.md](skills/course/SKILL.md), the same place its trigger lives (mirroring how `/learn` is defined in [skills/learn/SKILL.md](skills/learn/SKILL.md), see [learning-mode.md](learning-mode.md)). Those files own each mode's behavior; this file owns the rules both obey. Either mode runs alone. When both are on, Flight Plan runs first and feeds Chart a Course: the plan it produces becomes the build queue.
+The user can also invoke either mode by name at any time, and the `/plan` and `/chart` commands are the shortcut into each. Each mode is **defined in full** in its own skill file, [skills/plan/SKILL.md](skills/plan/SKILL.md) and [skills/chart/SKILL.md](skills/chart/SKILL.md), the same place its trigger lives (mirroring how `/learn` is defined in [skills/learn/SKILL.md](skills/learn/SKILL.md), see [learning-mode.md](learning-mode.md)). Those files own each mode's behavior; this file owns the rules both obey. Either mode runs alone. When both are on, Flight Plan runs first and feeds Chart a Course: the plan it produces becomes the build queue.
 
 ## Intelligent auto-routing
 
@@ -37,7 +37,7 @@ Judge real features, not items. A list of tightly-coupled steps that add up to o
 
 **When the count is not obvious, ask one framed question (Event 2).** If you cannot tell the scale from what they said, do not guess and do not silently default. Ask one calibration question, the same clean shape as the intake level question, never a menu and never a pitch: "Before we dive in, are you here to build one feature start to finish, a handful you'd like mapped out first, or a whole batch to build back to back?" Their answer routes them: one to the arc, a handful to Flight Plan, a batch to Chart a Course. This is the catch for the case the obvious-count path misses, so the modes are always surfaced, by detection or by one question.
 
-**Guardrails.** Auto-routing changes cadence only; every feature still passes its own comprehension checkpoint and is still verified against its own CHECK (see the non-negotiables above). If the user has already chosen a mode by name or with `/plan` or `/course`, that choice stands, you do not override it. And the off-ramp always lands on the plain arc with the first feature, never anywhere worse than where they started.
+**Guardrails.** Auto-routing changes cadence only; every feature still passes its own comprehension checkpoint and is still verified against its own CHECK (see the non-negotiables above). If the user has already chosen a mode by name or with `/plan` or `/chart`, that choice stands, you do not override it. And the off-ramp always lands on the plain arc with the first feature, never anywhere worse than where they started.
 
 ## The two-stage flow
 

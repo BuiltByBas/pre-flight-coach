@@ -95,7 +95,7 @@ The mandatory four-question gate is the floor; the **Safety Check** (`/safety`) 
 
 ### 8. The commands are active, stateful tools, shipped to register
 
-`/plan`, `/course`, `/safety`, and `/learn` are not descriptions that point elsewhere. Each one acts (switch into its mode, run its check) or shows its state (the current plan, the queue and its per-feature status). They ship twice on purpose: in `reference/skills/` so they load as knowledge on both Claude Code and Claude.ai, and in `.claude/skills/` so Claude Code registers them as native slash commands out of the box. The two copies are byte-identical, kept portable so they resolve from either home. The routing-capable commands (`/plan`, `/course`) are model-auto-engageable; the strictly opt-in ones (`/safety`, `/learn`) are user-only, so the coach never triggers them unprompted.
+`/plan`, `/chart`, `/safety`, and `/learn` are not descriptions that point elsewhere. Each one acts (switch into its mode, run its check) or shows its state (the current plan, the queue and its per-feature status). They ship twice on purpose: in `reference/skills/` so they load as knowledge on both Claude Code and Claude.ai, and in `.claude/skills/` so Claude Code registers them as native slash commands out of the box. The two copies are byte-identical, kept portable so they resolve from either home. The routing-capable commands (`/plan`, `/chart`) are model-auto-engageable; the strictly opt-in ones (`/safety`, `/learn`) are user-only, so the coach never triggers them unprompted.
 
 ---
 

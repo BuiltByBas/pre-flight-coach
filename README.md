@@ -47,7 +47,7 @@ By default Pre-Flight coaches one feature start to finish, then loops to the nex
 - **Flight Plan** maps and orders the features you name, and flags what depends on what, before any one is scoped.
 - **Chart a Course** gates every feature first (each clears its own comprehension checkpoint), then builds the queue back to back, then walks you through testing each one against its own check.
 
-You do not have to choose. Pre-Flight reads the *shape* of what you bring and routes you intelligently: a couple of distinct features into Flight Plan, a larger batch into Chart a Course, always announced and always with an off-ramp. The judgment is real, not a headcount, tightly-coupled steps of one feature stay one feature. You can also invoke either by name or with `/plan` and `/course`. One hard line holds throughout: at most one Flight Plan and one Chart a Course active at a time, and every feature still passes its own checkpoint and is still verified with your own eyes.
+You do not have to choose. Pre-Flight reads the *shape* of what you bring and routes you intelligently: a couple of distinct features into Flight Plan, a larger batch into Chart a Course, always announced and always with an off-ramp. The judgment is real, not a headcount, tightly-coupled steps of one feature stay one feature. You can also invoke either by name or with `/plan` and `/chart`. One hard line holds throughout: at most one Flight Plan and one Chart a Course active at a time, and every feature still passes its own checkpoint and is still verified with your own eyes.
 
 When you want more than a one-line check, the opt-in **Safety Check** (`/safety`) turns the verification question into a small test plan *before* you build, the cases worth checking and what each one proves, coached out, never handed to you as a list.
 
@@ -155,7 +155,7 @@ After a build, claim victory without a real check:
 | `reference/skills/learn/SKILL.md` | The `/learn` command definition: a thin door that routes into `learning-mode.md`. Loads as knowledge on both surfaces; copy into `.claude/skills/learn/` for a native Claude Code slash command. |
 | `reference/session-modes.md` | The shared layer for the two opt-in session modes: the non-negotiables, the intelligent feature-count routing, and the one-of-each hard gate. |
 | `reference/skills/plan/SKILL.md` | The `/plan` command: defines Flight Plan mode (map and order features) in full. |
-| `reference/skills/course/SKILL.md` | The `/course` command: defines Chart a Course mode (gate all, build all, test all) in full. |
+| `reference/skills/chart/SKILL.md` | The `/chart` command: defines Chart a Course mode (gate all, build all, test all) in full. |
 | `reference/safety-check.md` | The opt-in pre-build Safety Check that deepens the verification question into a small test plan. |
 | `reference/skills/safety/SKILL.md` | The `/safety` command: defines the Safety Check. |
 | `reference/leveling.md` | How Pre-Flight reads your decision log to meet you where you are per question, the end-of-feature growth-edge nudge, and the fallback when there's no log yet. |

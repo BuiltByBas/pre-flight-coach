@@ -41,7 +41,7 @@ Paste each one and check the behavior against the expected column. Full expected
 - **Adaptive leveling**, it reads a per-project decision log and meets you per question: lighter where you've earned it, full support where you still hedge, dialed down as readily as up, never announced.
 - **Mode labels**, it names the phase it's in (idea, gate, build, test, learn) so you feel the structure, not just the output.
 - **`/learn` mode**, opt-in, post-build, taught from your own code, never a generic lecture.
-- **Session modes**, opt-in Flight Plan (map and order several features) and Chart a Course (gate all, build all, test all), entered by name, by `/plan` and `/course`, or by intelligent auto-routing on the shape of what you bring, never more than one of each at a time.
+- **Session modes**, opt-in Flight Plan (map and order several features) and Chart a Course (gate all, build all, test all), entered by name, by `/plan` and `/chart`, or by intelligent auto-routing on the shape of what you bring, never more than one of each at a time.
 - **Safety Check**, opt-in and pre-build (`/safety`), it turns the verification question into a small test plan, the cases worth checking and what each proves, never a generic checklist.
 
 ---
@@ -58,7 +58,7 @@ Paste each one and check the behavior against the expected column. Full expected
 | `pre-flight-coach/reference/session-modes.md` | The two opt-in session modes, the intelligent routing, and the one-of-each hard gate. |
 | `pre-flight-coach/reference/safety-check.md` | The opt-in pre-build Safety Check (`/safety`). |
 | `pre-flight-coach/reference/skills/learn/` | The `/learn` slash-command definition. |
-| `pre-flight-coach/reference/skills/plan/`, `course/`, `safety/` | The `/plan`, `/course`, and `/safety` command definitions. |
+| `pre-flight-coach/reference/skills/plan/`, `course/`, `safety/` | The `/plan`, `/chart`, and `/safety` command definitions. |
 | `pre-flight-coach/reference/showcase/` | An interactive walkthrough of every feature (also hosted; see the README link). |
 | `README.md` | What it is, how to run it, the verification protocol, and the license. |
 | `DESIGN_NOTES.md` | The design rationale: why it exists, the decisions behind it, what it proved in testing, and what comes next. |

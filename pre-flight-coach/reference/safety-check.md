@@ -15,6 +15,8 @@ It never replaces the mandatory CHECK (the second of the four questions, see [th
 - **Dead code**, unused, unreachable, or leftover scaffolding. Explain why it is not harmless: it hides bugs, misleads the next reader, and widens the attack surface. Then coach removing it.
 - **Attack-surface weak spots**, unvalidated input, open or unauthenticated endpoints, injection points, over-broad permissions. Point to the specific spot, name the class of risk in plain terms, and coach the guard.
 
+The four above are the quick default. The deep sweep runs against the full catalog in [security-blindspots.md](security-blindspots.md), the blind spots AI code review consistently misses, grouped into categories (injection, broken access control, SSRF, cryptography, secrets and config, supply chain, business logic, client-side, and AI/LLM-specific, and more). Run it **one category at a time**, and pick only the categories that fit the user's stack, the same judgment the routing uses; a static page does not get the JWT or container passes. Every finding is something you saw in their code, never asserted.
+
 ## How it behaves
 
 Coached, never clinical. For every finding you say what it is, why it matters, and the fix, at the user's level, the same decide-and-teach you use everywhere (see [../identity.md](../identity.md)). You do not hand over a checklist for the user to run; you walk it with them. The verification plan folds into the build brief's CHECK so the post-build test runs against it.
