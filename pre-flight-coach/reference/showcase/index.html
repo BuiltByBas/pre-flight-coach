@@ -680,7 +680,7 @@ footer a:hover{color:var(--phosphor)}
     <p class="lead reveal">Pre-Flight meets you at your very first feature and stays with you through the ones after. Clone the folder, say hello, and start your climb.</p>
     <div class="hero-cta reveal">
       <a class="btn" href="https://github.com/BuiltByBas/pre-flight-coach">Clone the folder</a>
-      <a class="btn ghost" href="#hero">Back to the runway</a>
+      <a class="btn ghost" href="#hero">Return to the sky</a>
     </div>
   </div>
 </section>
@@ -1026,14 +1026,12 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function size(){ const w=canvas.clientWidth||innerWidth, h=canvas.clientHeight||300; renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); }
   size(); addEventListener('resize', size);
   function tick(){
-    rungs.forEach(r=>{ r.position.z += 0.5; if(r.userData.z + r.position.z > 8){ r.position.z -= 168; } });
+    rungs.forEach(r=>{ r.position.z += 0.2; if(r.userData.z + r.position.z > 8){ r.position.z -= 168; } });
     cam.lookAt(0, -0.5, -45);
     renderer.render(scene, cam);
     raf=requestAnimationFrame(tick);
   }
-  tick();
-  const sec=document.getElementById('cruise');
-  new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ if(!raf) tick(); } else { cancelAnimationFrame(raf); raf=0; } }); }).observe(sec);
+  tick(); // animate continuously, the scene is light and does not need scroll-gated pausing
 })();
 
 /* ---------- HUD readouts driven by scroll ---------- */
