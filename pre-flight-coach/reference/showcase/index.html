@@ -384,10 +384,10 @@ footer a:hover{color:var(--phosphor)}
 <!-- ===== FIXED HUD ===== -->
 <div class="hud" id="hud" aria-hidden="true">
   <div class="frame"></div>
-  <div class="hud-readout hud-tl"><span class="lbl">Altitude</span><span class="val" id="alt">00000</span><span style="font-size:.6rem;color:var(--phosphor-dim)">FT</span></div>
+  <div class="hud-readout hud-tl"><span class="lbl">Altitude</span><span class="val" id="alt">38000</span><span style="font-size:.6rem;color:var(--phosphor-dim)">FT</span></div>
   <div class="hud-readout hud-tr"><span class="lbl">Heading</span><span class="val" id="hdg">000</span><span style="font-size:.6rem;color:var(--phosphor-dim)">DEG</span></div>
   <div class="hud-readout hud-bl"><span class="status-dot"></span>PRE-FLIGHT • SYS NOMINAL</div>
-  <div class="hud-readout hud-br"><span class="lbl">Phase</span><span class="val mono" id="phase" style="font-size:.78rem;letter-spacing:.16em">TAXI</span></div>
+  <div class="hud-readout hud-br"><span class="lbl">Phase</span><span class="val mono" id="phase" style="font-size:.78rem;letter-spacing:.16em">CRUISE</span></div>
 </div>
 <div class="climb" id="climb"><div class="fill" id="climbfill"></div></div>
 
@@ -435,7 +435,7 @@ footer a:hover{color:var(--phosphor)}
       </div>
       <div class="check reveal" data-armable>
         <div class="led"></div>
-        <div><span class="kw">CHECK</span><h3>How will you verify it with your own eyes?</h3><p>Proof you can see yourself, never just trusting the machine's say-so that it worked.</p></div>
+        <div><span class="kw">CHECK</span><h3>How will YOU verify it works?</h3><p>Proof you can see yourself, never just trusting the machine's say-so that it worked.</p></div>
         <div class="stat">ARM</div>
       </div>
       <div class="check reveal" data-armable>
@@ -719,6 +719,30 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({color:0x9fe9cf, size:0.13, transparent:true, opacity:.8}));
   scene.add(stars);
 
+  // clouds: soft sprites zipping past at altitude
+  const cloudTex = (function(){
+    const cv=document.createElement('canvas'); cv.width=cv.height=64;
+    const cx=cv.getContext('2d');
+    const rg=cx.createRadialGradient(32,32,0,32,32,32);
+    rg.addColorStop(0,'rgba(205,240,228,0.9)');
+    rg.addColorStop(0.5,'rgba(150,215,195,0.32)');
+    rg.addColorStop(1,'rgba(120,200,180,0)');
+    cx.fillStyle=rg; cx.fillRect(0,0,64,64);
+    return new THREE.CanvasTexture(cv);
+  })();
+  const CLOUDS=26, cloudGeo=new THREE.BufferGeometry(), cpos=new Float32Array(CLOUDS*3);
+  for(let i=0;i<CLOUDS;i++){
+    cpos[i*3]=(Math.random()-.5)*42;
+    cpos[i*3+1]=Math.random()*15+1.5;
+    cpos[i*3+2]=-Math.random()*150-5;
+  }
+  cloudGeo.setAttribute('position', new THREE.BufferAttribute(cpos,3));
+  const clouds=new THREE.Points(cloudGeo, new THREE.PointsMaterial({
+    map:cloudTex, color:0xa8e6d4, size:7, transparent:true, opacity:.5,
+    depthWrite:false, blending:THREE.AdditiveBlending, sizeAttenuation:true
+  }));
+  scene.add(clouds);
+
   // runway: receding grid of lines
   const grid = new THREE.Group();
   const lineMat = new THREE.LineBasicMaterial({color:0x43f5b0, transparent:true, opacity:0.32});
@@ -736,7 +760,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-3,0,z), new THREE.Vector3(3,0,z)]);
     const l=new THREE.Line(g, dimMat); l.userData.z=z; rungs.push(l); grid.add(l);
   }
-  grid.position.y=-1.6; scene.add(grid);
+  grid.position.y=-3.2; scene.add(grid);
 
   let raf, t=0;
   function resize(){ renderer.setSize(innerWidth, innerHeight); cam.aspect=innerWidth/innerHeight; cam.updateProjectionMatrix(); }
@@ -746,8 +770,14 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     t+=0.016;
     rungs.forEach(r=>{ r.position.z += 0.55; if(r.userData.z + r.position.z > 8){ r.position.z -= 168; } });
     stars.rotation.y = t*0.01;
+    const cp=clouds.geometry.attributes.position;
+    for(let i=0;i<CLOUDS;i++){
+      cp.array[i*3+2]+=0.24;
+      if(cp.array[i*3+2]>10){ cp.array[i*3+2]=-150; cp.array[i*3]=(Math.random()-.5)*42; cp.array[i*3+1]=Math.random()*15+1.5; }
+    }
+    cp.needsUpdate=true;
     cam.position.x = Math.sin(t*0.18)*0.25;
-    cam.lookAt(0, 1.2, -40);
+    cam.lookAt(0, -2.6, -20);
     renderer.render(scene, cam);
     raf=requestAnimationFrame(tick);
   }
@@ -988,15 +1018,20 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const alt=document.getElementById('alt'), hdg=document.getElementById('hdg'),
         phase=document.getElementById('phase'), fill=document.getElementById('climbfill');
   if(!alt) return;
-  const phases=[[0,'TAXI'],[.08,'TAKEOFF'],[.28,'CLIMB'],[.62,'CRUISE'],[.93,'APPROACH']];
+  const phasesDown=[[0,'CRUISE'],[.22,'CLIMB'],[.45,'APPROACH'],[.7,'LAND'],[.9,'TAXI']];
+  const phasesUp=[[0,'CRUISE'],[.33,'CLIMB'],[.66,'TAKEOFF'],[.9,'TAXI']];
+  let lastY=window.scrollY||0, dir='down';
   function pad(n,l){ return String(Math.round(n)).padStart(l,'0'); }
   function onScroll(){
     const max=document.body.scrollHeight-innerHeight;
     const p=max>0?Math.min(scrollY/max,1):0;
-    alt.textContent=pad(p*38000,5);
+    alt.textContent=pad((1-p)*38000,5);
     hdg.textContent=pad(((p*340)%360),3);
     fill.style.height=(p*100)+'%';
-    let ph='TAXI'; phases.forEach(([thr,name])=>{ if(p>=thr) ph=name; });
+    if(scrollY>lastY+1) dir='down'; else if(scrollY<lastY-1) dir='up';
+    lastY=scrollY;
+    const seq = dir==='down' ? phasesDown : phasesUp;
+    let ph=seq[0][1]; seq.forEach(([thr,name])=>{ if(p>=thr) ph=name; });
     phase.textContent=ph;
   }
   addEventListener('scroll', onScroll, {passive:true}); onScroll();
