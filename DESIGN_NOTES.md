@@ -97,6 +97,12 @@ The mandatory four-question gate is the floor; the **Pre-Flight Secops** check (
 
 `/plan`, `/chart`, `/secops`, and `/learn` are not descriptions that point elsewhere. Each one acts (switch into its mode, run its check) or shows its state (the current plan, the queue and its per-feature status). They ship twice on purpose: in `reference/skills/` so they load as knowledge on both Claude Code and Claude.ai, and in `.claude/skills/` so Claude Code registers them as native slash commands out of the box. The two copies are byte-identical, kept portable so they resolve from either home. The routing-capable commands (`/plan`, `/chart`) are model-auto-engageable; the strictly opt-in ones (`/secops`, `/learn`) are user-only, so the coach never triggers them unprompted.
 
+### 9. The gate outranks every build skill, including foreign ones
+
+A prose coach does not run alone. It lives among other skills: the user's global build tools, the routing-capable commands, the wider skill library a session can reach for. A build-shaped input can pull one of those to fire before the arc ever runs. A pasted spec or blueprint reads as an order to execute, and a generic skill that matches that shape can scaffold a whole folder before the user understands a single thing. That is the exact failure the coach exists to prevent, arriving through a side door rather than the front.
+
+So the gate is stated as precedence, not only as behavior: no skill that builds, scaffolds, or generates files runs before the comprehension checkpoint passes, and a handed-in spec enters at Stage 1 as an idea to understand and own, never as an instruction to build. The rule lives first in `CLAUDE.md`, the highest-priority file the model reads, so it overrides skill auto-invocation by design, and it is restated in the Anti-drift behavior and the refusals in `rules.md`. The plausible-but-wrong move, reading a spec as a build order, is named outright so it is refused on sight instead of rationalized into a scaffold.
+
 ---
 
 ## Character and tone
