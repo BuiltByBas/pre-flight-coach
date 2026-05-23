@@ -45,9 +45,9 @@ The floor never moves: empathy is universal, and it scaffolds whenever you are s
 By default Pre-Flight coaches one feature start to finish, then loops to the next. When you arrive with several features in mind, two optional modes change the cadence without ever loosening the gate:
 
 - **Flight Plan** maps and orders the features you name, and flags what depends on what, before any one is scoped.
-- **Batch Build** gates every feature first (each clears its own comprehension checkpoint), then builds the queue back to back, then walks you through testing each one against its own check.
+- **Chart a Course** gates every feature first (each clears its own comprehension checkpoint), then builds the queue back to back, then walks you through testing each one against its own check.
 
-You do not have to choose. Pre-Flight reads the *shape* of what you bring and routes you intelligently: a couple of distinct features into Flight Plan, a larger batch into Batch Build, always announced and always with an off-ramp. The judgment is real, not a headcount, tightly-coupled steps of one feature stay one feature. You can also invoke either by name or with `/plan` and `/batch`. One hard line holds throughout: at most one Flight Plan and one Batch Build active at a time, and every feature still passes its own checkpoint and is still verified with your own eyes.
+You do not have to choose. Pre-Flight reads the *shape* of what you bring and routes you intelligently: a couple of distinct features into Flight Plan, a larger batch into Chart a Course, always announced and always with an off-ramp. The judgment is real, not a headcount, tightly-coupled steps of one feature stay one feature. You can also invoke either by name or with `/plan` and `/course`. One hard line holds throughout: at most one Flight Plan and one Chart a Course active at a time, and every feature still passes its own checkpoint and is still verified with your own eyes.
 
 When you want more than a one-line check, the opt-in **Safety Check** (`/safety`) turns the verification question into a small test plan *before* you build, the cases worth checking and what each one proves, coached out, never handed to you as a list.
 
@@ -57,7 +57,7 @@ When you want more than a one-line check, the opt-in **Safety Check** (`/safety`
 
 1. Clone this repo.
 2. Activate Pre-Flight on your surface (see Activation below). On Claude Code, the folder activates automatically via `CLAUDE.md`. On Claude.ai, create a Project and connect this GitHub repo, then select the `pre-flight-coach/` folder.
-3. Say hello. On a new project Pre-Flight introduces itself, shows you the ways you can work together (one feature at a time, Flight Plan, Batch Build, `/learn`), and asks one quick question to tailor your coaching, then takes it from there. It remembers you, so it only does that once per project.
+3. Say hello. On a new project Pre-Flight introduces itself, shows you the ways you can work together (one feature at a time, Flight Plan, Chart a Course, `/learn`), and asks one quick question to tailor your coaching, then takes it from there. It remembers you, so it only does that once per project.
 4. Learn the why, not just the how. Once you have built something, type `/learn` any time to pause and learn a principle from your actual work (`/learn` on its own offers a menu; `/learn security`, `/learn tdd`, `/learn verification`, or `/learn architecture` go straight in). Pre-Flight also opens a "Ready to learn?" offer on its own at the end of each feature, so it is always there when you want it, and a "not now" away when you do not.
 
 ---
@@ -82,7 +82,7 @@ Claude Code reads `CLAUDE.md` automatically, but only from the folder you **star
 
 The first time, Pre-Flight introduces itself, learns where you are, then coaches. After that it just gets to work.
 
-**Pre-Flight:** Hi, I'm Pre-Flight, an AI developer coach for people still finding their footing. Here's how we can work: one feature at a time (the default), Flight Plan or Batch Build if you arrive with several in mind, and `/learn` any time after we build to learn the why from your own code. What to expect: one question at a time, no building until you can say in your own words what we're making and how you'll know it worked, and we test it with your own eyes. One quick question first, so I can tailor this. Which best describes you? (1) I haven't built before. (2) I've built part of a project. (3) I've built a project but I haven't shipped anything yet.
+**Pre-Flight:** Hi, I'm Pre-Flight, an AI developer coach for people still finding their footing. Here's how we can work: one feature at a time (the default), Flight Plan or Chart a Course if you arrive with several in mind, and `/learn` any time after we build to learn the why from your own code. What to expect: one question at a time, no building until you can say in your own words what we're making and how you'll know it worked, and we test it with your own eyes. One quick question first, so I can tailor this. Which best describes you? (1) I haven't built before. (2) I've built part of a project. (3) I've built a project but I haven't shipped anything yet.
 
 **You:** 1, this is my first time.
 
@@ -155,7 +155,7 @@ After a build, claim victory without a real check:
 | `reference/skills/learn/SKILL.md` | The `/learn` command definition: a thin door that routes into `learning-mode.md`. Loads as knowledge on both surfaces; copy into `.claude/skills/learn/` for a native Claude Code slash command. |
 | `reference/session-modes.md` | The shared layer for the two opt-in session modes: the non-negotiables, the intelligent feature-count routing, and the one-of-each hard gate. |
 | `reference/skills/plan/SKILL.md` | The `/plan` command: defines Flight Plan mode (map and order features) in full. |
-| `reference/skills/batch/SKILL.md` | The `/batch` command: defines Batch Build mode (gate all, build all, test all) in full. |
+| `reference/skills/course/SKILL.md` | The `/course` command: defines Chart a Course mode (gate all, build all, test all) in full. |
 | `reference/safety-check.md` | The opt-in pre-build Safety Check that deepens the verification question into a small test plan. |
 | `reference/skills/safety/SKILL.md` | The `/safety` command: defines the Safety Check. |
 | `reference/leveling.md` | How Pre-Flight reads your decision log to meet you where you are per question, the end-of-feature growth-edge nudge, and the fallback when there's no log yet. |

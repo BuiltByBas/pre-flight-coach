@@ -38,7 +38,7 @@ The behavior is encoded across the folder:
 
 - `identity.md` defines who Pre-Flight is, who it serves, and what it refuses to do.
 - `rules.md` defines the five-stage arc, the four questions, the comprehension checkpoint, and the loop.
-- `examples.md` shows the calibration target: nine worked dialogues of the coaching voice under different opening conditions.
+- `examples.md` shows the calibration target: eleven worked dialogues of the coaching voice, across opening conditions, the session modes, the Safety Check, learning mode, and named-rule citations.
 - `reference/` holds the frameworks, loaded only when the moment calls for them.
 - The user's project files (`PREFLIGHT.md`, `DECISIONS.md`) carry memory and the leveling signal across sessions.
 
@@ -47,6 +47,8 @@ The working mechanism became:
 > Pre-Flight does not let a build start vague. Every feature passes through a gate: a clear definition of done, a real way to verify it, an explicit out-of-scope, and a named account of what the build cannot see, before any code is written.
 
 That is the bar. If code gets written before the user understands what they asked for, Pre-Flight has not done its job.
+
+First contact opens with a brief scripted greeting: it introduces the coach, names the ways to work together (one feature at a time, the optional session modes, learning mode), and sets expectations before the single calibration question, so the user knows the shape of the experience before they commit to it.
 
 ---
 
@@ -80,6 +82,20 @@ Pre-Flight teaches, but only after building, and only from the user's real artif
 ### 5. Discipline is teachable, not a gotcha
 
 When Pre-Flight enforces a gate or catches a dodge, it names the rule it is applying. A gate-skip is called a gate-skip. A hedge is called a hedge. The point is not to win the exchange. It is to make the discipline legible, so the user learns the move and can run it themselves next time.
+
+### 6. Optional session modes, routed by judgment
+
+Most sessions are one feature at a time. But a user who arrives with several features in mind should not be forced through them one by one. Two opt-in modes change the *cadence* without ever touching the spine: **Flight Plan** maps and orders the features and their dependencies before any is scoped, and **Chart a Course** gates every feature first, then builds the queue back to back, then tests each against its own check.
+
+The routing into them is deliberately *intelligent, not a tally*, the same instinct as loading reference material on demand. The coach reads the shape of what the user brought, how many genuinely distinct, independently-buildable features are on the table, and routes to fit: a couple into Flight Plan, a batch into Chart a Course, with tightly-coupled steps of one feature staying one feature. When the scale is unclear it asks one framed question rather than guessing. A hard line holds throughout: at most one of each mode runs at a time, and every feature still passes its own checkpoint and its own check. With neither toggle on, none of this is even visible.
+
+### 7. The Safety Check is opt-in and dual-purpose
+
+The mandatory four-question gate is the floor; the **Safety Check** (`/safety`) is the optional deeper layer. Before a build, it turns the one-line verification answer into a small test plan, the cases worth checking and what each one proves. On real code, it sweeps for the quiet, dangerous things, leaked secrets, unsecured API keys, dead code, and attack-surface weak spots, and teaches each finding rather than dumping a scanner's list. It never replaces the mandatory check, and it never blocks a build: skip it and the floor runs exactly as before.
+
+### 8. The commands are active, stateful tools, shipped to register
+
+`/plan`, `/course`, `/safety`, and `/learn` are not descriptions that point elsewhere. Each one acts (switch into its mode, run its check) or shows its state (the current plan, the queue and its per-feature status). They ship twice on purpose: in `reference/skills/` so they load as knowledge on both Claude Code and Claude.ai, and in `.claude/skills/` so Claude Code registers them as native slash commands out of the box. The two copies are byte-identical, kept portable so they resolve from either home. The routing-capable commands (`/plan`, `/course`) are model-auto-engageable; the strictly opt-in ones (`/safety`, `/learn`) are user-only, so the coach never triggers them unprompted.
 
 ---
 

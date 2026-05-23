@@ -508,7 +508,7 @@ footer a:hover{color:var(--phosphor)}
 
     <div class="surfaces">
       <div class="surface reveal"><span class="tag">/PLAN</span><h3>Flight Plan</h3><p>Name the features, put them in order, and surface what depends on what. A leaderboard needs scores saved first, so score-saving leads and the leaderboard sits behind it. You own which features matter; Pre-Flight sequences them and flags the dependencies.</p></div>
-      <div class="surface reveal"><span class="tag">/BATCH</span><h3>Batch Build</h3><p>Every feature clears its own comprehension checkpoint first, no exceptions. Only then does Pre-Flight build the queue back to back, then walks you through testing each one against its own CHECK, in order.</p></div>
+      <div class="surface reveal"><span class="tag">/COURSE</span><h3>Chart a Course</h3><p>Every feature clears its own comprehension checkpoint first, no exceptions. Only then does Pre-Flight build the queue back to back, then walks you through testing each one against its own CHECK, in order.</p></div>
     </div>
 
     <div class="terminal reveal" style="margin-top:42px" aria-hidden="true">
@@ -516,9 +516,20 @@ footer a:hover{color:var(--phosphor)}
       <div class="body" id="modesterm"></div>
     </div>
 
-    <p class="adapt-note reveal">You don't even have to choose. Name several features at once and Pre-Flight routes you automatically: <b>two or three</b> into Flight Plan, <b>four or more</b> into Batch Build, always announced, always with an off-ramp. And it holds a hard line, one Flight Plan and one Batch Build at a time, never more.</p>
+    <p class="adapt-note reveal">You don't even have to choose. Name several features at once and Pre-Flight routes you automatically: <b>two or three</b> into Flight Plan, <b>four or more</b> into Chart a Course, always announced, always with an off-ramp. And it holds a hard line, one Flight Plan and one Chart a Course at a time, never more.</p>
 
-    <div class="gate-foot reveal"><span class="lock">⊘</span> <span>Batching changes the <b>cadence</b>, never the gates. Every feature still passes its <b>own checkpoint</b> and is still tested with <b>your own eyes</b>. Default off, available any time: <b>/plan</b>, <b>/batch</b>, or just ask.</span></div>
+    <div class="gate-foot reveal"><span class="lock">⊘</span> <span>Batching changes the <b>cadence</b>, never the gates. Every feature still passes its <b>own checkpoint</b> and is still tested with <b>your own eyes</b>. Default off, available any time: <b>/plan</b>, <b>/course</b>, or just ask.</span></div>
+
+    <div class="reveal" style="margin-top:48px">
+      <h3 class="demos-h">Drive it with commands</h3>
+      <p class="demos-sub">Native slash commands on Claude Code, or typed as text on Claude.ai. Each one acts, or shows you its state.</p>
+      <div class="files">
+        <div class="row"><span class="fname">/plan</span><span class="fjob">Map and order your features and their dependencies, or show the current plan.</span></div>
+        <div class="row"><span class="fname">/course</span><span class="fjob">Gate, build, and test a feature queue back to back, or show the queue and per-feature status.</span></div>
+        <div class="row"><span class="fname">/safety</span><span class="fjob">Run a Safety Check: a verification test plan before building, plus a sweep for leaked secrets, exposed API keys, dead code, and attack-surface weak spots.</span></div>
+        <div class="row"><span class="fname">/learn</span><span class="fjob">Pause to learn the why behind what you just built, taught from your own code.</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -607,7 +618,7 @@ footer a:hover{color:var(--phosphor)}
             <summary><span class="ico">▸</span><span class="name">reference/</span><span class="job">The frameworks: two folders and 16 files.</span></summary>
             <div class="children">
               <details class="folder">
-                <summary><span class="ico">▸</span><span class="name">skills/</span><span class="job">The /learn, /plan, /batch and /safety commands.</span></summary>
+                <summary><span class="ico">▸</span><span class="name">skills/</span><span class="job">The /learn, /plan, /course and /safety commands.</span></summary>
                 <div class="children">
                   <details class="folder">
                     <summary><span class="ico">▸</span><span class="name">learn/</span><span class="job">The command folder.</span></summary>
@@ -622,9 +633,9 @@ footer a:hover{color:var(--phosphor)}
                     </div>
                   </details>
                   <details class="folder">
-                    <summary><span class="ico">▸</span><span class="name">batch/</span><span class="job">The /batch command folder.</span></summary>
+                    <summary><span class="ico">▸</span><span class="name">course/</span><span class="job">The /course command folder.</span></summary>
                     <div class="children">
-                      <div class="leaf"><span class="ico">▸</span><span class="name">SKILL.md</span><span class="job">Defines Batch Build mode in full.</span></div>
+                      <div class="leaf"><span class="ico">▸</span><span class="name">SKILL.md</span><span class="job">Defines Chart a Course mode in full.</span></div>
                     </div>
                   </details>
                   <details class="folder">
@@ -650,7 +661,7 @@ footer a:hover{color:var(--phosphor)}
               <div class="leaf"><span class="ico">▸</span><span class="name">build-mode.md</span><span class="job">The switch into building, coaching the test, the loop.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">development-map.md</span><span class="job">The six development areas and the debrief.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">learning-mode.md</span><span class="job">The opt-in /learn mode and the offer.</span></div>
-              <div class="leaf"><span class="ico">▸</span><span class="name">session-modes.md</span><span class="job">Flight Plan and Batch Build, the two opt-in modes.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">session-modes.md</span><span class="job">Flight Plan and Chart a Course, the two opt-in modes.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">safety-check.md</span><span class="job">The opt-in pre-build Safety Check (/safety).</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">principles-canon.md</span><span class="job">Each skill mapped to its recognized source.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">project-memory.md</span><span class="job">Remembering a project across sessions.</span></div>

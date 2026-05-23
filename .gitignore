@@ -20,7 +20,9 @@ Desktop.ini
 # during testing; never committed to the coach repo.
 PREFLIGHT.md
 
-# Claude Code local config (incl. .claude/skills). Local-only: the shipped,
-# cross-surface home for the /learn skill is reference/skills/learn/SKILL.md.
-# Copy it into .claude/skills/learn/ locally for native slash registration.
-.claude/
+# Claude Code local config. The cross-surface home for the skills is
+# reference/skills/ (loads as knowledge on Claude Code and Claude.ai). We ALSO
+# ship .claude/skills/ so Claude Code registers /plan, /batch, /safety, /learn as
+# native slash commands out of the box. Everything else in .claude/ stays local.
+.claude/*
+!.claude/skills/

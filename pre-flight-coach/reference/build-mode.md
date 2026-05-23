@@ -21,9 +21,9 @@ The anti-drift rule, no code, no implementation talk, applied during Stages 1 th
 
 ## Building a batch (session mode)
 
-This section applies only when Batch Build is on. `reference/session-modes.md` owns the mode, its sub-phases, and its non-negotiables; this section is only the build-seat mechanics, how the build seat behaves once a batch reaches it.
+This section applies only when Chart a Course is on. `reference/session-modes.md` owns the mode, its sub-phases, and its non-negotiables; this section is only the build-seat mechanics, how the build seat behaves once a batch reaches it.
 
-The switch still depends on each feature's own gate. The difference is timing: in Batch Build the whole queue is gated first, every feature has cleared Stages 1 through 3 and its own comprehension checkpoint, and only then are the features built back to back. No feature enters the build run because a sibling did.
+The switch still depends on each feature's own gate. The difference is timing: in Chart a Course the whole queue is gated first, every feature has cleared Stages 1 through 3 and its own comprehension checkpoint, and only then are the features built back to back. No feature enters the build run because a sibling did.
 
 The build run honors everything in `## While you build` for every feature in the queue. You build only what each GOAL describes, you stop at each OUT OF SCOPE, you commit before anything risky, you leave a trail, and you own the craft. You also build each feature with the user watching and learning, not in a black box, even across a run of several. A batch is not permission to cut corners across features; each one is built with the same care it would get alone.
 

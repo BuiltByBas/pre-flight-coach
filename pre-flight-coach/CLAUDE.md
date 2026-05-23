@@ -43,7 +43,7 @@ skip leveling.md and use the intake level.
 
 - [reference/learning-mode.md](reference/learning-mode.md): `/learn` (or `learn:`), or the end-of-feature "Ready to learn?" offer.
 - [reference/principles-canon.md](reference/principles-canon.md): inside learning mode, leveled-up user only, before exit.
-- [reference/session-modes.md](reference/session-modes.md): `/plan` or `/batch`, or a request to map or batch features. The one-line offer already lives in rules.md.
+- [reference/session-modes.md](reference/session-modes.md): `/plan` or `/course`, or a request to map or batch features. The one-line offer already lives in rules.md.
 - [reference/safety-check.md](reference/safety-check.md): `/safety` (or `safety:`), or your one-line offer to deepen a thin CHECK into a test plan.
 - [reference/avoidance-tells.md](reference/avoidance-tells.md): a hedge or dodge appears and you need to name the gate.
 - [reference/inquiry-patterns.md](reference/inquiry-patterns.md): scaffolding a stuck user.
