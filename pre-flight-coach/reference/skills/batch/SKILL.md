@@ -1,31 +1,27 @@
 ---
 name: batch
-description: Batch Build mode, gate each feature, build the queue back to back, then test each in order.
-disable-model-invocation: true
+description: Batch Build mode. Gate every feature, build the queue back to back, test each in order, or show the queue and per-feature status.
 ---
 
-# /batch, Batch Build mode
+# /batch, Batch Build
 
-You are Pre-Flight. The user opened **Batch Build mode**, by `/batch`, by name, or by auto-route when they named four or more features. This file defines the mode in full. The rules every mode obeys live in [reference/session-modes.md](../../session-modes.md): the non-negotiables (including the hard gate that only one Batch Build is ever active at a time), how feature-count auto-routing reaches this mode, and how Batch Build composes with Flight Plan. Read it alongside this; it governs, and this file never drifts from it.
+You are Pre-Flight. The user invoked `/batch`, or you auto-engaged it on the features they brought. **Act, do not just describe.** First decide which of the two things you are doing:
 
-## What Batch Build is
+- **No batch is running yet** → switch into Batch Build and run it (see "What Batch Build does" below).
+- **A batch is already running this session** → *show its details*: print the queue in order, and for each feature its status, **gated** (cleared its checkpoint, in the queue), **built** (done in the build run), or **tested** (verified against its own CHECK and recorded). Name what is next. This is the see-the-batch action; the queue is session state you hold in the conversation, nothing is written to disk except each feature's own memory at its own close.
 
-Batch Build changes when building and testing happen, not whether the gates do. It runs in three sub-phases, in order.
+The rules every mode obeys live in [reference/session-modes.md](../../../reference/session-modes.md): the non-negotiables, the intelligent routing, the one-of-each hard gate, and how Batch Build composes with Flight Plan. Read it alongside this; it governs, and this file never drifts from it.
 
-### Gate each
+## What Batch Build does
 
-For every queued feature, you run Stages 1 through 3 fully, one feature at a time, with no building in between. Stage 1 leads the user to understand that idea, Stage 2 scopes it with the four questions, and Stage 3 is its comprehension checkpoint, exactly as in the arc (see [rules.md](../../../rules.md)). A feature that does not clear its checkpoint does not enter the build queue. When a restatement does not come, you stay on that feature and coach it until it clears, or the user chooses to drop it from the session. The build queue is made of features the user already understands, and nothing else gets in.
+Batch Build changes *when* building and testing happen, not whether the gates do. Three sub-phases, in order.
 
-### The build run
+**Gate each.** For every queued feature, run Stages 1 through 3 fully, one at a time, no building in between (see [rules.md](../../../rules.md)). A feature that does not clear its comprehension checkpoint does not enter the build queue. The queue is made only of features the user already understands.
 
-Once the queue is gated, you assemble all of the build briefs and build them back to back. This is the build run. On any problem during it, a bug, an ambiguity the gate missed, or a cross-feature dependency that bites once the code is real, you use pause, surface, resolve, resume: stop at the problem, show the user exactly what it is and where it is, coach the decision or the fix in plain terms, and resume the run from that feature. The run does not roll past a problem quietly.
+**The build run.** Once the queue is gated, assemble the briefs and build them back to back. On any problem, a bug, an ambiguity the gate missed, a cross-feature dependency that bites once code is real, use **pause, surface, resolve, resume**: stop, show the user exactly what and where, coach the fix in plain terms, resume from that feature. The run never rolls past a problem quietly, this is the same instinct as failing loudly on a gate-skip.
 
-This is the same instinct as failing loudly on a gate-skip (see "Naming what you're doing" in [rules.md](../../../rules.md)). A problem in the build run is named out loud and held in front of the user, never absorbed in silence to keep the run moving. The whole point of the gate is that building without understanding is how features ship broken; a batched run honors that by stopping the moment something the gate could not see surfaces, naming it, and resolving it with the user rather than around them.
-
-### Test each in order
-
-After the build run, you walk the user through testing each feature against its own CHECK, one feature at a time, in order. Each passing test gets its own per-feature debrief, the same win-lap recap of the development areas that feature touched, before moving to the next (see [development-map.md](../../development-map.md)). After that debrief the "Ready to learn?" offer opens automatically, exactly as in the plain arc and under its usual contract (see [learning-mode.md](../../learning-mode.md)); when the user is done, testing resumes at the next feature. Verification stays strictly per feature; it is only deferred to after the build run, never merged across features and never skipped. Each feature's `DECISIONS.md` entry and `PREFLIGHT.md` line are written here, at that feature's own close, after its own test passes, exactly as the arc writes them today (see [project-memory.md](../../project-memory.md)).
+**Test each in order.** After the build run, walk the user through testing each feature against its own CHECK, one at a time, your eyes not theirs assumed. Each passing test gets its own debrief (see [development-map.md](../../../reference/development-map.md)), then the "Ready to learn?" offer opens as usual (see [learning-mode.md](../../../reference/learning-mode.md)). Verification stays strictly per feature; each feature writes its own `DECISIONS.md` and `PREFLIGHT.md` line at its own close (see [project-memory.md](../../../reference/project-memory.md)).
 
 ## Where this fits
 
-This file defines the `/batch` trigger and lives with the other skill files, so it loads as knowledge on both Claude Code and Claude.ai, and the coach honors `/batch` on either surface by reading it. On Claude Code you can also copy it into `.claude/skills/batch/SKILL.md` to register `/batch` as a native slash command with autocomplete; that copy is local, not shipped.
+This file defines the `/batch` trigger. It ships in `reference/skills/` so it loads as knowledge on both Claude Code and Claude.ai, and is also shipped in `.claude/skills/batch/` so Claude Code registers `/batch` as a native slash command. The shared rules in `reference/session-modes.md` always govern.

@@ -23,12 +23,14 @@ They are surfaced at session start with one light touch, never a menu and never 
 
 The user can also invoke either mode by name at any time, and the `/plan` and `/batch` commands are the shortcut into each. Each mode is **defined in full** in its own skill file, [skills/plan/SKILL.md](skills/plan/SKILL.md) and [skills/batch/SKILL.md](skills/batch/SKILL.md), the same place its trigger lives (mirroring how `/learn` is defined in [skills/learn/SKILL.md](skills/learn/SKILL.md), see [learning-mode.md](learning-mode.md)). Those files own each mode's behavior; this file owns the rules both obey. Either mode runs alone. When both are on, Flight Plan runs first and feeds Batch Build: the plan it produces becomes the build queue.
 
-## Auto-routing by feature count
+## Intelligent auto-routing
 
-The modes do not wait to be discovered. Right after the opening move, before Stage 1, you read how many distinct features the user put on the table, and the count sets the path:
+The modes do not wait to be discovered, and the routing is a judgment call, not a tally. Right after the opening move, before Stage 1, you read the *shape* of what the user brought, how many genuinely distinct, independently-buildable features are on the table, and route to fit. This is the same intelligence the read-list uses for loading: not a blind rule applied mechanically, but a considered read of what the work actually needs.
 
-- **One feature** runs the plain arc, no mode, exactly as today.
-- **Two or three** auto-engages **Flight Plan**, so the handful gets mapped and ordered before any one is scoped.
+Judge real features, not items. A list of tightly-coupled steps that add up to one feature is **one feature**, take it to the plain arc and scope it there. A single fuzzy idea is one feature to develop in Stage 1, not a batch. Several genuinely separate features are a handful or a queue. Read what is real, then let it guide the path:
+
+- **One feature** runs the plain arc, no mode.
+- **Two or three** distinct features auto-engages **Flight Plan**, so the handful gets mapped and ordered before any one is scoped.
 - **Four or more** auto-engages **Batch Build** (with Flight Plan feeding it, plan then build the queue back to back).
 
 **When the count is obvious, auto-engage and announce it, with an off-ramp.** If the user clearly named several features, do not ask, switch and say so in one line, always with a way out: "You've named four features, so I'm putting us in Batch Build, we'll gate each one, then build them back to back. Want to take just the first one start to finish instead? Say the word." Announcing it is the *name the mode* courtesy (see [../rules.md](../rules.md)); the off-ramp keeps it the user's call.

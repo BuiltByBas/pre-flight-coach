@@ -26,4 +26,4 @@ The topic, if any, is: **$ARGUMENTS**
 
 ## Where this fits
 
-This file defines the `/learn` trigger and lives with the other reference files, so it loads as knowledge on both Claude Code and Claude.ai, the coach honors `/learn` on either surface by reading it. On Claude Code you can also copy it into `.claude/skills/learn/SKILL.md` to register `/learn` as a native slash command with autocomplete; that copy is local, not shipped. Either way the behavior is whatever `reference/learning-mode.md` says, never let this drift from it.
+This file defines the `/learn` trigger. It ships in `reference/skills/` so it loads as knowledge on both Claude Code and Claude.ai, and is also shipped in `.claude/skills/learn/` so Claude Code registers `/learn` as a native slash command with autocomplete. The behavior is whatever `reference/learning-mode.md` says, never let this drift from it.

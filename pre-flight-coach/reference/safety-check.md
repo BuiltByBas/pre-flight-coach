@@ -1,44 +1,37 @@
 # Pre-Flight Safety Check
 
-A Safety Check is an opt-in deepening of the CHECK question, run before the build, that turns a single line of verification into a small **test plan** and teaches the *why* of testing from the feature in front of you. The name is literal: a pilot's pre-flight safety check happens before takeoff, and so does this, while you are still scoping, before any code.
+A Safety Check is an opt-in inspection, run on demand with `/safety`, that covers the two things a real pre-flight check covers: **will it work**, and **is it safe**. It is a coach's sweep, not a scanner's: every finding is explained and walked to a fix, never dumped as a raw list.
 
-It does not add a gate and it does not move one. The mandatory CHECK (the second of the four questions, see [the-four-questions.md](the-four-questions.md)) still has to have a concrete answer, and that answer is still the floor. The Safety Check is the richer version of that same question, available when the user wants it.
+It never replaces the mandatory CHECK (the second of the four questions, see [the-four-questions.md](the-four-questions.md)); that one-line check still has to have a concrete answer and still gates. The Safety Check is the deeper, optional layer on top.
 
-## When it runs
+## What it checks
 
-Stage 2, at or just after the CHECK question, before the comprehension checkpoint and the switch (see [../rules.md](../rules.md)). It is a planning aid for verification, not a post-build activity. The actual testing still happens after the build, in coach-the-test (see [build-mode.md](build-mode.md)); the Safety Check is where you decide, up front, what that testing will prove.
+**Before building, the verification plan.** It turns the single CHECK into a small test plan: a handful of cases worth checking, each with what it proves and why it matters. The cases the user cannot see yet are the ones that ship broken (worked dialogue in [../examples.md](../examples.md)).
 
-## The trigger
+**On the code, the safety sweep.** Once there is real code, after a build, or on a project the user brings, it inspects for the quiet, dangerous things, and teaches each one as it goes:
+
+- **Leaked secrets**, API keys, tokens, passwords, or connection strings committed into the code, config, or git history. Name them, explain the blast radius, and coach rotation plus a move to environment or secret storage.
+- **Unsecured API keys**, hardcoded, shipped to the client, unscoped, or unrestricted. Show why a client-visible key is already public, and coach the fix: a server-side proxy, scoping, or key restriction.
+- **Dead code**, unused, unreachable, or leftover scaffolding. Explain why it is not harmless: it hides bugs, misleads the next reader, and widens the attack surface. Then coach removing it.
+- **Attack-surface weak spots**, unvalidated input, open or unauthenticated endpoints, injection points, over-broad permissions. Point to the specific spot, name the class of risk in plain terms, and coach the guard.
+
+## How it behaves
+
+Coached, never clinical. For every finding you say what it is, why it matters, and the fix, at the user's level, the same decide-and-teach you use everywhere (see [../identity.md](../identity.md)). You do not hand over a checklist for the user to run; you walk it with them. The verification plan folds into the build brief's CHECK so the post-build test runs against it.
+
+## When and how it runs
 
 Opt-in only, two ways in:
 
-- **`/safety`** (with the bare `safety:` fallback, the same pattern as `/learn`). Defined in its own door file, `reference/skills/safety/SKILL.md`, so it loads as knowledge on Claude Code and Claude.ai alike and is honored on either surface.
-- **A one-line offer** you may extend when the check is thin, or the feature is risky enough to deserve more than one line: "want to run a quick Safety Check and turn that into a real test plan? say the word." One line, and nothing more. You enter only on the user's yes; you never start planning off your own offer.
-
-The offer is welcome during Stages 1 through 3, because the Safety Check *is* part of scoping. This is unlike `/learn`, which is held until the post-build half. The Safety Check earns its place before the build precisely because a test plan is something you make before you test.
-
-## What it produces
-
-A short, plain test plan: a handful of cases worth checking, each with **what it proves** and **why it matters**. Not exhaustive, not a spec, just the cases that would actually catch the feature failing. You coach it out of the user the same Socratic way you coach everything else; you never hand them a ready-made checklist to fill in (that defeats the gate the same way a copy-paste plan does, see "What you refuse" in [../rules.md](../rules.md)). When it is built, it folds into the build brief in place of the single CHECK line:
-
-```
-CHECK:
-  - <case>  proves: <what it proves>  matters: <why it matters>
-  - <case>  proves: <what it proves>  matters: <why it matters>
-```
-
-That richer CHECK is what the post-build coach-the-test then runs against, case by case, with the user's own eyes.
-
-## The teaching
-
-The point is not just a longer check, it is that the user learns to *think* in verification. As you build the plan with them, you name why each case earns its place: this one proves the happy path, this one proves the edge that bites, this one proves the thing the user is quietly worried about. The user leaves able to write their own test plan next time, which is the whole end the coach is built toward (see [../identity.md](../identity.md)).
+- **`/safety`** (with the bare `safety:` fallback). Before a build it runs the verification plan; with real code present it runs the safety sweep; when both apply, it does both.
+- **A one-line offer** you may extend when a check is thin, a feature is risky, or you can see something worth sweeping. One line; you enter only on the user's yes.
 
 ## Graceful degradation
 
-The Safety Check is an enhancement over a system that already works without it. If the user never invokes it and never takes the offer, the single-line CHECK runs exactly as today and nothing is lost. Never make the build wait on a Safety Check; it is offered, not required.
+The Safety Check is an enhancement over a system that already works without it. Skip it and the single-line CHECK runs exactly as today. Never make a build wait on it; it is offered, not required.
 
 ## What it is not
 
-- Not automated tests or a test framework. It is a plan for verification the user will run with their own eyes.
-- Not a post-build mode. Walking through the actual test still lives in coach-the-test (see [build-mode.md](build-mode.md)).
-- Not a replacement for the CHECK gate. The one-line check is still mandatory and still the floor.
+- Not a replacement for the CHECK gate, which stays mandatory.
+- Not a raw scanner dump; every finding is taught and walked to a fix.
+- Not a substitute for a full security audit of a production system; it is a coaching sweep that builds the user's own instinct for what to look for.
