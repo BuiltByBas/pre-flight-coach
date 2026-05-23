@@ -493,10 +493,31 @@ footer a:hover{color:var(--phosphor)}
   </div>
 </section>
 
+<!-- ===== SESSION MODES ===== -->
+<section id="modes">
+  <div class="wrap">
+    <div class="section-tag reveal"><span class="num">03 / MODES</span><span class="line"></span><span class="tick">Fly solo or batch the run</span></div>
+    <h2 class="reveal">Arrive with one feature, or ten. <em>Line them up and fly the run.</em></h2>
+    <p class="lead reveal">The default is one feature, start to finish. Show up with a whole session in mind and two optional modes let you line the work up and build it back to back, without ever loosening the gate.</p>
+
+    <div class="surfaces">
+      <div class="surface reveal"><span class="tag">/PLAN</span><h3>Flight Plan</h3><p>Name the features, put them in order, and surface what depends on what. A leaderboard needs scores saved first, so score-saving leads and the leaderboard sits behind it. You own which features matter; Pre-Flight sequences them and flags the dependencies.</p></div>
+      <div class="surface reveal"><span class="tag">/BATCH</span><h3>Batch Build</h3><p>Every feature clears its own comprehension checkpoint first, no exceptions. Only then does Pre-Flight build the queue back to back, then walks you through testing each one against its own CHECK, in order.</p></div>
+    </div>
+
+    <div class="terminal reveal" style="margin-top:42px" aria-hidden="true">
+      <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="t">pre-flight: flight plan</span></div>
+      <div class="body" id="modesterm"></div>
+    </div>
+
+    <div class="gate-foot reveal"><span class="lock">⊘</span> <span>Batching changes the <b>cadence</b>, never the gates. Every feature still passes its <b>own checkpoint</b> and is still tested with <b>your own eyes</b>. Default off, available any time: <b>/plan</b>, <b>/batch</b>, or just ask.</span></div>
+  </div>
+</section>
+
 <!-- ===== LEVELING / MEMORY ===== -->
 <section id="level">
   <div class="wrap">
-    <div class="section-tag reveal"><span class="num">03 / MEMORY</span><span class="line"></span><span class="tick">It grows with you</span></div>
+    <div class="section-tag reveal"><span class="num">04 / MEMORY</span><span class="line"></span><span class="tick">It grows with you</span></div>
     <h2 class="reveal">Sharper where you've <em>earned it</em>. Full support where you haven't.</h2>
     <div class="split">
       <div class="instrument reveal">
@@ -523,7 +544,7 @@ footer a:hover{color:var(--phosphor)}
 <!-- ===== CALIBRATION / ADAPTS ===== -->
 <section id="adapt">
   <div class="wrap">
-    <div class="section-tag reveal"><span class="num">04 / CALIBRATION</span><span class="line"></span><span class="tick">Meets you where you are</span></div>
+    <div class="section-tag reveal"><span class="num">05 / CALIBRATION</span><span class="line"></span><span class="tick">Meets you where you are</span></div>
     <h2 class="reveal">It coaches the <em>person</em>, not a script.</h2>
     <p class="lead reveal">One quick question at the start sets your opening register. From there Pre-Flight adapts to your skill, your growth, and how you show up in the moment, and it never announces a word of it.</p>
 
@@ -550,7 +571,7 @@ footer a:hover{color:var(--phosphor)}
 <!-- ===== /LEARN ===== -->
 <section id="learn">
   <div class="wrap">
-    <div class="section-tag reveal"><span class="num">05 / LEARN</span><span class="line"></span><span class="tick">The why, from your code</span></div>
+    <div class="section-tag reveal"><span class="num">06 / LEARN</span><span class="line"></span><span class="tick">The why, from your code</span></div>
     <h2 class="reveal">Type <em>/learn</em> and learn the principle from <em>your own code</em>.</h2>
     <p class="lead reveal">Not a Wikipedia article on the domain. Pre-Flight teaches the why using the exact thing you just built, then offers to go deeper. It also opens a “Ready to learn?” door at the end of every feature, there when you want it, a “not now” away when you don't.</p>
     <div class="terminal reveal" style="margin-top:42px" aria-hidden="true">
@@ -563,7 +584,7 @@ footer a:hover{color:var(--phosphor)}
 <!-- ===== ARCHITECTURE ===== -->
 <section id="arch">
   <div class="wrap">
-    <div class="section-tag reveal"><span class="num">06 / AIRFRAME</span><span class="line"></span><span class="tick">Each file, one job</span></div>
+    <div class="section-tag reveal"><span class="num">07 / AIRFRAME</span><span class="line"></span><span class="tick">Each file, one job</span></div>
     <h2 class="reveal">A folder of markdown. <em>Each file does one job well.</em></h2>
     <p class="lead reveal">No build, no runtime, nothing to install. Interpretable context methodology: every file has a single clear purpose, so a stranger can read the whole coach and understand exactly how it thinks.</p>
     <div class="tree reveal" aria-label="pre-flight-coach folder structure">
@@ -573,17 +594,29 @@ footer a:hover{color:var(--phosphor)}
           <div class="leaf"><span class="ico">▸</span><span class="name">CLAUDE.md</span><span class="job">Activates the persona and points at the rest.</span></div>
           <div class="leaf"><span class="ico">▸</span><span class="name">identity.md</span><span class="job">Who Pre-Flight is, who it serves, what it refuses.</span></div>
           <div class="leaf"><span class="ico">▸</span><span class="name">rules.md</span><span class="job">The loop: intake, the four questions, the switch.</span></div>
-          <div class="leaf"><span class="ico">▸</span><span class="name">examples.md</span><span class="job">Nine worked dialogues.</span></div>
+          <div class="leaf"><span class="ico">▸</span><span class="name">examples.md</span><span class="job">Ten worked dialogues.</span></div>
           <details class="folder">
-            <summary><span class="ico">▸</span><span class="name">reference/</span><span class="job">The frameworks: two folders and 14 files.</span></summary>
+            <summary><span class="ico">▸</span><span class="name">reference/</span><span class="job">The frameworks: two folders and 15 files.</span></summary>
             <div class="children">
               <details class="folder">
-                <summary><span class="ico">▸</span><span class="name">skills/</span><span class="job">The /learn slash command.</span></summary>
+                <summary><span class="ico">▸</span><span class="name">skills/</span><span class="job">The /learn, /plan and /batch commands.</span></summary>
                 <div class="children">
                   <details class="folder">
                     <summary><span class="ico">▸</span><span class="name">learn/</span><span class="job">The command folder.</span></summary>
                     <div class="children">
                       <div class="leaf"><span class="ico">▸</span><span class="name">SKILL.md</span><span class="job">A thin door routing into learning-mode.md.</span></div>
+                    </div>
+                  </details>
+                  <details class="folder">
+                    <summary><span class="ico">▸</span><span class="name">plan/</span><span class="job">The /plan command folder.</span></summary>
+                    <div class="children">
+                      <div class="leaf"><span class="ico">▸</span><span class="name">SKILL.md</span><span class="job">A thin door routing into session-modes.md.</span></div>
+                    </div>
+                  </details>
+                  <details class="folder">
+                    <summary><span class="ico">▸</span><span class="name">batch/</span><span class="job">The /batch command folder.</span></summary>
+                    <div class="children">
+                      <div class="leaf"><span class="ico">▸</span><span class="name">SKILL.md</span><span class="job">A thin door routing into session-modes.md.</span></div>
                     </div>
                   </details>
                 </div>
@@ -603,6 +636,7 @@ footer a:hover{color:var(--phosphor)}
               <div class="leaf"><span class="ico">▸</span><span class="name">build-mode.md</span><span class="job">The switch into building, coaching the test, the loop.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">development-map.md</span><span class="job">The six development areas and the debrief.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">learning-mode.md</span><span class="job">The opt-in /learn mode and the offer.</span></div>
+              <div class="leaf"><span class="ico">▸</span><span class="name">session-modes.md</span><span class="job">Flight Plan and Batch Build, the two opt-in modes.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">principles-canon.md</span><span class="job">Each skill mapped to its recognized source.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">project-memory.md</span><span class="job">Remembering a project across sessions.</span></div>
               <div class="leaf"><span class="ico">▸</span><span class="name">failure-modes.md</span><span class="job">The six week-one anti-patterns.</span></div>
@@ -619,7 +653,7 @@ footer a:hover{color:var(--phosphor)}
 <!-- ===== WHERE IT RUNS ===== -->
 <section id="run">
   <div class="wrap">
-    <div class="section-tag reveal"><span class="num">07 / SURFACES</span><span class="line"></span><span class="tick">Runs where you are</span></div>
+    <div class="section-tag reveal"><span class="num">08 / SURFACES</span><span class="line"></span><span class="tick">Runs where you are</span></div>
     <h2 class="reveal">Cleared on every surface.</h2>
     <div class="surfaces">
       <div class="surface reveal"><span class="tag">FULLEST</span><h3>Claude Code</h3><p>Pre-Flight reads and writes files directly. Your project memory, the DECISIONS.md that powers its leveling, and the build itself all live in your folder and carry across sessions automatically.</p></div>
@@ -810,6 +844,43 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     (function ch(){
       span.innerHTML=esc(txt.slice(0,ci));
       ci++;
+      if(ci<=txt.length) setTimeout(ch, l.c==='ou'||l.c==='am'?10:24);
+      else { li++; setTimeout(typeLine, 120); }
+    })();
+  }
+  const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ typeLine(); io.disconnect(); } }); },{threshold:.4});
+  io.observe(host);
+})();
+
+/* ---------- MODES TERMINAL typing (/plan demo) ---------- */
+(function(){
+  const host=document.getElementById('modesterm');
+  if(!host) return;
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  const lines=[
+    {c:'pr', t:'you ▸ '},{c:'ou', t:'/plan\n'},
+    {c:'cm', t:'# flight plan — name them, order them, flag what depends on what\n'},
+    {c:'pr', t:'pre-flight ▸ '},{c:'ou', t:'Two features on the table:\n'},
+    {c:'ou', t:'              1. the engine — read a folder, pull real file stats\n'},
+    {c:'ou', t:'              2. the show — the button glows, types the stats in\n'},
+    {c:'pr', t:'pre-flight ▸ '},{c:'ou', t:'The show has nothing to display until the engine\n'},
+    {c:'ou', t:'              produces stats, so the engine leads.\n'},
+    {c:'am', t:'    ENGINE  ▸  SHOW    // order locked, dependency flagged\n'},
+    {c:'pr', t:'pre-flight ▸ '},{c:'ou', t:'Now we gate each one in turn, then build the run.'},{c:'cur'}
+  ];
+  if(REDUCED){
+    host.innerHTML = lines.map(l=> l.c==='cur' ? '' : '<span class="l '+l.c+'">'+esc(l.t)+'</span>').join('');
+    return;
+  }
+  let li=0;
+  function typeLine(){
+    if(li>=lines.length) return;
+    const l=lines[li];
+    if(l.c==='cur'){ const c=document.createElement('span'); c.className='cursor'; host.appendChild(c); return; }
+    const span=document.createElement('span'); span.className='l '+l.c; host.appendChild(span);
+    let ci=0; const txt=l.t;
+    (function ch(){
+      span.innerHTML=esc(txt.slice(0,ci)); ci++;
       if(ci<=txt.length) setTimeout(ch, l.c==='ou'||l.c==='am'?10:24);
       else { li++; setTimeout(typeLine, 120); }
     })();
