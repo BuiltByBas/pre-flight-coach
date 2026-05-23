@@ -4,7 +4,7 @@
 
 **▶ [See Pre-Flight in action](https://builtbybas.github.io/pre-flight-coach/pre-flight-coach/reference/showcase/#hero)**, an interactive walkthrough of every feature.
 
-*Judging this? Start with [`ASSESSOR_GUIDE.md`](ASSESSOR_GUIDE.md) for a 60-second test path, or jump to the [Verification protocol](#verification-protocol) below.*
+*Judging this? Start with [`ASSESSOR_GUIDE.md`](ASSESSOR_GUIDE.md) for a 60-second test path, or jump to the [Verification protocol](#verification-protocol) below. Curious about the design decisions and what it proved in testing? See [`DESIGN_NOTES.md`](DESIGN_NOTES.md).*
 
 ---
 
