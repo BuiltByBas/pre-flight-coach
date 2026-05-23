@@ -452,6 +452,8 @@ footer a:hover{color:var(--phosphor)}
 
     <div class="gate-foot reveal"><span class="lock">⊘</span> <span>Until all four read <b>ARMED</b>, Pre-Flight holds short. Answer them and it says: <b>“We are ready to build. Are you ready to build it?”</b></span></div>
 
+    <p class="adapt-note reveal">Want more than a one-line check? The optional <b>Pre-Flight Safety Check</b> (<span class="mono">/safety</span>) turns that second question into a real test plan before you build, the cases worth checking and what each one proves, coached out, never handed over as a list. The single check still gates; this only deepens it.</p>
+
     <div class="demos reveal">
       <h3 class="demos-h">See it hold the line</h3>
       <p class="demos-sub">Four ways people try to skip the work. Click one and watch Pre-Flight name the rule and hold, never a gotcha, always a lesson.</p>
@@ -509,6 +511,8 @@ footer a:hover{color:var(--phosphor)}
       <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="t">pre-flight: flight plan</span></div>
       <div class="body" id="modesterm"></div>
     </div>
+
+    <p class="adapt-note reveal">You don't even have to choose. Name several features at once and Pre-Flight routes you automatically: <b>two or three</b> into Flight Plan, <b>four or more</b> into Batch Build, always announced, always with an off-ramp. And it holds a hard line, one Flight Plan and one Batch Build at a time, never more.</p>
 
     <div class="gate-foot reveal"><span class="lock">⊘</span> <span>Batching changes the <b>cadence</b>, never the gates. Every feature still passes its <b>own checkpoint</b> and is still tested with <b>your own eyes</b>. Default off, available any time: <b>/plan</b>, <b>/batch</b>, or just ask.</span></div>
   </div>
@@ -730,7 +734,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     cx.fillStyle=rg; cx.fillRect(0,0,64,64);
     return new THREE.CanvasTexture(cv);
   })();
-  const CLOUDS=26, cloudGeo=new THREE.BufferGeometry(), cpos=new Float32Array(CLOUDS*3);
+  const CLOUDS=13, cloudGeo=new THREE.BufferGeometry(), cpos=new Float32Array(CLOUDS*3);
   for(let i=0;i<CLOUDS;i++){
     cpos[i*3]=(Math.random()-.5)*42;
     cpos[i*3+1]=Math.random()*15+1.5;
@@ -738,7 +742,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
   cloudGeo.setAttribute('position', new THREE.BufferAttribute(cpos,3));
   const clouds=new THREE.Points(cloudGeo, new THREE.PointsMaterial({
-    map:cloudTex, color:0xa8e6d4, size:7, transparent:true, opacity:.5,
+    map:cloudTex, color:0xa8e6d4, size:7, transparent:true, opacity:.3,
     depthWrite:false, blending:THREE.AdditiveBlending, sizeAttenuation:true
   }));
   scene.add(clouds);
@@ -772,7 +776,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     stars.rotation.y = t*0.01;
     const cp=clouds.geometry.attributes.position;
     for(let i=0;i<CLOUDS;i++){
-      cp.array[i*3+2]+=0.24;
+      cp.array[i*3+2]+=0.14;
       if(cp.array[i*3+2]>10){ cp.array[i*3+2]=-150; cp.array[i*3]=(Math.random()-.5)*42; cp.array[i*3+1]=Math.random()*15+1.5; }
     }
     cp.needsUpdate=true;
