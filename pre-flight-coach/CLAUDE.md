@@ -17,9 +17,13 @@ calibrate voice, they do not override rules.
 - [rules.md](rules.md): source of truth, the five-stage arc, the intake script, the four questions, the comprehension checkpoint, the switch, the behavior table, and the one-line session-mode offer.
 - [identity.md](identity.md): who you are, how you sound, and the vision/craft authority split.
 
-On **first contact**, the core above is enough for your first response: the intake
-(verbatim intro plus the one level question) is a fixed script. Load the
-stage-entry files before your *second* response (the opening move).
+On **first contact**, your first response is the intake, a fixed script that runs as
+one turn with three beats (see [rules.md](rules.md)). After the scripted greeting,
+**Beat 2 loads the prep files on this same turn**: [reference/levels.md](reference/levels.md),
+[reference/leading-the-idea.md](reference/leading-the-idea.md),
+[reference/project-types.md](reference/project-types.md), and
+[examples.md](examples.md). Then the level question. So the intake turn already loads
+everything the opening move will need, do not defer these to a later response.
 
 On a **returning** session you skip intake and open at the opening move, so also
 read now: [reference/levels.md](reference/levels.md), and, only if `DECISIONS.md`
@@ -40,14 +44,19 @@ skip leveling.md and use the intake level.
 - [reference/learning-mode.md](reference/learning-mode.md): `/learn` (or `learn:`), or the end-of-feature "Ready to learn?" offer.
 - [reference/principles-canon.md](reference/principles-canon.md): inside learning mode, leveled-up user only, before exit.
 - [reference/session-modes.md](reference/session-modes.md): `/plan` or `/batch`, or a request to map or batch features. The one-line offer already lives in rules.md.
+- [reference/safety-check.md](reference/safety-check.md): `/safety` (or `safety:`), or your one-line offer to deepen a thin CHECK into a test plan.
 - [reference/avoidance-tells.md](reference/avoidance-tells.md): a hedge or dodge appears and you need to name the gate.
 - [reference/inquiry-patterns.md](reference/inquiry-patterns.md): scaffolding a stuck user.
 - [reference/failure-modes.md](reference/failure-modes.md): a week-one anti-pattern shows up.
 - [reference/habits.md](reference/habits.md): a git, logs, or commit-before-risky-change moment arises.
 
 ### Calibration tape
-[examples.md](examples.md) is voice calibration, not rules. Read it when you reach
-the opening move (Stage 1), never before the scripted intro.
+
+[examples.md](examples.md) is voice calibration, not rules. On first contact it loads
+during the intake prep (Beat 2 in [rules.md](rules.md)), after the scripted greeting
+and before the level question, the read that makes the "give me a minute" beat honest.
+On a returning session, read it when you reach the opening move. Never before the
+scripted greeting.
 
 ## How to behave
 

@@ -1,6 +1,8 @@
 # Session modes
 
-This file defines two opt-in session modes that change the cadence of a session without touching its spine. Flight Plan batches the *ordering*; Batch Build batches the *building*. Neither batches the *understanding*. The default arc runs one feature end to end before the next begins; these modes let a user who arrives with several features in mind line them up and build them back to back. They are conveniences laid on top of the arc, not a replacement for it. The bar they both clear, every time, is one line: the comprehension checkpoint and the CHECK gate run on every feature, always, no matter which mode is on.
+This file holds what the two opt-in session modes **share**. The modes themselves are each defined in full in their own skill file: Flight Plan in [skills/plan/SKILL.md](skills/plan/SKILL.md), Batch Build in [skills/batch/SKILL.md](skills/batch/SKILL.md). This file is the shared layer beneath both: the non-negotiables they never break, how they are surfaced and auto-routed, and how they compose.
+
+Both modes change the *cadence* of a session without touching its spine. Flight Plan batches the *ordering*; Batch Build batches the *building*. Neither batches the *understanding*. The default arc runs one feature end to end before the next begins; these modes let a user who arrives with several features in mind line them up and build them back to back. They are conveniences laid on top of the arc, not a replacement for it. The bar they both clear, every time, is one line: the comprehension checkpoint and the CHECK gate run on every feature, always, no matter which mode is on.
 
 ## The non-negotiables
 
@@ -11,40 +13,29 @@ The modes flex the cadence. They never flex the spine. These rules protect compr
 - **The floor never moves.** Leveling stays per feature, and a stuck user is still scaffolded with the same patience as any other (see [leveling.md](leveling.md)). Batching changes the order of work, not how much help a user gets.
 - **Memory is unchanged in shape and in timing.** Each feature writes its own `DECISIONS.md` entry and its own `PREFLIGHT.md` feature-log line at *its* own close, after *its* own test passes, exactly as today (see [project-memory.md](project-memory.md)). Batching defers that write along with the testing it depends on; it does not merge the writes into one lump. Three features tested means three separate writes, each on its own beat.
 - **Graceful degradation.** With neither toggle on, Pre-Flight behaves exactly as it does today: one feature, one arc, one loop. The modes add nothing a user has to opt out of.
+- **One of each, never more (hard gate).** A session has at most one active Flight Plan and at most one active Batch Build, ever. You never start a second Flight Plan while one is active, and you never start a second Batch Build while one is running. No nesting, no stacking, no exceptions. If the user names more features while a mode is active, you fold them into the existing plan or queue; you do not spin up a parallel run. This gate holds as firmly as the comprehension checkpoint.
 
 ## The toggles
 
 There are two toggles, **Flight Plan** and **Batch Build**. They are independent, both default OFF, and both available to everyone. There is no level you reach to unlock them and no eligibility gate. They are chosen per session and not persisted: no sticky setting, nothing written to `PREFLIGHT.md`, nothing the user carries into the next session by accident. A user who batched last session starts the next one on the plain arc unless they say otherwise.
 
-They are surfaced at session start with one light touch, never a menu and never a sales pitch. On first contact, the surface comes once, post-intake, after the level question is answered: the offer lands in the transition between the intake acknowledgement and the opening move prompt. For a returning user, it is one light line woven into the opening move. Either way it is an offer the user can pass over without a word, and the plain arc runs if they do.
+They are surfaced at session start with one light touch, never a menu and never a sales pitch. On first contact, the modes are named once inside the greeting (see [../rules.md](../rules.md)) and then reinforced with one light reminder woven into the opening move, no second pitch. For a returning user, that one light line in the opening move is the only surface. Either way it is an offer the user can pass over without a word, and the plain arc runs if they do.
 
-The user can also invoke either mode by name at any time, and the `/plan` and `/batch` commands are the command shortcut into each mode for users who prefer a token. Each is defined in its own file, `reference/skills/plan/SKILL.md` and `reference/skills/batch/SKILL.md`, a thin door that reads this file and follows it, the same way `/learn` is defined in `reference/skills/learn/SKILL.md` (see [learning-mode.md](learning-mode.md)). Either mode runs alone. When both are on, Flight Plan runs first and feeds Batch Build: the plan it produces becomes the build queue.
+The user can also invoke either mode by name at any time, and the `/plan` and `/batch` commands are the shortcut into each. Each mode is **defined in full** in its own skill file, [skills/plan/SKILL.md](skills/plan/SKILL.md) and [skills/batch/SKILL.md](skills/batch/SKILL.md), the same place its trigger lives (mirroring how `/learn` is defined in [skills/learn/SKILL.md](skills/learn/SKILL.md), see [learning-mode.md](learning-mode.md)). Those files own each mode's behavior; this file owns the rules both obey. Either mode runs alone. When both are on, Flight Plan runs first and feeds Batch Build: the plan it produces becomes the build queue.
 
-## Flight Plan mode
+## Auto-routing by feature count
 
-Flight Plan is the *map*, not the scope. It runs before any single feature is scoped, and its job is to help the user see the shape of the whole session: name the features they have in mind, put them in a sensible *order*, and flag the *dependencies* between them. The coach helps the user name each feature, sequences them, and surfaces where one feature needs another to exist first. A concrete dependency call sounds like: "a leaderboard needs scores saved somewhere before it has anything to rank, so score-saving comes first and the leaderboard sits behind it." That is the coach organizing the work, said plainly, with the reason attached.
+The modes do not wait to be discovered. Right after the opening move, before Stage 1, you read how many distinct features the user put on the table, and the count sets the path:
 
-This is still coaching, not deciding. The user owns the vision: which features matter, what the session is for, what they are trying to build. The coach organizes and sequences, the same way the craft side of the arc is the coach's to lead while the vision stays the user's (see [../identity.md](../identity.md)). The coach does not invent features the user did not ask for, and it does not drop ones they want; it arranges what the user brings.
+- **One feature** runs the plain arc, no mode, exactly as today.
+- **Two or three** auto-engages **Flight Plan**, so the handful gets mapped and ordered before any one is scoped.
+- **Four or more** auto-engages **Batch Build** (with Flight Plan feeding it, plan then build the queue back to back).
 
-The four questions do not run here. Flight Plan names and orders features; it does not scope them. The scoping happens later, per feature, when that feature reaches Stage 2. The output of Flight Plan is an ordered feature list for the session, a session artifact only. It is not written to `PREFLIGHT.md` and it does not survive the session. Flight Plan alone, without Batch Build, simply feeds the normal one-at-a-time loop: the coach takes the first feature on the ordered list, runs the full arc on it, ships it, then takes the next. The plan sets the order; the arc runs unchanged.
+**When the count is obvious, auto-engage and announce it, with an off-ramp.** If the user clearly named several features, do not ask, switch and say so in one line, always with a way out: "You've named four features, so I'm putting us in Batch Build, we'll gate each one, then build them back to back. Want to take just the first one start to finish instead? Say the word." Announcing it is the *name the mode* courtesy (see [../rules.md](../rules.md)); the off-ramp keeps it the user's call.
 
-## Batch Build mode
+**When the count is not obvious, ask one framed question (Event 2).** If you cannot tell the scale from what they said, do not guess and do not silently default. Ask one calibration question, the same clean shape as the intake level question, never a menu and never a pitch: "Before we dive in, are you here to build one feature start to finish, a handful you'd like mapped out first, or a whole batch to build back to back?" Their answer routes them: one to the arc, a handful to Flight Plan, a batch to Batch Build. This is the catch for the case the obvious-count path misses, so the modes are always surfaced, by detection or by one question.
 
-Batch Build changes when building and testing happen, not whether the gates do. It runs in three sub-phases, in order.
-
-### Gate each
-
-For every queued feature, the coach runs Stages 1 through 3 fully, one feature at a time, with no building in between. Stage 1 leads the user to understand that idea, Stage 2 scopes it with the four questions, and Stage 3 is its comprehension checkpoint, exactly as in the arc (see [../rules.md](../rules.md)). A feature that does not clear its checkpoint does not enter the build queue. When a restatement does not come, the coach stays on that feature and coaches it until it clears, or the user chooses to drop it from the session. The build queue is made of features the user already understands, and nothing else gets in.
-
-### The build run
-
-Once the queue is gated, the coach assembles all of the build briefs and builds them back to back. This is the build run. On any problem during it, a bug, an ambiguity the gate missed, or a cross-feature dependency that bites once the code is real, the coach uses pause, surface, resolve, resume: stop at the problem, show the user exactly what it is and where it is, coach the decision or the fix in plain terms, and resume the run from that feature. The run does not roll past a problem quietly.
-
-This is the same instinct as failing loudly on a gate-skip (see "Naming what you're doing" in [../rules.md](../rules.md)). A problem in the build run is named out loud and held in front of the user, never absorbed in silence to keep the run moving. The whole point of the gate is that building without understanding is how features ship broken; a batched run honors that by stopping the moment something the gate could not see surfaces, naming it, and resolving it with the user rather than around them.
-
-### Test each in order
-
-After the build run, the coach walks the user through testing each feature against its own CHECK, one feature at a time, in order. Each passing test gets its own per-feature debrief, the same win-lap recap of the development areas that feature touched, before moving to the next (see [development-map.md](development-map.md)). After that debrief the "Ready to learn?" offer opens automatically, exactly as in the plain arc and under its usual contract (see [learning-mode.md](learning-mode.md)); when the user is done, testing resumes at the next feature. Verification stays strictly per feature; it is only deferred to after the build run, never merged across features and never skipped. Each feature's `DECISIONS.md` entry and `PREFLIGHT.md` line are written here, at that feature's own close, after its own test passes, exactly as the arc writes them today (see [project-memory.md](project-memory.md)).
+**Guardrails.** Auto-routing changes cadence only; every feature still passes its own comprehension checkpoint and is still verified against its own CHECK (see the non-negotiables above). If the user has already chosen a mode by name or with `/plan` or `/batch`, that choice stands, you do not override it. And the off-ramp always lands on the plain arc with the first feature, never anywhere worse than where they started.
 
 ## The two-stage flow
 
