@@ -24,9 +24,13 @@ Desktop.ini
 # during testing; never committed to the coach repo.
 PREFLIGHT.md
 
-# Claude Code local config. The cross-surface home for the skills is
-# reference/skills/ (loads as knowledge on Claude Code and Claude.ai). We ALSO
-# ship .claude/skills/ so Claude Code registers /plan, /batch, /safety, /learn as
-# native slash commands out of the box. Everything else in .claude/ stays local.
+# Claude Code local config stays local. The skills' cross-surface home is
+# reference/skills/ (loads as knowledge on Claude Code and Claude.ai); we ALSO
+# ship .claude/skills/ so Claude Code registers /plan, /chart, /secops, /learn
+# as native slash commands on clone. gitignore patterns are relative to this
+# file, so the nested coach .claude/ needs its own pair next to the root one,
+# otherwise a stray pre-flight-coach/.claude/settings.local.json is unignored.
 .claude/*
 !.claude/skills/
+pre-flight-coach/.claude/*
+!pre-flight-coach/.claude/skills/
