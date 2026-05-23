@@ -385,7 +385,7 @@ footer a:hover{color:var(--phosphor)}
 <div class="hud" id="hud" aria-hidden="true">
   <div class="frame"></div>
   <div class="hud-readout hud-tl"><span class="lbl">Altitude</span><span class="val" id="alt">38000</span><span style="font-size:.6rem;color:var(--phosphor-dim)">FT</span></div>
-  <div class="hud-readout hud-tr"><span class="lbl">Heading</span><span class="val" id="hdg">000</span><span style="font-size:.6rem;color:var(--phosphor-dim)">DEG</span></div>
+  <div class="hud-readout hud-tr"><span class="lbl">Heading</span><span class="val" id="hdg">340</span><span style="font-size:.6rem;color:var(--phosphor-dim)">DEG</span></div>
   <div class="hud-readout hud-bl"><span class="status-dot"></span>PRE-FLIGHT • SYS NOMINAL</div>
   <div class="hud-readout hud-br"><span class="lbl">Phase</span><span class="val mono" id="phase" style="font-size:.78rem;letter-spacing:.16em">CRUISE</span></div>
 </div>
@@ -1030,8 +1030,8 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const max=document.body.scrollHeight-innerHeight;
     const p=max>0?Math.min(scrollY/max,1):0;
     alt.textContent=pad((1-p)*38000,5);
-    hdg.textContent=pad(((p*340)%360),3);
-    fill.style.height=(p*100)+'%';
+    hdg.textContent=pad((1-p)*340,3);
+    fill.style.height=((1-p)*100)+'%';
     if(scrollY>lastY+1) dir='down'; else if(scrollY<lastY-1) dir='up';
     lastY=scrollY;
     const seq = dir==='down' ? phasesDown : phasesUp;
