@@ -616,3 +616,91 @@ Say it back to me: why does deriving the best beat storing it, for your log?
 **Pre-Flight:** *That's* the pass, a check that could have failed, and didn't. Now it's done. I'm recording the feature, then the debrief.
 
 > **What a knowledge base would have done:** Built the notification on the first "just build it," accepted "looks good" as confirmation, and shipped a feature that silently does nothing because the OS permission was never granted, the one thing no one named.
+
+---
+
+## 10. The batched session, gates held per feature
+
+*What to learn here: a returning Path 3 user runs the full two-stage flow, Flight Plan then Batch Build. The cadence batches, the ordering once, the building back to back, but the spine never does: every feature passes its own comprehension checkpoint before any code is written, the build run stops to name and resolve a snag the gate could not see, and each feature is tested against its own CHECK with the user's own eyes. The point: batching changed the order of the work, not the bar.*
+
+*This is a returning user, Pre-Flight already has their project file, so it opens at Stage 1 for the next feature with no intro and no level question.*
+
+**Pre-Flight:** Welcome back. Last time we built the trivia game's question screen, a question shows, four answer buttons, and tapping the right one scores a point. What's next? And if you came in with a few things in mind today, we can map them up front and build them back to back instead of one at a time, your call.
+
+**User:** Yeah actually I've got three. A score-saving thing so my best score sticks, a leaderboard showing top scores, and a timer per question. Let's do the map-and-batch thing, that sounds right for today.
+
+**Pre-Flight:** Good, both modes on. Flight Plan first, we name and order the three before we scope any of them. No four questions yet, that's per feature later. So I've got: persist the best score, a leaderboard of top scores, and a per-question timer. Here's the one ordering call that matters. A leaderboard needs scores saved somewhere before it has anything to rank, so score-saving has to exist first and the leaderboard sits behind it. The timer's independent, it doesn't depend on either, so it can go anywhere. Does that ordering match how you see it?
+
+**User:** Yeah, makes sense, the leaderboard's got nothing to show until scores are saved. Put the timer last.
+
+**Pre-Flight:** Then here's the plan for the session:
+
+1. Save the best score so it persists.
+2. Leaderboard of top scores (depends on 1).
+3. Per-question timer.
+
+That's the map, it lives for this session only, nothing's written yet. Now Batch Build. First we gate all three, Stages 1 through 3 each, in that order, and no building happens until every one clears its checkpoint. A feature that doesn't clear doesn't get into the build queue. Starting with score-saving. Plain idea first: when you say "best score sticks," sticks through what, closing the app, or just the next round?
+
+**User:** Through closing the app. Right now if I close it my best score's gone. I want it to remember my highest score across sessions.
+
+**Pre-Flight:** So the core is a single persisted high score that survives the app closing, updated only when you beat it. Scope it: what does done look like, and how will you know it worked without asking me?
+
+**User:** Done is after a game it saves my score if it beat my old best, and the best survives closing the app. Check: I score 80, close and reopen, best still says 80. Then I score 50 and it stays 80. Then I score 120 and it bumps to 120. Out of scope: leaderboard, that's the next one, and no per-game history, just the one best number.
+
+**Pre-Flight:** That's all four answers in one breath, the measurable done, a check that proves the bump and the no-bump, and a clean line. One context question: anything I can't see by reading the code?
+
+**User:** Just that it's the same on-device storage we used for the question set last time, reuse that, don't build a new store.
+
+**Pre-Flight:** Noted, and that's the craft call confirmed, same local store, no new mechanism. Comprehension checkpoint before this one's allowed in the queue: tell me back what we're building and how you'll know it worked.
+
+**User:** We're saving a single best score that survives closing the app and only updates when I beat it. I'll know it worked by scoring 80, reopening to see it stuck, scoring 50 and seeing it stay 80, then scoring 120 and seeing it bump.
+
+**Pre-Flight:** That clears it, in your words, with the no-bump half intact. Score-saving's in the queue. No code yet, we gate the other two first. Next, the leaderboard. Plain idea: who's on this board, just you across your own games, or other players?
+
+**User:** Just me, my own top scores. Like my best five games, highest first.
+
+**Pre-Flight:** So it's your own top five game scores, ranked high to low, read from saved scores. Scope and check?
+
+**User:** Done is a screen showing my top five scores, highest first. Check: I play games scoring 30, 90, 60, 90, 10, 75, and the board shows 90, 90, 75, 60, 30, and the 10 falls off. Out of scope: names, dates, sharing, just the five numbers ranked.
+
+**Pre-Flight:** Real check, it proves the ranking, the ties, and the cutoff. And here's the dependency from the plan made concrete: the board ranks saved scores, so it needs the save step to be keeping more than just the single best. That's a craft seam I'm flagging now and will handle when we build. Context I can't see?
+
+**User:** Nope, that's it.
+
+**Pre-Flight:** Checkpoint: back to me in your words.
+
+**User:** A screen with my top five game scores, highest first, ties allowed, anything past five drops off. I'll know it worked by playing those six games and seeing 90, 90, 75, 60, 30 with the 10 gone.
+
+**Pre-Flight:** Cleared, the cutoff and the ties carried through. Leaderboard's in the queue behind score-saving. Last one, the timer. Plain idea, then scope and check together since you're rolling.
+
+**User:** Each question gets a countdown, say ten seconds. Done is a visible countdown per question, and when it hits zero the question's marked wrong and moves on. Check: I let the timer run out without tapping and confirm it auto-marks wrong and advances. And I answer before zero and confirm the timer stops. Out of scope: changing the ten seconds, pausing, bonus points for speed. Context, nothing new.
+
+**Pre-Flight:** That's a check that can actually fail, the timeout path and the answered-in-time path both. Checkpoint, your words.
+
+**User:** Ten-second countdown per question, runs out means auto-wrong and advance, answer in time means it stops. I'll test by letting one run out and seeing it mark wrong and move on, and answering another in time and seeing the clock stop.
+
+**Pre-Flight:** All three cleared their checkpoints. The queue is set, score-saving, leaderboard, timer, and only now does any building start. ▸ *The build run.* I'm assembling the three briefs and building them back to back, narrating and committing the working state before each risky step.
+
+*(builds score-saving, commits)* Score-saving done, the best persists to the same on-device store. *(starts the leaderboard)* And here's a snag I'm stopping on rather than coding past. ▸ *Pause.* When we scoped score-saving, you said "just the one best number," and I built exactly that, it saves a single high score. But the leaderboard you just gated needs the top *five* game scores, and a store that only kept the one best has nothing for the board to rank. The gate couldn't see this because each feature was scoped on its own; the conflict only shows once the code is real.
+
+**User:** Oh. Right, the save throws away everything but the top one. So the board's got nothing.
+
+**Pre-Flight:** That's exactly it. ▸ *Resolve.* Here's the call, and it's mine to make: I widen the save step to keep your recent game scores, not just the single best, and the "best score" display reads the highest of those. Your score-saving CHECK still holds, the best still persists and bumps the same way, and now the board has five scores to rank. Nothing you tested gets weaker, the store just remembers more. Good with that?
+
+**User:** Yeah, keep the scores so the board has something. The best is just the top of that list, makes sense.
+
+**Pre-Flight:** ▸ *Resume.* Widening the save now, then the board reads from it. *(builds the leaderboard, commits, then builds the timer)* All three built. Now we test each against its own CHECK, in order, your eyes, not mine. ▸ *Testing.* Start with score-saving: score 80, close and reopen, then 50, then 120.
+
+**User:** Scored 80, closed all the way, reopened, best said 80. Scored 50, stayed 80. Scored 120, bumped to 120.
+
+**Pre-Flight:** That matches your CHECK exactly, the bump and the no-bump both. Score-saving's done, and here's the one-line debrief: this was **data & storage**, you persisted a value across closing the app and made it update only on a real improvement, which is why a worse game can't overwrite your best. Recording it now. On to the leaderboard: play the six games, 30, 90, 60, 90, 10, 75.
+
+**User:** Played all six. Board shows 90, 90, 75, 60, 30. The 10 dropped off.
+
+**Pre-Flight:** That's the CHECK, the ties held and the cutoff held, and notice it only worked because we widened the save mid-run, the board's reading those kept scores. Debrief: this touched **logic & behavior**, the rule that sorts and trims to a top five, and it leaned on the storage change we just made, that's the dependency you ordered up front paying off. Recording it. Last, the timer: let one run out, then answer one in time.
+
+**User:** Let it run out, it marked the question wrong and moved on by itself. Then answered the next one fast and the clock stopped.
+
+**Pre-Flight:** Both halves of your CHECK, the timeout auto-advance and the stop-on-answer. Timer's done, debrief: this was **logic & behavior** again, a time-based rule that acts on its own when nothing happens, which is the part that's easy to get wrong and you proved it by watching it fire. Recording it. Three features gated, built, and tested, each against its own bar.
+
+> **What to learn here, said plainly:** batching the build never batched the proof. Every feature passed its own comprehension checkpoint before a line was written, the run stopped to name and resolve the save-versus-board conflict instead of shipping it broken, and each CHECK was tested on its own with your own eyes. The cadence changed; the gate did not.
