@@ -365,6 +365,13 @@ footer b{color:var(--ink-dim)}
 footer a{color:var(--phosphor-dim);text-decoration:none}
 footer a:hover{color:var(--phosphor)}
 
+/* touchdown runway (bottom of page) */
+#touchdown{position:relative;height:46vh;min-height:300px;padding:0;overflow:hidden;
+  background:linear-gradient(to bottom,transparent 0%,rgba(67,245,176,.04) 65%,rgba(67,245,176,.09) 100%)}
+#touchdown canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#touchdown .tlabel{position:absolute;left:0;right:0;bottom:22px;text-align:center;z-index:2;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--phosphor-dim)}
+
 /* reveal animation (JS adds .in) */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -403,7 +410,7 @@ footer a:hover{color:var(--phosphor)}
         </div>
       </div>
       <div class="hero-copy-col">
-        <div class="hero-eyebrow" id="eyebrow"><span class="sq"></span> Skool Weekly Comp #5: The Coach</div>
+        <div class="hero-eyebrow" id="eyebrow"><span class="sq"></span> Cliff Notes - Skool Weekly Comp #5: The Coach</div>
         <h1>
           <span class="pre" id="preword"></span>
           <span class="flight">FLIGHT</span>
@@ -417,7 +424,7 @@ footer a:hover{color:var(--phosphor)}
       </div>
     </div>
   </div>
-  <div class="scroll-hint" id="shint">Begin pre-flight check<span class="arr"></span></div>
+  <div class="scroll-hint" id="shint">Begin descent<span class="arr"></span></div>
 </section>
 
 <!-- ===== THE GATE ===== -->
@@ -680,6 +687,12 @@ footer a:hover{color:var(--phosphor)}
   </div>
 </section>
 
+<!-- ===== TOUCHDOWN RUNWAY ===== -->
+<section id="touchdown" aria-hidden="true">
+  <canvas id="runway2"></canvas>
+  <div class="tlabel">Cleared to land</div>
+</section>
+
 <footer>
   <b>Pre-Flight</b> · Built for Skool Weekly Comp #5 · CC BY-NC 4.0 · free for noncommercial use, with credit to Basiliso Rosario<br>
   <a href="https://github.com/BuiltByBas/pre-flight-coach">github.com/BuiltByBas/pre-flight-coach</a>
@@ -736,7 +749,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   })();
   const CLOUDS=13, cloudGeo=new THREE.BufferGeometry(), cpos=new Float32Array(CLOUDS*3);
   for(let i=0;i<CLOUDS;i++){
-    cpos[i*3]=(Math.random()-.5)*42;
+    cpos[i*3]=(Math.random()<.5?-1:1)*(Math.random()*14+7);
     cpos[i*3+1]=Math.random()*15+1.5;
     cpos[i*3+2]=-Math.random()*150-5;
   }
@@ -747,24 +760,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }));
   scene.add(clouds);
 
-  // runway: receding grid of lines
-  const grid = new THREE.Group();
-  const lineMat = new THREE.LineBasicMaterial({color:0x43f5b0, transparent:true, opacity:0.32});
-  const dimMat  = new THREE.LineBasicMaterial({color:0x1d8f6a, transparent:true, opacity:0.22});
-  // edge lines + center
-  function lineAt(x, mat){
-    const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x,0,8), new THREE.Vector3(x,0,-160)]);
-    grid.add(new THREE.Line(g, mat));
-  }
-  lineAt(-3, lineMat); lineAt(3, lineMat); lineAt(0, dimMat);
-  lineAt(-1.5, dimMat); lineAt(1.5, dimMat);
-  // rungs (animated toward camera)
-  const rungs=[];
-  for(let z=8; z>-160; z-=4){
-    const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-3,0,z), new THREE.Vector3(3,0,z)]);
-    const l=new THREE.Line(g, dimMat); l.userData.z=z; rungs.push(l); grid.add(l);
-  }
-  grid.position.y=-3.2; scene.add(grid);
+  // runway moved to the #touchdown section at the bottom of the page; the hero is sky only
 
   let raf, t=0;
   function resize(){ renderer.setSize(innerWidth, innerHeight); cam.aspect=innerWidth/innerHeight; cam.updateProjectionMatrix(); }
@@ -772,16 +768,15 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function tick(){
     t+=0.016;
-    rungs.forEach(r=>{ r.position.z += 0.55; if(r.userData.z + r.position.z > 8){ r.position.z -= 168; } });
     stars.rotation.y = t*0.01;
     const cp=clouds.geometry.attributes.position;
     for(let i=0;i<CLOUDS;i++){
       cp.array[i*3+2]+=0.14;
-      if(cp.array[i*3+2]>10){ cp.array[i*3+2]=-150; cp.array[i*3]=(Math.random()-.5)*42; cp.array[i*3+1]=Math.random()*15+1.5; }
+      if(cp.array[i*3+2]>10){ cp.array[i*3+2]=-150; cp.array[i*3]=(Math.random()<.5?-1:1)*(Math.random()*14+7); cp.array[i*3+1]=Math.random()*15+1.5; }
     }
     cp.needsUpdate=true;
     cam.position.x = Math.sin(t*0.18)*0.25;
-    cam.lookAt(0, -2.6, -20);
+    cam.lookAt(0, 5, -40);
     renderer.render(scene, cam);
     raf=requestAnimationFrame(tick);
   }
@@ -1015,6 +1010,38 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   chips.forEach((c,i)=>c.addEventListener('click',()=>render(i)));
   let played=false;
   new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting&&!played){played=true;render(0);}});},{threshold:.4}).observe(term);
+})();
+
+/* ---------- TOUCHDOWN RUNWAY (three.js, bottom of page) ---------- */
+(function(){
+  const canvas=document.getElementById('runway2');
+  if(!canvas || REDUCED || typeof THREE==='undefined') return;
+  const renderer=new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x05080d, 0.05);
+  const cam=new THREE.PerspectiveCamera(72, 1, 0.1, 200);
+  cam.position.set(0, 1.7, 6);
+  const grid=new THREE.Group();
+  const lineMat=new THREE.LineBasicMaterial({color:0x43f5b0, transparent:true, opacity:0.55});
+  const dimMat=new THREE.LineBasicMaterial({color:0x1d8f6a, transparent:true, opacity:0.3});
+  function lineAt(x,mat){ const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x,0,8), new THREE.Vector3(x,0,-160)]); grid.add(new THREE.Line(g,mat)); }
+  lineAt(-3,lineMat); lineAt(3,lineMat); lineAt(0,dimMat); lineAt(-1.5,dimMat); lineAt(1.5,dimMat);
+  const rungs=[];
+  for(let z=8; z>-160; z-=4){ const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-3,0,z), new THREE.Vector3(3,0,z)]); const l=new THREE.Line(g,dimMat); l.userData.z=z; rungs.push(l); grid.add(l); }
+  grid.position.y=-1.1; scene.add(grid);
+  let raf;
+  function size(){ const w=canvas.clientWidth||innerWidth, h=canvas.clientHeight||300; renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); }
+  size(); addEventListener('resize', size);
+  function tick(){
+    rungs.forEach(r=>{ r.position.z += 0.5; if(r.userData.z + r.position.z > 8){ r.position.z -= 168; } });
+    cam.lookAt(0, -0.5, -45);
+    renderer.render(scene, cam);
+    raf=requestAnimationFrame(tick);
+  }
+  tick();
+  const sec=document.getElementById('touchdown');
+  new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ if(!raf) tick(); } else { cancelAnimationFrame(raf); raf=0; } }); }).observe(sec);
 })();
 
 /* ---------- HUD readouts driven by scroll ---------- */
