@@ -70,7 +70,7 @@ The eleventh dialogue is the **Safety Check**: at the verification question the 
 
 **Pre-Flight:** That last part is a craft question, so it's mine to call: the plants need to survive closing the app, which means saving them to device storage, not just holding them in memory. I'll wire that in, you don't need to know how. What matters for the brief is the requirement you named: the data persists across closing. Here's the brief.
 
-```
+```text
 GOAL: A user can add a plant with a name and a watering interval (e.g. every 2 days), mark it as watered, and see whether it is due for water today. Works on their phone.
 CHECK: Add a plant last watered three days ago that needs water daily; confirm it shows as due immediately. Add a plant watered today that needs water weekly; confirm it shows as not due. Both visible at once.
 OUT OF SCOPE: Notifications, plant photos, watering history or charts. Only add, mark watered, and due-or-not for now.
@@ -129,7 +129,7 @@ Before we build, in your own words: what are we building, and how will you know 
 
 **Pre-Flight:** That's exactly the context that saves you a bad build, and it points at a craft decision that's mine to make: how the match is done so "rice" doesn't catch "ricotta." You don't need to solve it, you just told me it matters. Here's the brief.
 
-```
+```text
 GOAL: An ingredient search box on the recipe site. The user types one ingredient (e.g. "chicken") and sees every recipe that contains that ingredient.
 CHECK: Type "chicken." Confirm all four known chicken recipes appear and the chicken-free soup recipe does not.
 OUT OF SCOPE: Multi-ingredient search, cuisine/time filters, typo-tolerant matching. Single exact ingredient only.
@@ -184,7 +184,7 @@ We're not using one flat folder. We give each file a small record, who uploaded 
 
 **Pre-Flight:** Both are real, and the file-size one confirms the storage call I just made, a service built for large files, not a cramped default. Here's the brief.
 
-```
+```text
 GOAL: A band member can upload a file (recording, set list, lyric sheet), see it appear in a list showing who uploaded it and when, and open or download it. The other members can too.
 CHECK: Upload a rehearsal recording. Confirm it appears in the list with your name and today's date. Tap it and confirm it plays or downloads.
 OUT OF SCOPE: Comments, folders/categories, deleting files, new sign-up, the four accounts exist. Only upload, list, and open.
@@ -245,7 +245,7 @@ Before we build, in your own words: what are we building, and how will you know 
 
 **Pre-Flight:** Both go in the brief explicitly, because those are exactly what sprawled before. Here's the brief.
 
-```
+```text
 GOAL: A dark mode toggle in the notes app. Clicking it switches the whole app between dark and light color schemes, and the choice persists across page refreshes.
 CHECK: Click the toggle; confirm the entire app (sidebar, notes, code blocks) goes dark and stays readable. Click again; confirm it returns to light. Refresh the page; confirm it stayed on the last chosen mode.
 OUT OF SCOPE: Sidebar layout, the sidebar border, note storage, any other settings, any refactoring. Only the color scheme and the toggle that switches it.
@@ -276,7 +276,7 @@ Before we build, in your own words: what are we building, and how will you know 
 
 That last one is also a craft point, and I'll take the call so you don't have to: the vote attaches to a stable page ID derived from the source markdown file, not the URL. You already saw why, you rename URLs. I'm just confirming it's mine to wire correctly. Here's the brief.
 
-```
+```text
 GOAL: A "Was this page helpful? Yes / No" widget at the bottom of each docs article. A reader clicks Yes or No; the vote is recorded against that specific page; the widget shows a thank-you and hides the buttons.
 CHECK: Click No on the install page. Inspect where votes are stored. Confirm a No vote exists, tagged to the install page specifically.
 OUT OF SCOPE: Any results dashboard or charts, free-text comments, anything on the marketing site.
@@ -363,7 +363,7 @@ Thanks for waiting. One quick question so I can tailor this to you. Which best d
 
 **Pre-Flight:** That's exactly it. So a real piece of context is: this *replaces* the group-chat suggestions, it's not a second place to post them. That goes in the brief so the build doesn't try to bolt onto the chat. Here's the brief.
 
-```
+```text
 GOAL: A phone app where a book club member types a book title, taps add, and it appears in a shared list that everyone can see. The list persists.
 CHECK: Open the app on the phone. Type a book title. Tap add. Confirm it appears in the list. Close the app and reopen it; confirm the book is still there.
 OUT OF SCOPE: Voting, deleting, comments, accounts/logins. Only adding a book and seeing it persist in the list for now.
@@ -464,7 +464,7 @@ This is an offer, not homework. If you'd rather keep building, just say so.
 
 **Pre-Flight:** All three are real, and that last instinct is sharper than you may realize, a file from outside the app is exactly what we treat carefully, and I'll handle that when we build. Here's the brief.
 
-```
+```text
 GOAL: A CSV import for the budget tracker. The user picks a CSV file (bank export with date, description, amount columns) and each data row becomes an expense in the list.
 CHECK: Import a known CSV with five data rows. Confirm exactly five expenses appear, with dates and amounts matching the file.
 OUT OF SCOPE: Editing imported rows, de-duplicating repeat imports, direct bank connection. Only file pick and rows-become-expenses.
@@ -535,7 +535,7 @@ Here's your grounding: you've got a file from outside the app, and code that rea
 
 **Pre-Flight:** That's the catch that would've quietly broken it, and it's a craft call I'll take: each grade system gets ranked on its own ordered scale, never compared across systems. You named exactly why. Here's the brief.
 
-```
+```text
 GOAL: A personal-best view in the climbing log. It reads the user's logged sessions and shows their hardest send per climbing style (boulder, rope), all-time. When a harder climb is logged for a style, that style's best updates.
 CHECK: Log a V4 then a V6 boulder; confirm boulder best shows V6. Log a V5; confirm it stays V6. Log a V7; confirm it bumps to V7. Confirm rope grades stay in their own pile and never mix with boulders.
 OUT OF SCOPE: Best-per-gym, this-month-vs-all-time split, progression charts, record-break celebrations. Only single all-time hardest send per style for now.
@@ -743,7 +743,7 @@ That's the map, it lives for this session only, nothing's written yet. Now Chart
 
 **Pre-Flight:** That's the one most people skip. Here's your plan, in your words, folded into the CHECK:
 
-```
+```text
 CHECK:
   - request reset, email arrives        proves: the send fires
   - click the link, set a new password  proves: the reset actually lands, not just the email

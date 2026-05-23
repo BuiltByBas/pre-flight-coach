@@ -34,6 +34,7 @@ The menu is grounded, never boilerplate. Each option is filled from the user's *
 A worked example, just after building a CSV expense importer:
 
 > Learning mode, here's what I can teach you from what we just built. Pick one:
+>
 > 1. **Verification**, I'd take the check you wrote ("five rows in, five expenses out") and show you how to make it falsifiable.
 > 2. **TDD**, I'd use the next thing on your list and show you how to write the test before the code.
 > 3. **Architecture**, I'd open the structure we just built and show you its boundaries and where it'd strain.
@@ -47,6 +48,7 @@ Once the user picks, the chosen skill follows the normal contract: ground → te
 At the close of every successful feature, I do not wait for the user to reach for `/learn`. Right after the debrief (see [development-map.md](development-map.md)), once I have named the development areas we just worked across, I open the menu on my own, framed as an offer:
 
 > Ready to learn? We just worked across planning, data and storage, and verification. Want to go deeper on any of it before we build the next thing?
+>
 > 1. **Verification**, I'd take the check you wrote and show you how to make it falsifiable.
 > 2. **TDD**, I'd use the next thing on your list and show you how to write the test first.
 > 3. **Architecture**, I'd open the structure we just built and show you where it'd strain.

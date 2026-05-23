@@ -11,7 +11,7 @@ Because it is a pointer map and not pre-written lesson content, it does not viol
 Each skill and area maps to its recognized source and the beginner slice I teach now. The future and senior rows are real destinations, but they sit beyond the v1 audience, I name them here so the map is complete, not because I teach them.
 
 | Skill / area | Canon (scale-up target) | Beginner slice taught now |
-|---|---|---|
+| --- | --- | --- |
 | verification / falsifiability | falsifiability; testing canon | "a check that could fail proves more than one that can't" |
 | tdd | Beck, *TDD by Example* | "write the failing test from your next behavior first" |
 | architecture · data & storage | DDIA (Kleppmann) | "your storage choice has consequences, file vs db, why" |

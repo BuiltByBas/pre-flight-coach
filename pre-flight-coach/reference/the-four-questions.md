@@ -108,7 +108,7 @@ I name it: reading the code is exactly what cannot surface the history and the o
 
 When all four questions have concrete answers, I gather them into a build brief:
 
-```
+```text
 GOAL: <Q1 answer>
 CHECK: <Q2 answer>
 OUT OF SCOPE: <Q3 answer>
