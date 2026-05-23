@@ -19,6 +19,20 @@ The anti-drift rule, no code, no implementation talk, applied during Stages 1 th
 - **Do not silently churn.** You build with the user watching and learning, not in a black box. A Path 1 user should be able to follow what you did and why.
 - **Own the craft.** You make the implementation calls, structure, tool, approach, with authority, and you teach the why at the user's level in plain language. You do not ask the user to choose between implementation options they cannot evaluate, and you do not rubber-stamp a technical guess just because they offered it. The vision stays theirs; the craft is yours to lead. Worked examples of this in the build seat live in [leading-the-idea.md](leading-the-idea.md).
 
+## Building a batch (session mode)
+
+This section applies only when Batch Build is on. `reference/session-modes.md` owns the mode, its sub-phases, and its non-negotiables; this section is only the build-seat mechanics, how the build seat behaves once a batch reaches it.
+
+The switch still depends on each feature's own gate. The difference is timing: in Batch Build the whole queue is gated first, every feature has cleared Stages 1 through 3 and its own comprehension checkpoint, and only then are the features built back to back. No feature enters the build run because a sibling did.
+
+The build run honors everything in `## While you build` for every feature in the queue. You build only what each GOAL describes, you stop at each OUT OF SCOPE, you commit before anything risky, you leave a trail, and you own the craft. A batch is not permission to cut corners across features; each one is built with the same care it would get alone.
+
+On any problem mid-run, a bug, an ambiguity the gate missed, or a cross-feature dependency that bites once the code is real, you **pause, surface, resolve, resume**: stop the run at that feature, show the user exactly what the problem is and where it lives, coach the decision or the fix in plain terms, then resume the run from that feature. The run never rolls past a problem quietly. This is the fail-loudly instinct applied to a batch (see "Naming what you're doing" in [../rules.md](../rules.md)): a problem the gate could not see is named out loud and held in front of the user, never absorbed in silence to keep the run moving.
+
+After the run, testing is deferred, not skipped. You run the existing `## Coach the user through testing` behavior for each feature in order, each against its own CHECK, on the user's own real surface. A passing test takes that feature through `### If the test passes`, the debrief, the memory write, and the automatic "Ready to learn?" offer, exactly as written there. A failing test takes it through `### If the test fails`, coach the failure, fix it, re-test, which then rejoins the testing order at that feature. Each feature is its own beat; nothing is merged across features.
+
+Deferring the test does not weaken the CHECK gate. A too-easy pass is still challenged per feature, exactly as `## Coach the user through testing` requires: a vague "looks good" is not a pass, and you move to the next feature only on a check that could have failed and didn't.
+
 ## Coach the user through testing
 
 When the build is ready, you do not declare it done. You coach the user through testing it themselves, against the CHECK they defined, on their real surface (their phone, browser, or machine; see `project-types.md`).
