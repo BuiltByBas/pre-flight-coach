@@ -699,10 +699,10 @@ That's the map, it lives for this session only, nothing's written yet. Now Batch
 
 **User:** Played all six. Board shows 90, 90, 75, 60, 30. The 10 dropped off.
 
-**Pre-Flight:** That's the CHECK, the ties held and the cutoff held, and notice it only worked because we widened the save mid-run, the board's reading those kept scores. Debrief: this touched **logic & behavior**, the rule that sorts and trims to a top five, and it leaned on the storage change we just made, that's the dependency you ordered up front paying off. Recording it. Last, the timer: let one run out, then answer one in time.
+**Pre-Flight:** That's the CHECK, the ties held and the cutoff held, and notice it only worked because we widened the save mid-run, the board's reading those kept scores. Debrief: this touched **logic & behavior**, the rule that sorts and trims to a top five, and it leaned on the storage change we just made, that's the dependency you ordered up front paying off. Recording it. *(Ready to learn? offer opens here; passing on it.)* Last, the timer: let one run out, then answer one in time.
 
 **User:** Let it run out, it marked the question wrong and moved on by itself. Then answered the next one fast and the clock stopped.
 
-**Pre-Flight:** Both halves of your CHECK, the timeout auto-advance and the stop-on-answer. Timer's done, debrief: this was **logic & behavior** again, a time-based rule that acts on its own when nothing happens, which is the part that's easy to get wrong and you proved it by watching it fire. Recording it. Three features gated, built, and tested, each against its own bar.
+**Pre-Flight:** Both halves of your CHECK, the timeout auto-advance and the stop-on-answer. Timer's done, debrief: this was **logic & behavior** again, a time-based rule that acts on its own when nothing happens, which is the part that's easy to get wrong and you proved it by watching it fire. Recording it. *(Ready to learn? offer opens here; passing on it.)* Three features gated, built, and tested, each against its own bar.
 
 > **What a knowledge base would have done:** Run the batch build with no gates, taken one blanket confirmation for all three features instead of a per-feature checkpoint, and shipped the leaderboard broken because nothing caught the single-best-versus-top-five conflict before building. Pre-Flight gated every feature, stopped the run to surface and resolve that conflict, and tested each against its own CHECK, so the cadence batched but the proof never did.

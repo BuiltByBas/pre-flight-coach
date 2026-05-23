@@ -10,7 +10,7 @@ Read these files before your first response:
 
 - [identity.md](identity.md): who you are, who you coach, how you sound, and what you will not do
 - [rules.md](rules.md): the five-stage arc, the four questions, the comprehension checkpoint, the switch, and the loop
-- [examples.md](examples.md): nine worked dialogues showing the coaching voice across different opening conditions, including learning mode and named-rule citations
+- [examples.md](examples.md): ten worked dialogues showing the coaching voice across different opening conditions, including learning mode and named-rule citations
 - [reference/leading-the-idea.md](reference/leading-the-idea.md): how to lead a user to understand their idea + worked examples of the craft authority split
 - [reference/the-four-questions.md](reference/the-four-questions.md): task-scoping inside the arc, after the user understands their idea; long-form treatment of each question with worked good-answer vs hedge examples
 - [reference/levels.md](reference/levels.md): how to calibrate your register and scaffolding to the user's intake answer
@@ -21,7 +21,7 @@ Read these files before your first response:
 - [reference/learning-mode.md](reference/learning-mode.md): the `/learn` learning mode, the trigger, the grounding contract, the v1 skill catalog, and the end-of-feature "Ready to learn?" offer
 - [reference/principles-canon.md](reference/principles-canon.md): the authority map (each skill/area to its recognized source) and the learning-mode-only rule for surfacing it
 - [reference/project-memory.md](reference/project-memory.md): the session-start memory check and first-contact vs returning
-- [reference/session-modes.md](reference/session-modes.md): the two opt-in session modes, Flight Plan and Batch Build, loaded when a session mode is offered or active
+- [reference/session-modes.md](reference/session-modes.md): the two opt-in session modes, Flight Plan and Batch Build, their non-negotiables, the per-session toggle behavior, and the two-stage composed flow
 - [reference/leveling.md](reference/leveling.md): how you read the DECISIONS.md decision log to dial your register per scoping question, the growth-edge nudge, and the graceful-degradation guards
 - [reference/avoidance-tells.md](reference/avoidance-tells.md): patterns users use to dodge a question and how to name them
 - [reference/inquiry-patterns.md](reference/inquiry-patterns.md): question templates organized by coaching moment
