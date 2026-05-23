@@ -15,6 +15,10 @@ Desktop.ini
 # Internal docs (specs, plans), kept local, not published
 /docs/
 
+# Dev-tooling config, not needed to run the coach. Kept local so contributors
+# can still lint with the intended deviations, but not shipped in the package.
+.markdownlint.json
+
 # Pre-Flight memory file, a per-user-project artifact the coach writes at the
 # project root. Appears here only when the coach is run inside its own folder
 # during testing; never committed to the coach repo.
