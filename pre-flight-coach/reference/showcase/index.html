@@ -133,6 +133,11 @@ a{color:inherit}
   .hud-bl,.hud-br{display:none}
 }
 
+/* mobile / touch: remove the HUD overlay entirely (desktop keeps it) */
+@media (max-width:760px),(hover:none) and (pointer:coarse){
+  #hud,#climb{display:none!important}
+}
+
 /* =========================================================
    LAYOUT
    ========================================================= */
