@@ -53,7 +53,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   background:var(--night);
   color:var(--ink);
@@ -273,6 +273,8 @@ h2 em{font-style:normal;color:var(--phosphor)}
 .loop-node.n3{bottom:6px;left:-18px}
 .loop-core{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
 .loop-core .lc{font-family:var(--display);font-size:1.2rem;color:var(--white);font-weight:600}
+/* shrink the ring on the smallest phones so the offset nodes never overflow */
+@media (max-width:400px){.loop-ring{width:236px;height:236px}}
 
 /* calibration / adapts */
 .paths{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
