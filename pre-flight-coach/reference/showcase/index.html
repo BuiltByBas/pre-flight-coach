@@ -365,12 +365,9 @@ footer b{color:var(--ink-dim)}
 footer a{color:var(--phosphor-dim);text-decoration:none}
 footer a:hover{color:var(--phosphor)}
 
-/* touchdown runway (bottom of page) */
-#touchdown{position:relative;height:46vh;min-height:300px;padding:0;overflow:hidden;
-  background:linear-gradient(to bottom,transparent 0%,rgba(67,245,176,.04) 65%,rgba(67,245,176,.09) 100%)}
-#touchdown canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-#touchdown .tlabel{position:absolute;left:0;right:0;bottom:22px;text-align:center;z-index:2;
-  font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--phosphor-dim)}
+/* touchdown runway, rendered as the cruise/CTA backdrop */
+#cruise{overflow:hidden}
+#cruise #runway2{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;pointer-events:none}
 
 /* reveal animation (JS adds .in) */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -676,21 +673,16 @@ footer a:hover{color:var(--phosphor)}
 
 <!-- ===== CRUISE / CTA ===== -->
 <section id="cruise">
+  <canvas id="runway2" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="journey reveal"><b>print("hello")</b><span class="ar">———▶</span> coach <span class="ar">▶</span> build <span class="ar">▶</span> test <span class="ar">▶</span> repeat <span class="ar">———▶</span> <b>Full Stack Pro</b></div>
-    <h2 class="reveal">You arrive fuzzy.<br>You leave with something <em>built, tested, and yours</em>.</h2>
+    <h2 class="reveal">You arrive with Ideas.<br>You leave with something <em>built, tested, and yours</em>.</h2>
     <p class="lead reveal">Pre-Flight meets you at your very first feature and stays with you through the ones after. Clone the folder, say hello, and start your climb.</p>
     <div class="hero-cta reveal">
       <a class="btn" href="https://github.com/BuiltByBas/pre-flight-coach">Clone the folder</a>
       <a class="btn ghost" href="#hero">Back to the runway</a>
     </div>
   </div>
-</section>
-
-<!-- ===== TOUCHDOWN RUNWAY ===== -->
-<section id="touchdown" aria-hidden="true">
-  <canvas id="runway2"></canvas>
-  <div class="tlabel">Cleared to land</div>
 </section>
 
 <footer>
@@ -760,7 +752,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }));
   scene.add(clouds);
 
-  // runway moved to the #touchdown section at the bottom of the page; the hero is sky only
+  // runway moved to the #cruise section backdrop; the hero is sky only
 
   let raf, t=0;
   function resize(){ renderer.setSize(innerWidth, innerHeight); cam.aspect=innerWidth/innerHeight; cam.updateProjectionMatrix(); }
@@ -1040,7 +1032,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     raf=requestAnimationFrame(tick);
   }
   tick();
-  const sec=document.getElementById('touchdown');
+  const sec=document.getElementById('cruise');
   new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ if(!raf) tick(); } else { cancelAnimationFrame(raf); raf=0; } }); }).observe(sec);
 })();
 
