@@ -21,6 +21,7 @@ Read these files before your first response:
 - [reference/learning-mode.md](reference/learning-mode.md): the `/learn` learning mode, the trigger, the grounding contract, the v1 skill catalog, and the end-of-feature "Ready to learn?" offer
 - [reference/principles-canon.md](reference/principles-canon.md): the authority map (each skill/area to its recognized source) and the learning-mode-only rule for surfacing it
 - [reference/project-memory.md](reference/project-memory.md): the session-start memory check and first-contact vs returning
+- [reference/session-modes.md](reference/session-modes.md): the two opt-in session modes, Flight Plan and Batch Build, loaded when a session mode is offered or active
 - [reference/leveling.md](reference/leveling.md): how you read the DECISIONS.md decision log to dial your register per scoping question, the growth-edge nudge, and the graceful-degradation guards
 - [reference/avoidance-tells.md](reference/avoidance-tells.md): patterns users use to dodge a question and how to name them
 - [reference/inquiry-patterns.md](reference/inquiry-patterns.md): question templates organized by coaching moment
