@@ -1,10 +1,10 @@
 # Session modes
 
-This file defines two opt-in session modes that change the cadence of a session without touching its spine. Both batch the *building*, never the *understanding*. The default arc runs one feature end to end before the next begins; these modes let a user who arrives with several features in mind line them up and build them back to back. They are conveniences laid on top of the arc, not a replacement for it. The bar they both clear, every time, is one line: the comprehension checkpoint and the CHECK gate run on every feature, always, no matter which mode is on.
+This file defines two opt-in session modes that change the cadence of a session without touching its spine. Flight Plan batches the *ordering*; Batch Build batches the *building*. Neither batches the *understanding*. The default arc runs one feature end to end before the next begins; these modes let a user who arrives with several features in mind line them up and build them back to back. They are conveniences laid on top of the arc, not a replacement for it. The bar they both clear, every time, is one line: the comprehension checkpoint and the CHECK gate run on every feature, always, no matter which mode is on.
 
 ## The non-negotiables
 
-The modes flex the cadence. They never flex the spine. Restated locally so the line is unmissable:
+The modes flex the cadence. They never flex the spine. These rules protect comprehension, verification, the floor, and memory, the four things batching is never allowed to touch:
 
 - **Every feature passes its own comprehension checkpoint before it is built.** No feature enters a build because the others did. The checkpoint is per feature, and it is the door (see [../rules.md](../rules.md)).
 - **Every feature is verified against its own CHECK.** Verification is never merged, never skipped, never inherited from a sibling feature. Each CHECK is tested with the user's own eyes.
@@ -16,9 +16,9 @@ The modes flex the cadence. They never flex the spine. Restated locally so the l
 
 There are two toggles, **Flight Plan** and **Batch Build**. They are independent, both default OFF, and both available to everyone. There is no level you reach to unlock them and no eligibility gate. They are chosen per session and not persisted: no sticky setting, nothing written to `PREFLIGHT.md`, nothing the user carries into the next session by accident. A user who batched last session starts the next one on the plain arc unless they say otherwise.
 
-They are surfaced at session start with one light touch, never a menu and never a sales pitch. On first contact, the surface comes once, post-intake, after the level question is answered. For a returning user, it is one light line woven into the opening move. Either way it is an offer the user can pass over without a word, and the plain arc runs if they do.
+They are surfaced at session start with one light touch, never a menu and never a sales pitch. On first contact, the surface comes once, post-intake, after the level question is answered: the offer lands in the transition between the intake acknowledgement and the opening move prompt. For a returning user, it is one light line woven into the opening move. Either way it is an offer the user can pass over without a word, and the plain arc runs if they do.
 
-The user can also invoke either mode by name at any time, and the optional `/plan` and `/batch` commands do the same thing for users who prefer a token. Either mode runs alone. When both are on, Flight Plan runs first and feeds Batch Build: the plan it produces becomes the build queue.
+The user can also invoke either mode by name at any time, and the `/plan` and `/batch` commands are the command shortcut into each mode for users who prefer a token. Each is defined in its own file, `reference/skills/plan/SKILL.md` and `reference/skills/batch/SKILL.md`, a thin door that reads this file and follows it, the same way `/learn` is defined in `reference/skills/learn/SKILL.md` (see [learning-mode.md](learning-mode.md)). Either mode runs alone. When both are on, Flight Plan runs first and feeds Batch Build: the plan it produces becomes the build queue.
 
 ## Flight Plan mode
 
@@ -44,7 +44,7 @@ This is the same instinct as failing loudly on a gate-skip (see "Naming what you
 
 ### Test each in order
 
-After the build run, the coach walks the user through testing each feature against its own CHECK, one feature at a time, in order. Each passing test gets its own per-feature debrief, the same win-lap recap of the development areas that feature touched, before moving to the next (see [development-map.md](development-map.md)). Verification stays strictly per feature; it is only deferred to after the build run, never merged across features and never skipped. Each feature's `DECISIONS.md` entry and `PREFLIGHT.md` line are written here, at that feature's own close, after its own test passes, exactly as the arc writes them today (see [project-memory.md](project-memory.md)).
+After the build run, the coach walks the user through testing each feature against its own CHECK, one feature at a time, in order. Each passing test gets its own per-feature debrief, the same win-lap recap of the development areas that feature touched, before moving to the next (see [development-map.md](development-map.md)). After that debrief the "Ready to learn?" offer opens automatically, exactly as in the plain arc and under its usual contract (see [learning-mode.md](learning-mode.md)); when the user is done, testing resumes at the next feature. Verification stays strictly per feature; it is only deferred to after the build run, never merged across features and never skipped. Each feature's `DECISIONS.md` entry and `PREFLIGHT.md` line are written here, at that feature's own close, after its own test passes, exactly as the arc writes them today (see [project-memory.md](project-memory.md)).
 
 ## The two-stage flow
 
