@@ -1,6 +1,6 @@
 # Failure Modes
 
-These are the six anti-patterns I watch for in week one. They are diagnostic signals I use to decide which move to make next. The anti-pattern *names* here are not labels I pin on the user, not character assessments, not verdicts I read aloud. What I *do* say out loud is the **rule** the behavior bumps into — the gate it touches — because naming the rule teaches it instead of only blocking it (see "Naming what you're doing" in [../rules.md](../rules.md)). I name the rule, never the category, and never the person.
+These are the six anti-patterns I watch for in week one. They are diagnostic signals I use to decide which move to make next. The anti-pattern *names* here are not labels I pin on the user, not character assessments, not verdicts I read aloud. What I *do* say out loud is the **rule** the behavior bumps into, the gate it touches, because naming the rule teaches it instead of only blocking it (see "Naming what you're doing" in [../rules.md](../rules.md)). I name the rule, never the category, and never the person.
 
 ---
 

@@ -39,14 +39,14 @@ Both files live only in the user's own project. Neither lives anywhere else.
 One entry per shipped feature. The shape is fixed. Keep a blank line before each bulleted list so the generated log stays clean to read:
 
 ```markdown
-## Feature 3 — Rainbow loading circle (2026-05-20)
+## Feature 3, Rainbow loading circle (2026-05-20)
 
 **Four answers (rung):**
 
-- GOAL [Good] — 7 ROYGBIV dots, equal size, chasing clockwise, under the intro text
-- CHECK [Great] — journey check: named timing, motion, direction, color order
-- SCOPE [Great] — explicitly cut the future Specs/Reasoning/Stack/Intro views
-- CONTEXT [n/a] — none for this feature
+- GOAL [Good], 7 ROYGBIV dots, equal size, chasing clockwise, under the intro text
+- CHECK [Great], journey check: named timing, motion, direction, color order
+- SCOPE [Great], explicitly cut the future Specs/Reasoning/Stack/Intro views
+- CONTEXT [n/a], none for this feature
 
 **Signals:**
 
@@ -55,24 +55,24 @@ One entry per shipped feature. The shape is fixed. Keep a blank line before each
 - Checkpoint: clean
 ```
 
-The allowed values: rungs are the five-rung ladder described just below (or `n/a`); **Scaffolding needed** is `heavy` / `medium` / `light`; **Checkpoint** is `clean` or `re-tried` with a count (e.g. `re-tried (2x)`). Do not carry these option hints into the real entry as inline comments — write the chosen value plainly, as above.
+The allowed values: rungs are the five-rung ladder described just below (or `n/a`); **Scaffolding needed** is `heavy` / `medium` / `light`; **Checkpoint** is `clean` or `re-tried` with a count (e.g. `re-tried (2x)`). Do not carry these option hints into the real entry as inline comments, write the chosen value plainly, as above.
 
-The rungs in the "Four answers" block are the v2.1 five-rung answer ladder — **Great / Good / Needs-probing / Hedge / Dodge** — already used live to grade each of the four scoping answers. You tag a rung on each of the four scoping questions: GOAL, CHECK, SCOPE (out of scope), and CONTEXT (what Claude cannot see). `[n/a]` is a valid rung when a question genuinely does not apply to the feature, as CONTEXT often does not.
+The rungs in the "Four answers" block are the v2.1 five-rung answer ladder, **Great / Good / Needs-probing / Hedge / Dodge**, already used live to grade each of the four scoping answers. You tag a rung on each of the four scoping questions: GOAL, CHECK, SCOPE (out of scope), and CONTEXT (what Claude cannot see). `[n/a]` is a valid rung when a question genuinely does not apply to the feature, as CONTEXT often does not.
 
-The rung tagging belongs to the four scoping questions only — this is the leveling axis. Do not tag rungs on the six development areas (planning, data, UI, logic, testing, version control); those are a separate axis, and they live in `PREFLIGHT.md`'s feature log and the debrief (see [development-map.md](development-map.md)), not here.
+The rung tagging belongs to the four scoping questions only, this is the leveling axis. Do not tag rungs on the six development areas (planning, data, UI, logic, testing, version control); those are a separate axis, and they live in `PREFLIGHT.md`'s feature log and the debrief (see [development-map.md](development-map.md)), not here.
 
 ### When you write the decision log
 
-At the close of each feature, on the same beat that records the feature in `PREFLIGHT.md` — after the test passes, alongside the debrief. It is one write moment with two destinations: `PREFLIGHT.md` gets the human feature-log line, and `DECISIONS.md` gets the structured entry above. You do not write `DECISIONS.md` at any other time.
+At the close of each feature, on the same beat that records the feature in `PREFLIGHT.md`, after the test passes, alongside the debrief. It is one write moment with two destinations: `PREFLIGHT.md` gets the human feature-log line, and `DECISIONS.md` gets the structured entry above. You do not write `DECISIONS.md` at any other time.
 
 ### The session-start read
 
 Extend the start-of-session memory check. After you have read `PREFLIGHT.md`, also look for `DECISIONS.md`:
 
-- **If it exists, read it** and form a **per-question register read** for this session by applying [leveling.md](leveling.md). That gives you, per scoping question, where this user tends to land — so you can meet them there instead of at a flat intake level.
+- **If it exists, read it** and form a **per-question register read** for this session by applying [leveling.md](leveling.md). That gives you, per scoping question, where this user tends to land, so you can meet them there instead of at a flat intake level.
 - **If it does not exist, or you do not read it, fall back to the intake level** the user gave at first contact (see [levels.md](levels.md)).
 
-State this plainly to yourself: the decision log is an enhancement layer over a system that already works without it. The coaching arc functions on the intake level alone. Never let your coaching depend on `DECISIONS.md` being present or readable — if it is missing, you degrade gracefully to the static intake level and lose nothing essential.
+State this plainly to yourself: the decision log is an enhancement layer over a system that already works without it. The coaching arc functions on the intake level alone. Never let your coaching depend on `DECISIONS.md` being present or readable, if it is missing, you degrade gracefully to the static intake level and lose nothing essential.
 
 ## What you do not do
 

@@ -12,10 +12,10 @@ Desktop.ini
 *.swp
 *~
 
-# Internal docs (specs, plans) -- kept local, not published
+# Internal docs (specs, plans), kept local, not published
 /docs/
 
-# Pre-Flight memory file -- a per-user-project artifact the coach writes at the
+# Pre-Flight memory file, a per-user-project artifact the coach writes at the
 # project root. Appears here only when the coach is run inside its own folder
 # during testing; never committed to the coach repo.
 PREFLIGHT.md

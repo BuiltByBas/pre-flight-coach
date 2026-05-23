@@ -1,4 +1,4 @@
-# Pre-Flight — Design Notes
+# Pre-Flight, Design Notes
 
 *A short design rationale for the coach: why it exists, the decisions behind it, what it proved, and what comes next.*
 

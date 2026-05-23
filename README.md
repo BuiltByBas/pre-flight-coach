@@ -157,7 +157,7 @@ Built, really, for the journey. Pre-Flight meets you at your very first `print("
 
 ---
 
-## License — at a glance
+## License, at a glance
 
 Pre-Flight is licensed under **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**:
 
