@@ -1,0 +1,29 @@
+# GitHub Pages build config for Pre-Flight.
+#
+# Why this file exists: with no _config.yml, GitHub's legacy Jekyll build
+# loads its full default plugin set, which includes jekyll-github-metadata.
+# That plugin calls the GitHub Pages API (GET /repos/.../pages) on every
+# build. When the runner's token momentarily fails to authenticate, the
+# call returns 401 and the entire build fails (see run #28, 2026-05-23).
+# The site is plain markdown and does not use site.github metadata, so we
+# drop that plugin and keep the rest of the Pages defaults intact.
+
+title: Pre-Flight
+description: A coach for new developers.
+
+# The site is served from builtbybas.github.io/pre-flight-coach/
+baseurl: /pre-flight-coach
+
+# Default GitHub Pages theme (unchanged rendering).
+theme: jekyll-theme-primer
+
+# Explicit plugin list: the GitHub Pages defaults minus jekyll-github-metadata.
+plugins:
+  - jekyll-coffeescript
+  - jekyll-default-layout
+  - jekyll-gist
+  - jekyll-optional-front-matter
+  - jekyll-paginate
+  - jekyll-readme-index
+  - jekyll-titles-from-headings
+  - jekyll-relative-links

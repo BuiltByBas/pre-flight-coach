@@ -18,7 +18,7 @@ Pre-Flight also remembers how you answer across features and grows with you, it 
 
 Beyond building, Pre-Flight teaches the *why*. After each feature it recaps the parts of software development you just worked across, then offers to take you deeper on any of them. Any time after you have built something, you can type `/learn` to pause and learn a principle, taught from your own code, never a generic lecture.
 
-**Where it runs best.** Pre-Flight works on both Claude Code and Claude.ai, and with any current Claude model, Opus, Sonnet, or Haiku. You will get the fullest experience on Claude Code, where Pre-Flight reads and writes files directly: your project memory, the `DECISIONS.md` that powers its leveling, and the build itself all live in your own folder and carry across sessions automatically.
+**Where it runs best.** At its core Pre-Flight is prose, the four questions, the gate, the rules, and the coaching, so it loads as instructions into any capable AI assistant, not only Claude. It runs natively on Claude Code and Claude.ai with any current Claude model, Opus, Sonnet, or Haiku, and the same folder works when handed to other assistants that read a project's instructions. The native slash commands (`/plan`, `/chart`, `/learn`, `/secops`) are the one Claude Code specific piece; everywhere else those same flows are available as prose you invoke by name. You will get the fullest experience on Claude Code, where Pre-Flight reads and writes files directly: your project memory, the `DECISIONS.md` that powers its leveling, and the build itself all live in your own folder and carry across sessions automatically.
 
 ---
 
@@ -68,13 +68,17 @@ When you want more than a one-line check, the opt-in **Pre-Flight Secops** check
 
 Claude Code reads `CLAUDE.md` automatically, but only from the folder you **start it in** (and that folder's parents), not from a subfolder. So you have to launch Claude Code from *inside* the folder that holds `CLAUDE.md`. After cloning, `cd` into the inner `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`) and start your conversation there. Pre-Flight is active from your first message. No pasting, no manual setup.
 
-**Didn't activate?** If your first message gets a normal Claude response instead of Pre-Flight introducing itself, you started Claude Code one level too high, in a folder *above* `pre-flight-coach/` rather than inside it. Claude Code won't auto-load a `CLAUDE.md` that sits in a subfolder, so dropping `pre-flight-coach/` inside another project and launching from that project's root will not activate the coach. Fix it by `cd`-ing into the `pre-flight-coach/` folder and starting again.
+**Didn't activate?** If your first message gets a normal Claude response instead of Pre-Flight introducing itself, you started Claude Code one level too high, in a folder *above* `pre-flight-coach/` rather than inside it. Claude Code won't auto-load a `CLAUDE.md` that sits in a subfolder, so dropping `pre-flight-coach/` inside another project and launching from that project's root will not activate the coach. The slash commands work the same way: `/plan`, `/chart`, `/learn`, and `/secops` are discovered from the `.claude/skills/` folder that sits beside `CLAUDE.md`, so launching one level too high means they will not appear either. Fix both at once by `cd`-ing into the `pre-flight-coach/` folder and starting again.
 
 ### Claude.ai Projects (connect the repo)
 
 1. Create a new Project at [claude.ai](https://claude.ai) (or open an existing one).
 2. Add knowledge from GitHub: connect the repository `https://github.com/BuiltByBas/pre-flight-coach`, then select the `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`). That folder is everything Pre-Flight needs; you do not have to add files one by one.
 3. Start a conversation. Your first message triggers the coaching, even just saying "Hi" brings Pre-Flight to life. The more context you bring to that first answer, the more it has to work with, so describe what you want to build in as much detail as you can.
+
+### Other AI assistants (load the folder)
+
+Pre-Flight is prose, so it runs on assistants beyond Claude too, and this has been tested across surfaces. Point your assistant at the `pre-flight-coach/` folder (the one that holds `CLAUDE.md` and `reference/`) and load it as that tool's project instructions or knowledge, however your assistant takes them: a custom instructions field, an attached or connected folder, or pasted context. Once loaded, start a conversation the same way, your first message brings the coach to life. The native slash commands are Claude Code only, so on other assistants you invoke the same flows by name instead, "let's make a Flight Plan," "chart a course," "I want to learn," or "run a secops check," and Pre-Flight routes you in.
 
 ---
 
