@@ -179,6 +179,21 @@ Built, really, for the journey. Pre-Flight meets you at your very first `print("
 
 ---
 
+## Resources used to build this
+
+Pre-Flight draws on the teaching and community behind these resources:
+
+- **Skool - Clief Notes** — [skool.com/cliefnotes](https://www.skool.com/cliefnotes/about?ref=d225dfd14e9240158217e516932b767f)
+- **Praxis Library** — [praxislibrary.com](https://praxislibrary.com/learn/index.html)
+
+---
+
+## Special thanks
+
+A heartfelt, personal thank you to **Jake Van Clief**. Thank you for being such an amazing human being, and for the profound impact you have had on our communities around the world. The generosity, the teaching, and the way you show up for people leave a mark far beyond any one project. This tool is better for it, and so are we. Thank you, Jake.
+
+---
+
 ## License, at a glance
 
 Pre-Flight is licensed under **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**:
