@@ -170,6 +170,13 @@ h2 em{font-style:normal;color:var(--phosphor)}
   .hero-grid{grid-template-columns:1fr;gap:34px}
   .hero-term-col{display:none}
 }
+/* phones: the hero centres its content, but with the terminal column hidden the
+   copy stack is tall and its last CTA was colliding with the scroll hint pinned
+   at the bottom. Anchor the content to the top instead of centring it, trim the
+   top padding so it sits up, and reserve clear bottom space for the scroll hint. */
+@media (max-width:640px){
+  #hero{justify-content:flex-start;padding-top:13vh;padding-bottom:96px}
+}
 .hero-eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.36em;text-transform:uppercase;color:var(--phosphor);margin-bottom:24px;display:flex;align-items:center;gap:12px;opacity:0}
 .hero-eyebrow .sq{width:9px;height:9px;background:var(--phosphor);box-shadow:0 0 12px var(--phosphor)}
 .hero h1{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:700;color:var(--white);letter-spacing:-.03em;line-height:.92;margin-bottom:8px}
@@ -315,6 +322,21 @@ h2 em{font-style:normal;color:var(--phosphor)}
 .terminal .am{color:var(--amber)}
 .cursor{display:inline-block;width:9px;height:1.05em;background:var(--phosphor);vertical-align:text-bottom;animation:cur 1.1s steps(1) infinite}
 @keyframes cur{50%{opacity:0}}
+/* mobile terminals: the lines are hand-aligned for a wide desktop column with
+   literal \n breaks and leading-space indents baked into the content, which look
+   unnatural once the column is narrow. On mobile we let the text FLOW: the output
+   runs (.ou/.cm/.am) go inline with white-space:normal so their hard newlines and
+   indents collapse to single spaces and the text wraps naturally at the screen
+   edge, while each prompt (.pr) starts a fresh line so speaker turns stay readable.
+   Desktop (>640px) keeps the hand-aligned block exactly as authored. */
+@media (max-width:640px){
+  .terminal .body{padding:18px 15px}
+  .terminal .l{display:inline;white-space:normal}
+  /* break before each prompt that follows other content, so speaker turns each
+     start a line; the leading .l+ guard keeps the first prompt from getting a
+     blank line above it. */
+  .terminal .l + .pr::before{content:"";display:block}
+}
 
 /* architecture panel */
 .files{margin-top:42px;border:1px solid var(--line);background:var(--panel)}
