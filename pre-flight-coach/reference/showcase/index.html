@@ -87,6 +87,28 @@ a{color:inherit}
 .tick{font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--phosphor-dim)}
 .glow{text-shadow:0 0 18px rgba(67,245,176,.45)}
 
+/* ---- top brand: centred BUILTBYBAS ---- */
+.brandbar{
+  position:absolute;top:0;left:0;right:0;z-index:40;
+  display:flex;justify-content:center;align-items:center;
+  padding:clamp(16px,3vh,28px) var(--gut) 0;
+  text-decoration:none;pointer-events:auto;
+}
+.brandbar-mark{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1rem,2.2vw,1.5rem);
+  letter-spacing:.34em;text-indent:.34em;
+  color:var(--phosphor);
+  text-shadow:0 0 18px rgba(67,245,176,.45);
+  transition:text-shadow .4s ease,color .4s ease;
+}
+.brandbar-mark .brandbar-by{color:var(--ink-dim);text-shadow:none}
+.brandbar:hover .brandbar-mark{color:var(--white);text-shadow:0 0 26px rgba(67,245,176,.7)}
+@media(max-width:560px){
+  .brandbar{padding-top:14px}
+  .brandbar-mark{letter-spacing:.24em;text-indent:.24em}
+}
+
 /* corner brackets used on panels */
 .bracket{position:relative}
 .bracket::before,.bracket::after{
@@ -165,7 +187,12 @@ h2 em{font-style:normal;color:var(--phosphor)}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,60px);align-items:center}
 .hero-term-col,.hero-copy-col{min-width:0}
 .hero-terminal{box-shadow:0 28px 70px rgba(0,0,0,.55)}
-.hero-terminal .body{min-height:230px}
+/* fixed-height viewport: the conversation is full on landing and keeps flowing,
+   newest line pinned to the bottom, older lines scroll up out of view, the box
+   never grows. The inner .feed is translated upward so its tail stays visible. */
+.hero-terminal .body{height:230px;overflow:hidden;position:relative}
+.hero-terminal .feed{position:absolute;left:20px;right:20px;bottom:22px;will-change:transform}
+@media (max-width:640px){.hero-terminal .feed{left:15px;right:15px;bottom:18px}}
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:34px}
   .hero-term-col{display:none}
@@ -413,6 +440,11 @@ footer a:hover{color:var(--phosphor)}
 </style>
 </head>
 <body>
+
+<!-- ===== TOP BRAND ===== -->
+<a class="brandbar" href="https://github.com/BuiltByBas" aria-label="Built by Bas">
+  <span class="brandbar-mark">BUILT<span class="brandbar-by">BY</span>BAS</span>
+</a>
 
 <!-- ===== FIXED HUD ===== -->
 <div class="hud" id="hud" aria-hidden="true">
@@ -962,11 +994,18 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   io.observe(host);
 })();
 
-/* ---------- HERO TERMINAL typing (on load) ---------- */
+/* ---------- HERO TERMINAL (full on landing, then flows) ----------
+   The terminal is surfaced in already full: the opening exchange is rendered
+   instantly. From there the conversation keeps flowing, new turns stream in at
+   the bottom of a fixed-height viewport while older lines scroll up out of view.
+   The box never grows. Continuous loop. */
 (function(){
   const host=document.getElementById('heroterm');
   if(!host) return;
   function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+
+  // the conversation, as a flat line list. The first SEED lines are the exchange
+  // that is already on screen at landing, the rest stream in as it continues.
   const lines=[
     {c:'pr',t:'you ▸ '},{c:'ou',t:'coach me through building an app\n'},
     {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'First, the finish line. What is the\n'},
@@ -975,26 +1014,60 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     {c:'pr',t:'you ▸ '},{c:'ou',t:'their run shows up in the list\n'},
     {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'Good, that is "done". Three more\n'},
     {c:'ou',t:'              questions, then I will build it\n'},
-    {c:'ou',t:'              with you.'},{c:'cur'}
+    {c:'ou',t:'              with you.\n'},
+    // --- continues from here ---
+    {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'How will you know it worked,\n'},
+    {c:'ou',t:'              without asking me?\n'},
+    {c:'pr',t:'you ▸ '},{c:'ou',t:'a run i log shows up after refresh\n'},
+    {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'That is a real check. What is NOT\n'},
+    {c:'ou',t:'              part of this feature?\n'},
+    {c:'pr',t:'you ▸ '},{c:'ou',t:'editing or deleting runs, later\n'},
+    {c:'pr',t:'pre-flight ▸ '},{c:'ou',t:'Scope held. Gate is open, now we\n'},
+    {c:'ou',t:'              build it together.\n'}
   ];
+  const SEED=11; // lines present on landing (through "with you.")
+
+  // build the flowing feed inside the fixed-height body
+  host.innerHTML='';
+  const feed=document.createElement('div'); feed.className='feed'; host.appendChild(feed);
+
+  function makeLine(l){ const s=document.createElement('span'); s.className='l '+l.c; return s; }
+
   if(REDUCED){
-    host.innerHTML = lines.map(l=> l.c==='cur' ? '' : '<span class="l '+l.c+'">'+esc(l.t)+'</span>').join('');
+    lines.slice(0,SEED).forEach(l=>{ const s=makeLine(l); s.innerHTML=esc(l.t); feed.appendChild(s); });
+    const c=document.createElement('span'); c.className='cursor'; feed.appendChild(c);
     return;
   }
-  let li=0;
+
+  let cursor=null;
+  function placeCursor(){ if(cursor) cursor.remove(); cursor=document.createElement('span'); cursor.className='cursor'; feed.appendChild(cursor); }
+
+  // render the seed instantly so the terminal is full the moment it lands
+  lines.slice(0,SEED).forEach(l=>{ const s=makeLine(l); s.innerHTML=esc(l.t); feed.appendChild(s); });
+  placeCursor();
+
+  let li=SEED;
   function typeLine(){
-    if(li>=lines.length) return;
+    if(li>=lines.length){ setTimeout(reset, 4200); return; }
     const l=lines[li];
-    if(l.c==='cur'){ const c=document.createElement('span'); c.className='cursor'; host.appendChild(c); return; }
-    const span=document.createElement('span'); span.className='l '+l.c; host.appendChild(span);
+    const span=makeLine(l);
+    if(cursor) feed.insertBefore(span, cursor); else feed.appendChild(span);
     let ci=0; const txt=l.t;
     (function ch(){
       span.innerHTML=esc(txt.slice(0,ci)); ci++;
-      if(ci<=txt.length) setTimeout(ch, l.c==='ou'?10:24);
-      else { li++; setTimeout(typeLine, 110); }
+      if(ci<=txt.length) setTimeout(ch, l.c==='ou'?12:26);
+      else { li++; setTimeout(typeLine, 130); }
     })();
   }
-  setTimeout(typeLine, 900);
+  function reset(){
+    // loop back to the seed state and keep flowing
+    feed.innerHTML='';
+    lines.slice(0,SEED).forEach(l=>{ const s=makeLine(l); s.innerHTML=esc(l.t); feed.appendChild(s); });
+    placeCursor();
+    li=SEED; setTimeout(typeLine, 1400);
+  }
+
+  setTimeout(typeLine, 1600);
 })();
 
 /* ---------- GATE DEMOS (click to play) ---------- */
