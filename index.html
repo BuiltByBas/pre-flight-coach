@@ -180,6 +180,10 @@ h1{font-family:var(--display);font-weight:600;line-height:1.04;letter-spacing:-.
 .hero-sub b{color:var(--phosphor);font-weight:600}
 .hero-line{font-size:1.02rem;color:var(--ink-dim);max-width:54ch;margin-bottom:40px;opacity:0}
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0}
+/* root landing: single, centred, wide Reserve-a-seat button */
+.hero-cta{justify-content:center}
+.btn-wide{min-width:380px;max-width:100%;text-align:center;justify-content:center;padding-left:0;padding-right:0}
+@media (max-width:640px){.btn-wide{min-width:0;width:100%}}
 
 .btn{
   font-family:var(--mono);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
@@ -256,10 +260,9 @@ h1{font-family:var(--display);font-weight:600;line-height:1.04;letter-spacing:-.
           <span class="flight">FLIGHT</span>
         </h1>
         <p class="hero-sub" id="hsub">A coding coach designed with ease in mind. It learns, coaches through ideas, holds a <b>gate</b> before it builds, teaches, and <b>never stops coaching</b> while it does.</p>
-        <p class="hero-line" id="hline">No server. No dependencies. No extra API key. A folder of markdown that turns Claude into the coach who walks you from your first line of code to a shipped product.</p>
+        <p class="hero-line" id="hline">No server. No dependencies. No extra API key. A coach who walks you from your first line of code to a shipped product.</p>
         <div class="hero-cta" id="hcta">
-          <a class="btn" href="mailto:bas@builtbybas.com?subject=Reserve%20my%20seat%20%E2%80%94%20Pre-Flight&body=Hi%20Bas%2C%0A%0AI%27d%20like%20to%20reserve%20a%20seat%20for%20Pre-Flight.">Reserve a seat</a>
-          <a class="btn ghost" href="pre-flight-coach/reference/showcase/#hero">See the full walkthrough</a>
+          <a class="btn btn-wide" href="mailto:bas@builtbybas.com?subject=Reserve%20my%20seat%20%E2%80%94%20Pre-Flight&body=Hi%20Bas%2C%0A%0AI%27d%20like%20to%20reserve%20a%20seat%20for%20Pre-Flight.">Reserve a seat</a>
         </div>
       </div>
     </div>
