@@ -178,6 +178,13 @@ h2{font-size:clamp(2rem,5.2vw,3.6rem);color:var(--white);margin-bottom:18px}
 h2 em{font-style:normal;color:var(--phosphor)}
 .lead{font-size:clamp(1.05rem,1.8vw,1.32rem);color:var(--ink-dim);max-width:62ch;font-weight:300}
 
+/* ---- FLIGHT LOG: founder note ---- */
+.founder{max-width:100%}
+.founder p{font-size:clamp(1.08rem,1.9vw,1.4rem);line-height:1.55;color:var(--ink);font-weight:300;margin-bottom:20px}
+.founder p:first-child{color:var(--white)}
+.founder .founder-sign{font-family:var(--mono);font-size:.95rem;letter-spacing:.08em;color:var(--phosphor);margin-top:30px;margin-bottom:0}
+.founder .founder-brand{color:var(--ink-dim)}
+
 /* =========================================================
    HERO
    ========================================================= */
@@ -468,21 +475,32 @@ footer a:hover{color:var(--phosphor)}
         </div>
       </div>
       <div class="hero-copy-col">
-        <div class="hero-eyebrow" id="eyebrow"><span class="sq"></span> Clief Notes - Skool Weekly Comp #5: The Coach</div>
+        <div class="hero-eyebrow" id="eyebrow"><span class="sq"></span> Ready to take off? Start your ascent today!</div>
         <h1>
           <span class="pre" id="preword"></span>
           <span class="flight">FLIGHT</span>
         </h1>
-        <p class="hero-sub" id="hsub">A coach for new developers. Not a knowledge base, not an assistant. It holds a <b>gate</b> before it builds, and <b>never stops coaching</b> while it does.</p>
+        <p class="hero-sub" id="hsub">A coding coach designed with ease in mind. It learns, coaches through ideas, holds a <b>gate</b> before it builds, teaches, and <b>never stops coaching</b> while it does.</p>
         <p class="hero-line" id="hline">No server. No dependencies. No extra API key. A folder of markdown that turns Claude into the coach who walks you from your first line of code to a shipped product.</p>
         <div class="hero-cta" id="hcta">
-          <a class="btn" href="https://github.com/BuiltByBas/pre-flight-coach">Clone the folder</a>
+          <a class="btn" href="mailto:bas@builtbybas.com?subject=Reserve%20my%20seat%20%E2%80%94%20Pre-Flight&body=Hi%20Bas%2C%0A%0AI%27d%20like%20to%20reserve%20a%20seat%20for%20Pre-Flight.">Reserve a seat</a>
           <a class="btn ghost" href="#gate">See the four-question gate</a>
         </div>
       </div>
     </div>
   </div>
   <div class="scroll-hint" id="shint">Begin descent<span class="arr"></span></div>
+</section>
+
+<!-- ===== FLIGHT LOG (founder) ===== -->
+<section id="flightlog">
+  <div class="wrap">
+    <div class="section-tag reveal"><span class="num">FLIGHT LOG</span><span class="line"></span><span class="tick">Why I built it</span></div>
+    <div class="founder reveal">
+      <p>Pre-Flight Coaching is for everyone. It's for the vibe-coder who wants to understand their code. It's for the new dev who wants to learn the why behind what AI is building. I built the Pre-Flight Coaching system because in a world where anyone can build with AI, everyone should have the opportunity to understand what they are building.</p>
+      <p class="founder-sign">Bas <span class="founder-brand">— BuiltByBas</span></p>
+    </div>
+  </div>
 </section>
 
 <!-- ===== THE GATE ===== -->
@@ -788,9 +806,9 @@ footer a:hover{color:var(--phosphor)}
   <div class="wrap">
     <div class="journey reveal"><b>print("hello")</b><span class="ar">———▶</span> coach <span class="ar">▶</span> build <span class="ar">▶</span> test <span class="ar">▶</span> repeat <span class="ar">———▶</span> <b>Full Stack Pro</b></div>
     <h2 class="reveal">You arrive with Ideas.<br>You leave with something <em>built, tested, and yours</em>.</h2>
-    <p class="lead reveal">Pre-Flight meets you at your very first feature and stays with you through the ones after. Clone the folder, say hello, and start your climb.</p>
+    <p class="lead reveal">Pre-Flight meets you at your very first feature and stays with you through the ones after. Reserve a seat, say hello, and start your climb.</p>
     <div class="hero-cta reveal">
-      <a class="btn" href="https://github.com/BuiltByBas/pre-flight-coach">Clone the folder</a>
+      <a class="btn" href="mailto:bas@builtbybas.com?subject=Reserve%20my%20seat%20%E2%80%94%20Pre-Flight&body=Hi%20Bas%2C%0A%0AI%27d%20like%20to%20reserve%20a%20seat%20for%20Pre-Flight.">Reserve a seat</a>
       <a class="btn ghost" href="#hero">Return to the sky</a>
     </div>
   </div>
