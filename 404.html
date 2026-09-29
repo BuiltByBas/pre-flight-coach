@@ -173,10 +173,10 @@ h1{font-family:var(--display);font-weight:600;line-height:1.04;letter-spacing:-.
 }
 .hero-eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.36em;text-transform:uppercase;color:var(--phosphor);margin-bottom:24px;display:flex;align-items:center;gap:12px;opacity:0}
 .hero-eyebrow .sq{width:9px;height:9px;background:var(--phosphor);box-shadow:0 0 12px var(--phosphor)}
-.hero h1{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:700;color:var(--white);letter-spacing:-.03em;line-height:.92;margin-bottom:8px}
-.hero h1 .pre{display:block;color:var(--phosphor)}
-.hero h1 .pre span{opacity:0;display:inline-block}
-.hero h1 .flight{display:block;color:var(--white);position:relative}
+#hero h1{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:700;color:var(--white);letter-spacing:-.03em;line-height:.92;margin-bottom:8px}
+#hero h1 .pre{display:block;color:var(--phosphor)}
+#hero h1 .pre span{opacity:0;display:inline-block}
+#hero h1 .flight{display:block;color:var(--white);position:relative}
 .hero-sub{font-size:clamp(1.1rem,2.4vw,1.7rem);font-family:var(--display);font-weight:400;color:var(--ink);max-width:30ch;margin:28px 0 14px;opacity:0}
 .hero-sub b{color:var(--phosphor);font-weight:600}
 .hero-line{font-size:1.02rem;color:var(--ink-dim);max-width:54ch;margin-bottom:40px;opacity:0}
@@ -222,7 +222,7 @@ h1{font-family:var(--display);font-weight:600;line-height:1.04;letter-spacing:-.
 /* reduced motion: reveal everything, drop the runway */
 @media (prefers-reduced-motion: reduce){
   .hero-eyebrow,.hero-sub,.hero-line,.hero-cta,.hud{opacity:1 !important}
-  .hero h1 .pre span{opacity:1 !important}
+  #hero h1 .pre span{opacity:1 !important}
   #runway{display:none}
 }
 </style>
